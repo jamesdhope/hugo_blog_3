@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Open Source | Hugo Academic CV Theme</title>
-    <link>http://localhost:56298/tags/open-source/</link>
-      <atom:link href="http://localhost:56298/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/open-source/</link>
+      <atom:link href="https://example.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     <description>Open Source</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:56298/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Open Source</title>
-      <link>http://localhost:56298/tags/open-source/</link>
+      <link>https://example.com/tags/open-source/</link>
     </image>
     
     <item>
       <title>Top 10 architectural highlights for Digital Ocean Kubernetes</title>
-      <link>http://localhost:56298/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link>
+      <link>https://example.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link>
       <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56298/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid>
+      <guid>https://example.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid>
       <description>&lt;p&gt;Recently I&amp;rsquo;ve been developing a solution architecture for a boostrapped startup in Digital Ocean&amp;rsquo;s Kubernetes. Developing an understanding of the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning has happened, the solution and its architecture has evolved to enable numerous product iterations, building out only what has been necessary at each stage. The domain driven approach to development led to a server based query gateway and so what unfolded was containerised microservcies architecture orchestrated by Kubernetes. Here are my top 10 highlights from building in Digital Ocean Kubernetes:&lt;/p&gt;
 &lt;p&gt;
 
@@ -40,7 +40,7 @@
                /media/containers_hu13319681871289052723.webp 400w,
                /media/containers_hu3844265370231262270.webp 760w,
                /media/containers_hu16752254096098984510.webp 1200w&#34;
-               src=&#34;http://localhost:56298/media/containers_hu13319681871289052723.webp&#34;
+               src=&#34;https://example.com/media/containers_hu13319681871289052723.webp&#34;
                width=&#34;760&#34;
                height=&#34;512&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

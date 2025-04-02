@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Multi-Modal Applications | Hugo Academic CV Theme</title>
-    <link>http://localhost:56298/tags/multi-modal-applications/</link>
-      <atom:link href="http://localhost:56298/tags/multi-modal-applications/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/multi-modal-applications/</link>
+      <atom:link href="https://example.com/tags/multi-modal-applications/index.xml" rel="self" type="application/rss+xml" />
     <description>Multi-Modal Applications</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:56298/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Multi-Modal Applications</title>
-      <link>http://localhost:56298/tags/multi-modal-applications/</link>
+      <link>https://example.com/tags/multi-modal-applications/</link>
     </image>
     
     <item>
       <title>Programmable, semantically-matched guardrails with NVIDIA/NeMo-Guardrails and watsonx.ai</title>
-      <link>http://localhost:56298/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</link>
+      <link>https://example.com/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56298/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</guid>
+      <guid>https://example.com/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</guid>
       <description>&lt;p&gt;NeMo-Guardrails is an open-source toolkit that allows developers to add programmable guardrails semantically matched on utterances to LLM-based conversational applications. NeMo-Guardrails can be easily integrated with watsonx.ai models using LangChain&amp;rsquo;s WatsonxLLM Integration.&lt;/p&gt;
 &lt;h4 id=&#34;five-types-of-guardrails&#34;&gt;Five types of guardrails&lt;/h4&gt;
 &lt;p&gt;Ne-Mo Guardrails supports five types of guardrails:&lt;/p&gt;
@@ -59,7 +59,7 @@
                /media/nemo_hu5508593615263758240.webp 400w,
                /media/nemo_hu15766525898794486308.webp 760w,
                /media/nemo_hu12107617542743838012.webp 1200w&#34;
-               src=&#34;http://localhost:56298/media/nemo_hu5508593615263758240.webp&#34;
+               src=&#34;https://example.com/media/nemo_hu5508593615263758240.webp&#34;
                width=&#34;760&#34;
                height=&#34;388&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -191,9 +191,9 @@
     
     <item>
       <title>Governance of AI enabled services and applications with AI Guardrails and watsonx</title>
-      <link>http://localhost:56298/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</link>
+      <link>https://example.com/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</link>
       <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56298/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</guid>
+      <guid>https://example.com/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</guid>
       <description>&lt;p&gt;Effective governance of enterprise services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs to and outputs from generative models. These models, which are called synchronously by the application and drive application logic and consumed via an API, abstracted away through an SDK or inferenced directly, must themselves be governed. These models too, must be explainable, monitored for drift (if neural) and for fairness.&lt;/p&gt;
 &lt;p&gt;AI Guardrails can be built and governed with the watsonx platform to provide a cohesive view of risk for applications and services:&lt;/p&gt;
 &lt;ul&gt;
@@ -225,7 +225,7 @@
                /media/ai_guardrails1_hu4425717384309989674.webp 400w,
                /media/ai_guardrails1_hu9314226568126457689.webp 760w,
                /media/ai_guardrails1_hu16355126772708329888.webp 1200w&#34;
-               src=&#34;http://localhost:56298/media/ai_guardrails1_hu4425717384309989674.webp&#34;
+               src=&#34;https://example.com/media/ai_guardrails1_hu4425717384309989674.webp&#34;
                width=&#34;760&#34;
                height=&#34;555&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -254,7 +254,7 @@
                /media/ai_guardrails2_hu2454801344131499668.webp 400w,
                /media/ai_guardrails2_hu11094816254477447795.webp 760w,
                /media/ai_guardrails2_hu16922449237245276781.webp 1200w&#34;
-               src=&#34;http://localhost:56298/media/ai_guardrails2_hu2454801344131499668.webp&#34;
+               src=&#34;https://example.com/media/ai_guardrails2_hu2454801344131499668.webp&#34;
                width=&#34;760&#34;
                height=&#34;295&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

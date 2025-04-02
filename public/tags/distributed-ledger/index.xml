@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Distributed Ledger | Hugo Academic CV Theme</title>
-    <link>http://localhost:56298/tags/distributed-ledger/</link>
-      <atom:link href="http://localhost:56298/tags/distributed-ledger/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/distributed-ledger/</link>
+      <atom:link href="https://example.com/tags/distributed-ledger/index.xml" rel="self" type="application/rss+xml" />
     <description>Distributed Ledger</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 02 Jul 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:56298/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Distributed Ledger</title>
-      <link>http://localhost:56298/tags/distributed-ledger/</link>
+      <link>https://example.com/tags/distributed-ledger/</link>
     </image>
     
     <item>
       <title>Build your own Blockchain Protocol</title>
-      <link>http://localhost:56298/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
+      <link>https://example.com/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56298/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
+      <guid>https://example.com/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-your-own-blockchain-protocol-for-a-distributed-ledger-54e0a92e1f10&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
