@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neo4j | Hugo Academic CV Theme</title>
-    <link>http://localhost:55660/tags/neo4j/</link>
-      <atom:link href="http://localhost:55660/tags/neo4j/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/neo4j/</link>
+      <atom:link href="https://example.com/tags/neo4j/index.xml" rel="self" type="application/rss+xml" />
     <description>Neo4j</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 19 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:55660/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Neo4j</title>
-      <link>http://localhost:55660/tags/neo4j/</link>
+      <link>https://example.com/tags/neo4j/</link>
     </image>
     
     <item>
       <title>Injecting Config as Environment Variables from Hasicorp&#39;s Consul &amp; Vault</title>
-      <link>http://localhost:55660/post/vault-template/2021-11-19-vault-template-2/</link>
+      <link>https://example.com/post/vault-template/2021-11-19-vault-template-2/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/vault-template/2021-11-19-vault-template-2/</guid>
+      <guid>https://example.com/post/vault-template/2021-11-19-vault-template-2/</guid>
       <description>&lt;p&gt;Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp&amp;rsquo;s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV&amp;rsquo;s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV&amp;rsquo;s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault&amp;rsquo;s HTTP API. That is another approach which I&amp;rsquo;m not going to talk about here.&lt;/p&gt;
 &lt;p&gt;For the purposes of this explanation I&amp;rsquo;m supplying environment variables to an application called Hasura graphQL API. Config is held in Consul and Vault in their respective KV Engines.&lt;/p&gt;
 &lt;p&gt;
@@ -37,7 +37,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:55660/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://example.com/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
@@ -77,9 +77,9 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
     
     <item>
       <title>Backup and Restore Neo4j in a Casual Cluster</title>
-      <link>http://localhost:55660/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
+      <link>https://example.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
+      <guid>https://example.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There&amp;rsquo;s a Medium post by Neo4j&amp;rsquo;s David Allen to explain what that configuration looks like &lt;a target=&#34;_new&#34; href=&#34;https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4&#34;&gt;here&lt;/a&gt;. Unfortunately Neo4j doesn&amp;rsquo;t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.&lt;/p&gt;
 &lt;p&gt;
 
@@ -99,7 +99,7 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:55660/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://example.com/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
@@ -203,18 +203,18 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
     
     <item>
       <title>A New Era for People Analytics</title>
-      <link>http://localhost:55660/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
+      <link>https://example.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
+      <guid>https://example.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/the-dawn-of-a-new-era-for-people-analytics-9a748f7fdc2&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Can your People Analytics do this?</title>
-      <link>http://localhost:55660/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
+      <link>https://example.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
+      <guid>https://example.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/can-your-people-analytics-do-this-739afa714f1a&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>

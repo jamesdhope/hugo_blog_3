@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stable Marriage | Hugo Academic CV Theme</title>
-    <link>http://localhost:55660/tags/stable-marriage/</link>
-      <atom:link href="http://localhost:55660/tags/stable-marriage/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/stable-marriage/</link>
+      <atom:link href="https://example.com/tags/stable-marriage/index.xml" rel="self" type="application/rss+xml" />
     <description>Stable Marriage</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 18 May 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:55660/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Stable Marriage</title>
-      <link>http://localhost:55660/tags/stable-marriage/</link>
+      <link>https://example.com/tags/stable-marriage/</link>
     </image>
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm to find &#39;Stable Groups&#39;</title>
-      <link>http://localhost:55660/post/stable-groups/2018-05-18-stablegroups/</link>
+      <link>https://example.com/post/stable-groups/2018-05-18-stablegroups/</link>
       <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/stable-groups/2018-05-18-stablegroups/</guid>
+      <guid>https://example.com/post/stable-groups/2018-05-18-stablegroups/</guid>
       <description>&lt;p&gt;In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.&lt;/p&gt;
 &lt;h1&gt;Basic Software Architecture&lt;/h1&gt;
 &lt;p&gt;We will make use of my implementation of the Stable Marriage Algorithm. As before, we will need class objects for holding the proposer and acceptor preferences, as well as the list of engagements (or pairs). Additionally, we will need a class object to hold the list of pairs for iteration of the algorithm. We will call this the Pools Class and it will hold Pool Class Objects (or the pairs found at each level).&lt;/p&gt;
@@ -687,9 +687,9 @@ length of groups 3&lt;/p&gt;
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm.</title>
-      <link>http://localhost:55660/post/stable-marriage/2018-04-12-stable-marriage/</link>
+      <link>https://example.com/post/stable-marriage/2018-04-12-stable-marriage/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/stable-marriage/2018-04-12-stable-marriage/</guid>
+      <guid>https://example.com/post/stable-marriage/2018-04-12-stable-marriage/</guid>
       <description>&lt;p&gt;Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might arise, for example, in pairing up co-workers for a task or pairing up students for an activity.&lt;/p&gt;
 &lt;p&gt;If each student were to (1) list out their peers they would &amp;lsquo;propose&amp;rsquo; to work with (in order of preference), and (2) list out their peers in order of who they would &amp;lsquo;accept&amp;rsquo; proposals from (also in order of preference) the Stable Marriage Algorithm would allow us to find a solution such that it would not be preferable for any two students to swap partners - in other words that the matching found by the algorithm is said to be &amp;lsquo;stable&amp;rsquo;.&lt;/p&gt;
 &lt;p&gt;Consider that four students list out who they would like to work with as follows. Let&amp;rsquo;s call this the Proposers Table.&lt;/p&gt;

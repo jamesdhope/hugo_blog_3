@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hybrid Recommender | Hugo Academic CV Theme</title>
-    <link>http://localhost:55660/tags/hybrid-recommender/</link>
-      <atom:link href="http://localhost:55660/tags/hybrid-recommender/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/hybrid-recommender/</link>
+      <atom:link href="https://example.com/tags/hybrid-recommender/index.xml" rel="self" type="application/rss+xml" />
     <description>Hybrid Recommender</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:55660/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Hybrid Recommender</title>
-      <link>http://localhost:55660/tags/hybrid-recommender/</link>
+      <link>https://example.com/tags/hybrid-recommender/</link>
     </image>
     
     <item>
       <title>Build a Machine Learning Recommender</title>
-      <link>http://localhost:55660/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
+      <link>https://example.com/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
       <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
+      <guid>https://example.com/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-a-machine-learning-recommender-72be2a8f96ed&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>

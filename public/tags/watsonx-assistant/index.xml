@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Watsonx Assistant | Hugo Academic CV Theme</title>
-    <link>http://localhost:55660/tags/watsonx-assistant/</link>
-      <atom:link href="http://localhost:55660/tags/watsonx-assistant/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/watsonx-assistant/</link>
+      <atom:link href="https://example.com/tags/watsonx-assistant/index.xml" rel="self" type="application/rss+xml" />
     <description>Watsonx Assistant</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 17 Feb 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:55660/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Watsonx Assistant</title>
-      <link>http://localhost:55660/tags/watsonx-assistant/</link>
+      <link>https://example.com/tags/watsonx-assistant/</link>
     </image>
     
     <item>
       <title>Reconstructing user context to reduce the risk of policy misaligned generated content in LLM enabled conversational assistants</title>
-      <link>http://localhost:55660/post/reconstructing-user-context/2024-02-17-language-model-assistants/</link>
+      <link>https://example.com/post/reconstructing-user-context/2024-02-17-language-model-assistants/</link>
       <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55660/post/reconstructing-user-context/2024-02-17-language-model-assistants/</guid>
+      <guid>https://example.com/post/reconstructing-user-context/2024-02-17-language-model-assistants/</guid>
       <description>&lt;p&gt;For conversatonal assistants, language models offer the potential benefit of being able to generate responses to the widest posisble range of queries that adhere to a policy, without the need for a premediated conversational design, which is inherently hard to design optimally for all queries. However, prompt engineering alone may not reduce the risk of the language model deviating from a policy to an acceptable level, particularly in the absence of comphrensive testing frameworks.&lt;/p&gt;
 &lt;p&gt;To reduce this risk, one approach is to extract known entities from natural language inputs and to use slot filling with explicit options for the user to confirm, in order for the user query and context to be reconstructed in the backend before it is passed to the language model. This approach mitigates the risk of queries and contexts being socially engineered to align the generated output in undesirable ways and reduces the scope of testing to optimise for permutations of determinstic inputs injected into the prompt.&lt;/p&gt;
 &lt;p&gt;The sequence diagram illustrates this approach with watsonx Assistant with these mechanisms for capturing and reconstructing user context labelled A and B:&lt;/p&gt;
@@ -42,7 +42,7 @@
                /media/assistant-user-context_hu12958890009746407307.webp 400w,
                /media/assistant-user-context_hu7236615887354435876.webp 760w,
                /media/assistant-user-context_hu12097027211566051849.webp 1200w&#34;
-               src=&#34;http://localhost:55660/media/assistant-user-context_hu12958890009746407307.webp&#34;
+               src=&#34;https://example.com/media/assistant-user-context_hu12958890009746407307.webp&#34;
                width=&#34;760&#34;
                height=&#34;398&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
