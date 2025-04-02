@@ -14,6 +14,11 @@ Singular Value Decomposion (SVD) is a well known method for latent semantic anal
 
 The advantage of this approach is that the semantic structure emerges naturally from these mathematical properties. We don't need to artificially construct relationships between semantic components - they're already encoded in the eigenvectors. By computing correlations between these eigenvectors, we can identify which semantic patterns are related and which are distinct, creating a natural semantic graph that represents genuine semantic relationships.
 
+Specifically, the graph’s nodes and arcs can be derived from the components of SVD in the following way:
+➡️ The matrix U represents the terms (or concepts) in the semantic space, and each column corresponds to a vector in the reduced latent space. These vectors can be treated as nodes in the graph, where each node represents a term or concept. 
+➡️ The rows of matrix V represent the contextual relationships between the terms, capturing the co-occurrence patterns or semantic similarity between terms. These relationships define the arcs in the graph, where an arc connects two nodes (terms) that are semantically related based on their co-occurrence or shared context.
+➡️The singular values in Σ indicate the importance of each dimension in the latent space, helping us identify which relationships (arcs) are most significant. Larger singular values highlight the more important semantic patterns, guiding us in constructing a more meaningful graph structure.
+
 This mathematical foundation opens up powerful possibilities for semantic analysis. The graph structure is a linear expression of the semantic relationships, which means we can perform various linear operations on it. We can analyze the spectral properties of the graph to understand its structure, use matrix operations to identify semantic clusters, or apply other linear algebraic techniques to explore the semantic space.
 
 The result is a complete semantic analysis that reveals not just what the text means, but how its meanings are structured and related. This mathematical view of semantics - from individual sentences to semantic patterns to pattern relationships - provides a framework for understanding and manipulating semantic relationships through linear algebra.

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jepa | Hugo Academic CV Theme</title>
-    <link>https://example.com/tags/jepa/</link>
-      <atom:link href="https://example.com/tags/jepa/index.xml" rel="self" type="application/rss+xml" />
+    <title>Jepa | James Hope</title>
+    <link>https://jamesdhope.com/tags/jepa/</link>
+      <atom:link href="https://jamesdhope.com/tags/jepa/index.xml" rel="self" type="application/rss+xml" />
     <description>Jepa</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 26 Jun 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Jepa</title>
-      <link>https://example.com/tags/jepa/</link>
+      <link>https://jamesdhope.com/tags/jepa/</link>
     </image>
     
     <item>
       <title>Joint Embeddings Predictor Architecture (JEPA) for agent-goal affinity / alignment in agent based ecosystems</title>
-      <link>https://example.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</link>
+      <link>https://jamesdhope.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</link>
       <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</guid>
+      <guid>https://jamesdhope.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</guid>
       <description>&lt;p&gt;JEPA (Joint Embeddings Predictive Architecture) has potential for aligning language-model based agents in an agent-based ecosystem. Whilst JEPA is primarily applied to image and video understanding tasks, it can be adapted for language tasks.&lt;/p&gt;
 &lt;p&gt;In this example, JEPA is used to learn the feature space of utterance of two personas (or agents) relating to climate change.&lt;/p&gt;
 &lt;h3 id=&#34;training-the-predictor&#34;&gt;Training the Predictor&lt;/h3&gt;
@@ -42,10 +42,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;features&#34; srcset=&#34;
-               /media/result_hu5193490875935510583.webp 400w,
-               /media/result_hu11375111277520105451.webp 760w,
-               /media/result_hu7410529503792406978.webp 1200w&#34;
-               src=&#34;https://example.com/media/result_hu5193490875935510583.webp&#34;
+               /media/result_hu_7a88522d7c22ebbb.webp 400w,
+               /media/result_hu_4fb6003e6c35758d.webp 760w,
+               /media/result_hu_3f4946201ce9d355.webp 1200w&#34;
+               src=&#34;https://jamesdhope.com/media/result_hu_7a88522d7c22ebbb.webp&#34;
                width=&#34;760&#34;
                height=&#34;486&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

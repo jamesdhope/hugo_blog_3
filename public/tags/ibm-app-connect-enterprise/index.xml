@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>IBM App Connect Enterprise | Hugo Academic CV Theme</title>
-    <link>https://example.com/tags/ibm-app-connect-enterprise/</link>
-      <atom:link href="https://example.com/tags/ibm-app-connect-enterprise/index.xml" rel="self" type="application/rss+xml" />
+    <title>IBM App Connect Enterprise | James Hope</title>
+    <link>https://jamesdhope.com/tags/ibm-app-connect-enterprise/</link>
+      <atom:link href="https://jamesdhope.com/tags/ibm-app-connect-enterprise/index.xml" rel="self" type="application/rss+xml" />
     <description>IBM App Connect Enterprise</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 02 Dec 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>IBM App Connect Enterprise</title>
-      <link>https://example.com/tags/ibm-app-connect-enterprise/</link>
+      <link>https://jamesdhope.com/tags/ibm-app-connect-enterprise/</link>
     </image>
     
     <item>
       <title>Gas System of the Future, Digital Twin</title>
-      <link>https://example.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
+      <link>https://jamesdhope.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
       <pubDate>Fri, 02 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
+      <guid>https://jamesdhope.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
       <description>&lt;p&gt;This article was published on Medium. Please click &lt;a target=&#34;_new&#34; href=&#34;https://jamesdhope.medium.com/gas-system-of-the-future-digital-twin-9e1622024462&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MLOps | Hugo Academic CV Theme</title>
-    <link>https://example.com/tags/mlops/</link>
-      <atom:link href="https://example.com/tags/mlops/index.xml" rel="self" type="application/rss+xml" />
+    <title>MLOps | James Hope</title>
+    <link>https://jamesdhope.com/tags/mlops/</link>
+      <atom:link href="https://jamesdhope.com/tags/mlops/index.xml" rel="self" type="application/rss+xml" />
     <description>MLOps</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 19 Jun 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>MLOps</title>
-      <link>https://example.com/tags/mlops/</link>
+      <link>https://jamesdhope.com/tags/mlops/</link>
     </image>
     
     <item>
       <title>Maintaining Trustworthiness in Drift-Susceptible Agentic Systems and Cascading heterogeneous Agentic Architectures with Automated MLOps</title>
-      <link>https://example.com/post/watson-mlops/2024-06-20-watson-mlops/</link>
+      <link>https://jamesdhope.com/post/watson-mlops/2024-06-20-watson-mlops/</link>
       <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/watson-mlops/2024-06-20-watson-mlops/</guid>
+      <guid>https://jamesdhope.com/post/watson-mlops/2024-06-20-watson-mlops/</guid>
       <description>&lt;p&gt;Whilst Monti Carlo Tree Search and Q* are promising approaches for aligning and guiding general purpose language models in a specialised domain, MLOps (or LLMOps) remains essential for maintaining models that are susceptible to drift. This is a particular concern in ecosystems where agents with smaller, specialised models and the environments they are deployed into are continously evolving, as these models are comparatively more susceptible to data drift than larger, general purpose models due to their relatively narrow training distribution. Additionally, in cascading heterogeneous agentic architectures out-of-distribution (OOD) inputs/outputs have the potential to propagate and proliferate from agent to agent.&lt;/p&gt;
 &lt;p&gt;The following diagram provides an approach to automate drift detection, model tuning, evaluation and deployment on the IBM watsonx platform. This approach can be extended across development environments to support many different model tuning and deployment strategies including adapter (LoRA) based models:&lt;/p&gt;
 &lt;p&gt;
@@ -38,10 +38,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;LLMOps with watson&#34; srcset=&#34;
-               /media/LLMOps_hu10657390509059657309.webp 400w,
-               /media/LLMOps_hu9740566545909069976.webp 760w,
-               /media/LLMOps_hu3489660012962673993.webp 1200w&#34;
-               src=&#34;https://example.com/media/LLMOps_hu10657390509059657309.webp&#34;
+               /media/LLMOps_hu_c0c756650ad47328.webp 400w,
+               /media/LLMOps_hu_52fb44e969c45807.webp 760w,
+               /media/LLMOps_hu_b82af1b1fa5538ad.webp 1200w&#34;
+               src=&#34;https://jamesdhope.com/media/LLMOps_hu_c0c756650ad47328.webp&#34;
                width=&#34;760&#34;
                height=&#34;396&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pipelines | Hugo Academic CV Theme</title>
-    <link>https://example.com/tags/pipelines/</link>
-      <atom:link href="https://example.com/tags/pipelines/index.xml" rel="self" type="application/rss+xml" />
+    <title>Pipelines | James Hope</title>
+    <link>https://jamesdhope.com/tags/pipelines/</link>
+      <atom:link href="https://jamesdhope.com/tags/pipelines/index.xml" rel="self" type="application/rss+xml" />
     <description>Pipelines</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Nov 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Pipelines</title>
-      <link>https://example.com/tags/pipelines/</link>
+      <link>https://jamesdhope.com/tags/pipelines/</link>
     </image>
     
     <item>
       <title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title>
-      <link>https://example.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
+      <link>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
       <pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
+      <guid>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
       <description>&lt;p&gt;Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p&gt;
 &lt;h3 id=&#34;functions-of-an-ai-operations-system&#34;&gt;Functions of an AI Operations System&lt;/h3&gt;
 &lt;p&gt;
@@ -38,10 +38,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Functional View of AI Operations&#34; srcset=&#34;
-               /media/AIOps_1_hu14181428855096736212.webp 400w,
-               /media/AIOps_1_hu16116507802183116710.webp 760w,
-               /media/AIOps_1_hu7886355223017178386.webp 1200w&#34;
-               src=&#34;https://example.com/media/AIOps_1_hu14181428855096736212.webp&#34;
+               /media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
+               /media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
+               /media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w&#34;
+               src=&#34;https://jamesdhope.com/media/AIOps_1_hu_c5672f5c18ae659d.webp&#34;
                width=&#34;760&#34;
                height=&#34;294&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -89,10 +89,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;OpenShiftAI integration with watsonx.governance&#34; srcset=&#34;
-               /media/AIOps_2_hu2444485632666524158.webp 400w,
-               /media/AIOps_2_hu2724058548544803075.webp 760w,
-               /media/AIOps_2_hu7722519779951802140.webp 1200w&#34;
-               src=&#34;https://example.com/media/AIOps_2_hu2444485632666524158.webp&#34;
+               /media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
+               /media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
+               /media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w&#34;
+               src=&#34;https://jamesdhope.com/media/AIOps_2_hu_b7c0426947db4dbc.webp&#34;
                width=&#34;760&#34;
                height=&#34;453&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

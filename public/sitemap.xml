@@ -2,415 +2,415 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/event/example/</loc>
+    <loc>https://jamesdhope.com/event/example/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/event/</loc>
+    <loc>https://jamesdhope.com/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/</loc>
+    <loc>https://jamesdhope.com/post/</loc>
     <lastmod>2027-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/clustering/</loc>
+    <loc>https://jamesdhope.com/tags/clustering/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/semantics/</loc>
+    <loc>https://jamesdhope.com/tags/semantics/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</loc>
+    <loc>https://jamesdhope.com/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://jamesdhope.com/tags/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</loc>
+    <loc>https://jamesdhope.com/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/architecture/</loc>
+    <loc>https://jamesdhope.com/tags/architecture/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/big-data/</loc>
+    <loc>https://jamesdhope.com/tags/big-data/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/data-science/</loc>
+    <loc>https://jamesdhope.com/tags/data-science/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/generativeai/</loc>
+    <loc>https://jamesdhope.com/tags/generativeai/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ibm/</loc>
+    <loc>https://jamesdhope.com/tags/ibm/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ibm-fusion/</loc>
+    <loc>https://jamesdhope.com/tags/ibm-fusion/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ibm-spectrum/</loc>
+    <loc>https://jamesdhope.com/tags/ibm-spectrum/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/llms/</loc>
+    <loc>https://jamesdhope.com/tags/llms/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/watsonx/</loc>
+    <loc>https://jamesdhope.com/tags/watsonx/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/fine-tuning/</loc>
+    <loc>https://jamesdhope.com/tags/fine-tuning/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/knative/</loc>
+    <loc>https://jamesdhope.com/tags/knative/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/kserve/</loc>
+    <loc>https://jamesdhope.com/tags/kserve/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/kubeflow/</loc>
+    <loc>https://jamesdhope.com/tags/kubeflow/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/kubernetes/</loc>
+    <loc>https://jamesdhope.com/tags/kubernetes/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/lora/</loc>
+    <loc>https://jamesdhope.com/tags/lora/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/openvino/</loc>
+    <loc>https://jamesdhope.com/tags/openvino/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</loc>
+    <loc>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/pipelines/</loc>
+    <loc>https://jamesdhope.com/tags/pipelines/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/vllm/</loc>
+    <loc>https://jamesdhope.com/tags/vllm/</loc>
     <lastmod>2024-11-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</loc>
+    <loc>https://jamesdhope.com/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</loc>
     <lastmod>2024-07-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</loc>
+    <loc>https://jamesdhope.com/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</loc>
     <lastmod>2024-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/inductive-bias/</loc>
+    <loc>https://jamesdhope.com/tags/inductive-bias/</loc>
     <lastmod>2024-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/reasoning/</loc>
+    <loc>https://jamesdhope.com/tags/reasoning/</loc>
     <lastmod>2024-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/jepa/</loc>
+    <loc>https://jamesdhope.com/tags/jepa/</loc>
     <lastmod>2024-06-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</loc>
+    <loc>https://jamesdhope.com/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</loc>
     <lastmod>2024-06-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/bias/</loc>
+    <loc>https://jamesdhope.com/tags/bias/</loc>
     <lastmod>2024-06-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/drift/</loc>
+    <loc>https://jamesdhope.com/tags/drift/</loc>
     <lastmod>2024-06-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/llmops/</loc>
+    <loc>https://jamesdhope.com/tags/llmops/</loc>
     <lastmod>2024-06-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/watson-mlops/2024-06-20-watson-mlops/</loc>
+    <loc>https://jamesdhope.com/post/watson-mlops/2024-06-20-watson-mlops/</loc>
     <lastmod>2024-06-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/mlops/</loc>
+    <loc>https://jamesdhope.com/tags/mlops/</loc>
     <lastmod>2024-06-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/projects/</loc>
+    <loc>https://jamesdhope.com/projects/</loc>
     <lastmod>2024-05-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</loc>
+    <loc>https://jamesdhope.com/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</loc>
     <lastmod>2024-04-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/multi-modal-applications/</loc>
+    <loc>https://jamesdhope.com/tags/multi-modal-applications/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/nvidia/</loc>
+    <loc>https://jamesdhope.com/tags/nvidia/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</loc>
+    <loc>https://jamesdhope.com/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/faq-llm/2024-02-20-faq-llm/</loc>
+    <loc>https://jamesdhope.com/post/faq-llm/2024-02-20-faq-llm/</loc>
     <lastmod>2024-02-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/reconstructing-user-context/2024-02-17-language-model-assistants/</loc>
+    <loc>https://jamesdhope.com/post/reconstructing-user-context/2024-02-17-language-model-assistants/</loc>
     <lastmod>2024-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/watsonx-assistant/</loc>
+    <loc>https://jamesdhope.com/tags/watsonx-assistant/</loc>
     <lastmod>2024-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</loc>
+    <loc>https://jamesdhope.com/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</loc>
     <lastmod>2024-02-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</loc>
+    <loc>https://jamesdhope.com/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</loc>
     <lastmod>2023-12-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</loc>
+    <loc>https://jamesdhope.com/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</loc>
     <lastmod>2023-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/conversationalai/</loc>
+    <loc>https://jamesdhope.com/tags/conversationalai/</loc>
     <lastmod>2023-11-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</loc>
+    <loc>https://jamesdhope.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</loc>
     <lastmod>2023-11-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/rag/</loc>
+    <loc>https://jamesdhope.com/tags/rag/</loc>
     <lastmod>2023-11-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</loc>
+    <loc>https://jamesdhope.com/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</loc>
     <lastmod>2023-11-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/experience/</loc>
+    <loc>https://jamesdhope.com/experience/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/graph/</loc>
+    <loc>https://jamesdhope.com/tags/graph/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</loc>
+    <loc>https://jamesdhope.com/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/virtual-assistants/</loc>
+    <loc>https://jamesdhope.com/tags/virtual-assistants/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/digital-twins/</loc>
+    <loc>https://jamesdhope.com/tags/digital-twins/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/energy--utilities/</loc>
+    <loc>https://jamesdhope.com/tags/energy--utilities/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/energy-vector-integration/</loc>
+    <loc>https://jamesdhope.com/tags/energy-vector-integration/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/future-energy-system/</loc>
+    <loc>https://jamesdhope.com/tags/future-energy-system/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</loc>
+    <loc>https://jamesdhope.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ibm-api-connect/</loc>
+    <loc>https://jamesdhope.com/tags/ibm-api-connect/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ibm-app-connect-enterprise/</loc>
+    <loc>https://jamesdhope.com/tags/ibm-app-connect-enterprise/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/predictive-modelling/</loc>
+    <loc>https://jamesdhope.com/tags/predictive-modelling/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/red-hat-openshift/</loc>
+    <loc>https://jamesdhope.com/tags/red-hat-openshift/</loc>
     <lastmod>2022-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/</loc>
+    <loc>https://jamesdhope.com/</loc>
     <lastmod>2022-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/containerisation/</loc>
+    <loc>https://jamesdhope.com/tags/containerisation/</loc>
     <lastmod>2021-11-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/hashicorp-consul/</loc>
+    <loc>https://jamesdhope.com/tags/hashicorp-consul/</loc>
     <lastmod>2021-11-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/hashicorp-vault/</loc>
+    <loc>https://jamesdhope.com/tags/hashicorp-vault/</loc>
     <lastmod>2021-11-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/vault-template/2021-11-19-vault-template-2/</loc>
+    <loc>https://jamesdhope.com/post/vault-template/2021-11-19-vault-template-2/</loc>
     <lastmod>2021-11-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/neo4j/</loc>
+    <loc>https://jamesdhope.com/tags/neo4j/</loc>
     <lastmod>2021-11-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/backup--restore/</loc>
+    <loc>https://jamesdhope.com/tags/backup--restore/</loc>
     <lastmod>2021-11-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</loc>
+    <loc>https://jamesdhope.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</loc>
     <lastmod>2021-11-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/causual-cluster/</loc>
+    <loc>https://jamesdhope.com/tags/causual-cluster/</loc>
     <lastmod>2021-11-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/open-source/</loc>
+    <loc>https://jamesdhope.com/tags/open-source/</loc>
     <lastmod>2021-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</loc>
+    <loc>https://jamesdhope.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</loc>
     <lastmod>2021-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</loc>
+    <loc>https://jamesdhope.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</loc>
+    <loc>https://jamesdhope.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/people-analytics/</loc>
+    <loc>https://jamesdhope.com/tags/people-analytics/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</loc>
+    <loc>https://jamesdhope.com/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/collaborative-filtering/</loc>
+    <loc>https://jamesdhope.com/tags/collaborative-filtering/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/content-filtering/</loc>
+    <loc>https://jamesdhope.com/tags/content-filtering/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/hybrid-recommender/</loc>
+    <loc>https://jamesdhope.com/tags/hybrid-recommender/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/python/</loc>
+    <loc>https://jamesdhope.com/tags/python/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</loc>
+    <loc>https://jamesdhope.com/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/distributed-ledger/</loc>
+    <loc>https://jamesdhope.com/tags/distributed-ledger/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/flask/</loc>
+    <loc>https://jamesdhope.com/tags/flask/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/proof-of-work/</loc>
+    <loc>https://jamesdhope.com/tags/proof-of-work/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/algorithmic-programming/</loc>
+    <loc>https://jamesdhope.com/tags/algorithmic-programming/</loc>
     <lastmod>2018-05-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/stable-groups/2018-05-18-stablegroups/</loc>
+    <loc>https://jamesdhope.com/post/stable-groups/2018-05-18-stablegroups/</loc>
     <lastmod>2018-05-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/stable-marriage/</loc>
+    <loc>https://jamesdhope.com/tags/stable-marriage/</loc>
     <lastmod>2018-05-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/stable-marriage/2018-04-12-stable-marriage/</loc>
+    <loc>https://jamesdhope.com/post/stable-marriage/2018-04-12-stable-marriage/</loc>
     <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/ensemble/</loc>
+    <loc>https://jamesdhope.com/tags/ensemble/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/extra-trees/</loc>
+    <loc>https://jamesdhope.com/tags/extra-trees/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/feature-engineering/</loc>
+    <loc>https://jamesdhope.com/tags/feature-engineering/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/gradient-boosting/</loc>
+    <loc>https://jamesdhope.com/tags/gradient-boosting/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/kaggle/</loc>
+    <loc>https://jamesdhope.com/tags/kaggle/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/machine-learning/</loc>
+    <loc>https://jamesdhope.com/tags/machine-learning/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/random-forest/</loc>
+    <loc>https://jamesdhope.com/tags/random-forest/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/regression/</loc>
+    <loc>https://jamesdhope.com/tags/regression/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</loc>
+    <loc>https://jamesdhope.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</loc>
     <lastmod>2017-08-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/publication_types/</loc>
+    <loc>https://jamesdhope.com/publication_types/</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
