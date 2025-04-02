@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>People Analytics | Hugo Academic CV Theme</title>
-    <link>https://example.com/tags/people-analytics/</link>
-      <atom:link href="https://example.com/tags/people-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:56298/tags/people-analytics/</link>
+      <atom:link href="http://localhost:56298/tags/people-analytics/index.xml" rel="self" type="application/rss+xml" />
     <description>People Analytics</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
+      <url>http://localhost:56298/media/icon_hu8409542655044666735.png</url>
       <title>People Analytics</title>
-      <link>https://example.com/tags/people-analytics/</link>
+      <link>http://localhost:56298/tags/people-analytics/</link>
     </image>
     
     <item>
       <title>A New Era for People Analytics</title>
-      <link>https://example.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
+      <link>http://localhost:56298/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
+      <guid>http://localhost:56298/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/the-dawn-of-a-new-era-for-people-analytics-9a748f7fdc2&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Can your People Analytics do this?</title>
-      <link>https://example.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
+      <link>http://localhost:56298/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
+      <guid>http://localhost:56298/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/can-your-people-analytics-do-this-739afa714f1a&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
