@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Red Hat OpenShift | Hugo Academic CV Theme</title>
-    <link>http://localhost:60966/tags/red-hat-openshift/</link>
-      <atom:link href="http://localhost:60966/tags/red-hat-openshift/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/red-hat-openshift/</link>
+      <atom:link href="https://example.com/tags/red-hat-openshift/index.xml" rel="self" type="application/rss+xml" />
     <description>Red Hat OpenShift</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 02 Dec 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:60966/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>Red Hat OpenShift</title>
-      <link>http://localhost:60966/tags/red-hat-openshift/</link>
+      <link>https://example.com/tags/red-hat-openshift/</link>
     </image>
     
     <item>
       <title>Gas System of the Future, Digital Twin</title>
-      <link>http://localhost:60966/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
+      <link>https://example.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
       <pubDate>Fri, 02 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:60966/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
+      <guid>https://example.com/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
       <description>&lt;p&gt;This article was published on Medium. Please click &lt;a target=&#34;_new&#34; href=&#34;https://jamesdhope.medium.com/gas-system-of-the-future-digital-twin-9e1622024462&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>

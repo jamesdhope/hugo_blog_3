@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IBM Fusion | Hugo Academic CV Theme</title>
-    <link>http://localhost:60966/tags/ibm-fusion/</link>
-      <atom:link href="http://localhost:60966/tags/ibm-fusion/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/tags/ibm-fusion/</link>
+      <atom:link href="https://example.com/tags/ibm-fusion/index.xml" rel="self" type="application/rss+xml" />
     <description>IBM Fusion</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 04 Dec 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:60966/media/icon_hu8409542655044666735.png</url>
+      <url>https://example.com/media/icon_hu8409542655044666735.png</url>
       <title>IBM Fusion</title>
-      <link>http://localhost:60966/tags/ibm-fusion/</link>
+      <link>https://example.com/tags/ibm-fusion/</link>
     </image>
     
     <item>
       <title>AI Generated Metadata Enrichments for Unstructured Data with IBM Spectrum Discover &amp; watsonx.ai</title>
-      <link>http://localhost:60966/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</link>
+      <link>https://example.com/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</link>
       <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:60966/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</guid>
+      <guid>https://example.com/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</guid>
       <description>&lt;p&gt;Generative AI has high utility for generating metadata for both structured and unstructured data and is relevant in the storage domain where data discoverability drives the value of data across the enterprise including for downstream AI projects.&lt;/p&gt;
 &lt;p&gt;In a recent IBM Client Engineering project we extended IBM Fusion with the Spectrum Discover Fusion SDK to create a data pipeline for AI generated metadata. We created a metadata policy in IBM Fusion to filter images with missing metadata tags and published the image reference to a Kafka topic for the Spectrum Discover Application to consume. We used the watson machine learning SDK with a basic prompt to generate metadata tags associated with the image that catalogued in IBM Fusion. We integrated IBM Knowledge Catalog for enterprise wide data cataloging and watsonx.ai for querying and to enable downstream AI building.&lt;/p&gt;
 &lt;p&gt;We deployed the IBM Spectrum Discover Application to OpenShift for a highly scalable, high-throughput data pipeline.&lt;/p&gt;
@@ -43,7 +43,7 @@
                /media/gen-ai-metadata-enrichments_hu4066007855630640114.webp 400w,
                /media/gen-ai-metadata-enrichments_hu2241514038775341721.webp 760w,
                /media/gen-ai-metadata-enrichments_hu10702112389265784756.webp 1200w&#34;
-               src=&#34;http://localhost:60966/media/gen-ai-metadata-enrichments_hu4066007855630640114.webp&#34;
+               src=&#34;https://example.com/media/gen-ai-metadata-enrichments_hu4066007855630640114.webp&#34;
                width=&#34;760&#34;
                height=&#34;482&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -72,7 +72,7 @@
                /media/fusion_hu4250002266626802591.webp 400w,
                /media/fusion_hu4447812049489438398.webp 760w,
                /media/fusion_hu14307517430265580259.webp 1200w&#34;
-               src=&#34;http://localhost:60966/media/fusion_hu4250002266626802591.webp&#34;
+               src=&#34;https://example.com/media/fusion_hu4250002266626802591.webp&#34;
                width=&#34;760&#34;
                height=&#34;384&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
