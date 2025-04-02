@@ -1,0 +1,1916 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: April 2, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="system">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55660&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="&ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&rdquo;
+" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:55660/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/emerald.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu1262653726896519111.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu17179266553670100328.png" />
+
+  <link rel="canonical" href="http://localhost:55660/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@GetResearchDev" />
+    <meta property="twitter:creator" content="@GetResearchDev" />
+  
+  <meta property="og:site_name" content="Hugo Academic CV Theme" />
+  <meta property="og:url" content="http://localhost:55660/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/" />
+  <meta property="og:title" content="Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction | Hugo Academic CV Theme" />
+  <meta property="og:description" content="&ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&rdquo;" /><meta property="og:image" content="http://localhost:55660/media/icon_hu8409542655044666735.png" />
+    <meta property="twitter:image" content="http://localhost:55660/media/icon_hu8409542655044666735.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2017-08-17T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2017-08-17T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction | Hugo Academic CV Theme</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="Hugo Academic CV Theme">
+        James Hope
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >Bio</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >News</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Example Talk
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/"
+    
+  >SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/"
+    
+  >AI Generated Metadata Enrichments for Unstructured Data with IBM Spectrum Discover &amp; watsonx.ai
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/"
+    
+  >Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/"
+    
+  >Tool-Agents with the watsonx LangChain BaseChatModel
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/"
+    
+  >Improving Language Models Inductive Bias with Q*
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/"
+    
+  >Joint Embeddings Predictor Architecture (JEPA) for agent-goal affinity / alignment in agent based ecosystems
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/watson-mlops/2024-06-20-watson-mlops/"
+    
+  >Maintaining Trustworthiness in Drift-Susceptible Agentic Systems and Cascading heterogeneous Agentic Architectures with Automated MLOps
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/"
+    
+  >Algorithmically optimising LM prompts with IBM watsonx models and DSPy
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/"
+    
+  >Programmable, semantically-matched guardrails with NVIDIA/NeMo-Guardrails and watsonx.ai
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/faq-llm/2024-02-20-faq-llm/"
+    
+  >Approaches that mitigate against language models misalignment including when semantic search alone is just good enough
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/reconstructing-user-context/2024-02-17-language-model-assistants/"
+    
+  >Reconstructing user context to reduce the risk of policy misaligned generated content in LLM enabled conversational assistants
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/"
+    
+  >Governance of AI enabled services and applications with AI Guardrails and watsonx
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/"
+    
+  >Beyond declarative flows in virtual assistants with language models for single-turn and multi-turn reasoning
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/"
+    
+  >Supervised fine tuning of a large language model using quantized low rank adapters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/"
+    
+  >Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/"
+    
+  >An LLM assisted approach to automating testing of a virtual assistant
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/"
+    
+  >Graph-Driven, LLM-Assisted Virtual Assistant Architecture
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gas-system-future/2022-12-02-gas-system-of-the-future/"
+    
+  >Gas System of the Future, Digital Twin
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/vault-template/2021-11-19-vault-template-2/"
+    
+  >Injecting Config as Environment Variables from Hasicorp&#39;s Consul &amp; Vault
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/"
+    
+  >Backup and Restore Neo4j in a Casual Cluster
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/"
+    
+  >Top 10 architectural highlights for Digital Ocean Kubernetes
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/"
+    
+  >A New Era for People Analytics
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/"
+    
+  >Can your People Analytics do this?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/"
+    
+  >Build a Machine Learning Recommender
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/"
+    
+  >Build your own Blockchain Protocol
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/stable-groups/2018-05-18-stablegroups/"
+    
+  >Implementation of the Stable Marriage Algorithm to find &#39;Stable Groups&#39;
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/stable-marriage/2018-04-12-stable-marriage/"
+    
+  >Implementation of the Stable Marriage Algorithm.
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/"
+    
+  >Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction
+    </a>
+  
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4">
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Aug 17, 2017</span>
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          8 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-xl dark:prose-invert">
+        <p>&ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&rdquo;</p>
+<p>For a full description of the competition, datasets, evaluation, prizes visit <a href="https://www.kaggle.com/c/zillow-prize-1" target="_blank"><a href="https://www.kaggle.com/c/zillow-prize-1" target="_blank" rel="noopener">https://www.kaggle.com/c/zillow-prize-1</a></a></p>
+<p>My first competition entry, a stacked ensemble of regressors for this competition is available here: <a href="https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065" target="_blank"><a href="https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065" target="_blank" rel="noopener">https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065</a><a/></p>
+<p><b>Short summary</b>. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble and is used to make final predictions on a set of circa 3 million houses, each with 23 features, for 6 points in time (that&rsquo;s 12 million predictions!).</p>
+<p>Whilst there is room for improvement in preprocessing, including optimising strategies for overcoming missing data (for which there is a lot!), and determining the hyperparameters that lead to an optimal model, this machine learning model is easily adapted for making predictions on featured data in any context.</p>
+<p><b>Now walking through the code in some more detail&hellip;</b>. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble. So we start out by importing the libraries we will need.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># Load in our libraries</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">pandas</span> <span class="n">as</span> <span class="n">pd</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">sklearn</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">xgboost</span> <span class="n">as</span> <span class="n">xgb</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">seaborn</span> <span class="n">as</span> <span class="n">sns</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">plotly</span><span class="o">.</span><span class="n">offline</span> <span class="n">as</span> <span class="n">py</span>
+</span></span><span class="line"><span class="cl"><span class="n">py</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">plotly</span><span class="o">.</span><span class="n">graph_objs</span> <span class="n">as</span> <span class="n">go</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="n">plotly</span><span class="o">.</span><span class="n">tools</span> <span class="n">as</span> <span class="n">tls</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Going to use these 5 base models for the stacking</span>
+</span></span><span class="line"><span class="cl"><span class="n">from</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">ensemble</span> <span class="n">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">AdaBoostRegressor</span><span class="p">,</span> <span class="n">ExtraTreesRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+</span></span><span class="line"><span class="cl"><span class="n">from</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">svm</span> <span class="n">import</span> <span class="n">LinearSVR</span>
+</span></span><span class="line"><span class="cl"><span class="n">from</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">cross_validation</span> <span class="n">import</span> <span class="n">KFold</span><span class="p">;</span>
+</span></span></code></pre></div><p>We also need to load in the training and test datasets that Zillow has provided us.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">train = pd.read_csv(&#39;../input/properties_2016.csv&#39;)
+</span></span><span class="line"><span class="cl">train_label = pd.read_csv(&#39;../input/train_2016_v2.csv&#39;)
+</span></span><span class="line"><span class="cl">ParcelID = train[&#39;parcelid&#39;]
+</span></span></code></pre></div><p>Next, we will OneHotEncode some of the features. For some features, it makes sense to assume that missing data means a missing feature, so we can map Nan values to 0.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># OneHotEncoding
+</span></span><span class="line"><span class="cl">train[&#39;has_basement&#39;] = train[&#34;basementsqft&#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;hashottuborspa&#39;] = train[&#34;hashottuborspa&#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;has_pool&#39;] = train[&#34;poolcnt&#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;has_airconditioning&#39;] = train[&#34;airconditioningtypeid&#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+</span></span></code></pre></div><p>There are some columns which appear to need consolidating into a single feature.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Columns to be consolidated
+</span></span><span class="line"><span class="cl">train[&#39;yardbuildingsqft17&#39;] = train[&#39;yardbuildingsqft17&#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;yardbuildingsqft26&#39;] = train[&#39;yardbuildingsqft26&#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;yard_building_square_feet&#39;] = train[&#39;yardbuildingsqft17&#39;].astype(int) + train[&#39;yardbuildingsqft26&#39;].astype(float)
+</span></span></code></pre></div><p>And we can also assume some more friendly feature names.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">train.rename(columns={&#39;fireplacecnt&#39;:&#39;fireplace_count&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;bedroomcnt&#39;:&#39;bedroom_count&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;bathroomcnt&#39;:&#39;bathroom_count&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;calculatedfinishedsquarefeet&#39;:&#39;square_feet&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;garagecarcnt&#39;:&#39;garage_car_count&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;garagetotalsqft&#39;:&#39;garage_square_feet&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;hashottuborspa&#39;:&#39;has_hottub_or_spa&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;landtaxvaluedollarcnt&#39;:&#39;land_tax&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;lotsizesquarefeet&#39;:&#39;lot_size_square_feet&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;taxvaluedollarcnt&#39;:&#39;tax_value&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;taxamount&#39;:&#39;tax_amount&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;structuretaxvaluedollarcnt&#39;:&#39;structure_tax_value&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;yearbuilt&#39;:&#39;year_built&#39;}, inplace=True)
+</span></span><span class="line"><span class="cl">train.rename(columns={&#39;roomcnt&#39;:&#39;room_count&#39;}, inplace=True)
+</span></span></code></pre></div><p>We also need to impute values for missing features. We can impute the median feature value across most features as a starting point.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Impute zero for NaN for these features
+</span></span><span class="line"><span class="cl">train[&#39;fireplace_count&#39;] = train[&#39;fireplace_count&#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Impute median value for NaN for these features
+</span></span><span class="line"><span class="cl">train[&#39;bathroom_count&#39;] = train[&#39;bathroom_count&#39;].fillna(train[&#39;bathroom_count&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;bedroom_count&#39;] = train[&#39;bedroom_count&#39;].fillna(train[&#39;bedroom_count&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;room_count&#39;] = train[&#39;room_count&#39;].fillna(train[&#39;room_count&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;tax_amount&#39;] = train[&#39;tax_amount&#39;].fillna(train[&#39;tax_amount&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;land_tax&#39;] = train[&#39;land_tax&#39;].fillna(train[&#39;land_tax&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;tax_value&#39;] = train[&#39;tax_value&#39;].fillna(train[&#39;tax_value&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;structure_tax_value&#39;] = train[&#39;structure_tax_value&#39;].fillna(train[&#39;structure_tax_value&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;garage_square_feet&#39;] = train[&#39;garage_square_feet&#39;].fillna(train[&#39;garage_square_feet&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;garage_car_count&#39;] = train[&#39;garage_car_count&#39;].fillna(train[&#39;garage_car_count&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;fireplace_count&#39;] = train[&#39;fireplace_count&#39;].fillna(train[&#39;fireplace_count&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;square_feet&#39;] = train[&#39;square_feet&#39;].fillna(train[&#39;square_feet&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;year_built&#39;] = train[&#39;year_built&#39;].fillna(train[&#39;year_built&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;lot_size_square_feet&#39;] = train[&#39;lot_size_square_feet&#39;].fillna(train[&#39;lot_size_square_feet&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;longitude&#39;] = train[&#39;longitude&#39;].fillna(train[&#39;longitude&#39;].median()).astype(float)
+</span></span><span class="line"><span class="cl">train[&#39;latitude&#39;] = train[&#39;latitude&#39;].fillna(train[&#39;latitude&#39;].median()).astype(float)
+</span></span></code></pre></div><p>Now on to Feature Selection. We will drop features where the volume of missing data exceeds a certain threshold. These features were not considered for imputation above.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># Drop indistinct features</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;assessmentyear&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Drop any columns insufficiently described</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="n">drop_elements</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;airconditioningtypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;basementsqft&#39;</span><span class="p">,</span> <span class="s1">&#39;architecturalstyletypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;buildingclasstypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;buildingqualitytypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;calculatedbathnbr&#39;</span><span class="p">,</span> <span class="s1">&#39;decktypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedfloor1squarefeet&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="s1">&#39;fips&#39;</span><span class="p">,</span> <span class="s1">&#39;heatingorsystemtypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;rawcensustractandblock&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="s1">&#39;numberofstories&#39;</span><span class="p">,</span> <span class="s1">&#39;storytypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;threequarterbathnbr&#39;</span><span class="p">,</span> <span class="s1">&#39;typeconstructiontypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;unitcnt&#39;</span><span class="p">,</span> <span class="s1">&#39;censustractandblock&#39;</span><span class="p">,</span> <span class="s1">&#39;fireplaceflag&#39;</span><span class="p">,</span> <span class="s1">&#39;taxdelinquencyflag&#39;</span><span class="p">,</span> <span class="s1">&#39;taxdelinquencyyear&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Drop any duplicated columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="n">drop_elements</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;fullbathcnt&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedsquarefeet6&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedsquarefeet12&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedsquarefeet13&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedsquarefeet15&#39;</span><span class="p">,</span> <span class="s1">&#39;finishedsquarefeet50&#39;</span><span class="p">,</span> <span class="s1">&#39;yardbuildingsqft17&#39;</span><span class="p">,</span> <span class="s1">&#39;yardbuildingsqft26&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Land use data</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="n">drop_elements</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;propertycountylandusecode&#39;</span><span class="p">,</span> <span class="s1">&#39;propertylandusetypeid&#39;</span><span class="p">,</span> <span class="s1">&#39;propertyzoningdesc&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># We&#39;ll make do with a binary feature here</span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="n">drop_elements</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pooltypeid10&#39;</span><span class="p">,</span> <span class="s1">&#39;pooltypeid2&#39;</span><span class="p">,</span> <span class="s1">&#39;pooltypeid7&#39;</span><span class="p">,</span> <span class="s1">&#39;poolsizesum&#39;</span><span class="p">,</span> <span class="s1">&#39;poolcnt&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># We&#39;ll use the longitude and latitutde as features </span>
+</span></span><span class="line"><span class="cl"><span class="n">drop_elements</span> <span class="o">=</span> <span class="n">drop_elements</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;regionidzip&#39;</span><span class="p">,</span> <span class="s1">&#39;regionidneighborhood&#39;</span><span class="p">,</span> <span class="s1">&#39;regionidcity&#39;</span><span class="p">,</span> <span class="s1">&#39;regionidcounty&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_elements</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>We can now correlate the features using the Seaborn library Pearson&rsquo;s Correlation. This is ideal for helping with feature reduction as ideally we want as fewer features as possible for regression. We might consider removing some more features here with a high correlation.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="pearson.jpg" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>It&rsquo;s also a good idea to scale the data at this point. I&rsquo;ve left this out for brevity but you can refer to the full code if you are unsure how to do this.</p>
+<p>Now a little preparation before we build our models. We&rsquo;ll create an object called SklearnHelper that will extend the inbuilt methods (such as train, predict and fit) common to all the Sklearn classifiers. This cuts out redundancy as won&rsquo;t need to write the same methods five times if we wanted to invoke five different classifiers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Class to extend the Sklearn classifier
+</span></span><span class="line"><span class="cl">class SklearnHelper(object):
+</span></span><span class="line"><span class="cl">    def __init__(self, clf, seed=0, params=None):
+</span></span><span class="line"><span class="cl">        params[&#39;random_state&#39;] = seed
+</span></span><span class="line"><span class="cl">        self.clf = clf(**params)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    def train(self, x_train, y_train):
+</span></span><span class="line"><span class="cl">        self.clf.fit(x_train, y_train)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    def predict(self, x):
+</span></span><span class="line"><span class="cl">        return self.clf.predict(x)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    def fit(self,x,y):
+</span></span><span class="line"><span class="cl">        return self.clf.fit(x,y)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    def feature_importances(self,x,y):
+</span></span><span class="line"><span class="cl">        return(self.clf.fit(x,y).feature_importances_)
+</span></span></code></pre></div><p>We&rsquo;ll also define a function for Cross Validation. This deserves a little explanation. The function will be passed the model, the training set and the test set (for all six time periods). It will make kf=5 folds of the training data, train the model on each fold and make predictions for each time period using this model. It will then take an average of the predicted scores across the five folds for each time period.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_oof</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test_201610</span><span class="p">,</span> <span class="n">x_test_201611</span><span class="p">,</span> <span class="n">x_test_201612</span><span class="p">,</span> <span class="n">x_test_201710</span><span class="p">,</span> <span class="n">x_test_201711</span><span class="p">,</span> <span class="n">x_test_201712</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntrain</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201610</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201611</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201612</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201710</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>    
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201711</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201712</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ntest</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201610</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201611</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201612</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201710</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201711</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_skf_201712</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">NFOLDS</span><span class="p">,</span> <span class="n">ntest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#train_index: indicies of training set</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#test_index: indicies of testing set</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#break the dataset down into two sets, train and test</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x_tr</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y_tr</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x_te</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">clf</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#make a predition on the test data subset</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_train</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_te</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#use the model trained on the first fold to make a prediction on the entire test data </span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201610</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201610</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201611</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201611</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201612</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201612</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201710</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201710</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201711</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201711</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oof_test_skf_201712</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_201712</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#take an average of all of the folds</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201610</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201610</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201611</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201611</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201612</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201612</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201710</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201710</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201711</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201711</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oof_test_201712</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">oof_test_skf_201712</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">oof_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201610</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201611</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201612</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201710</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201711</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">oof_test_201712</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>Next we&rsquo;ll create a Dict data type to hold all of our model parameters.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SEED = 0 # for reproducibility
+</span></span><span class="line"><span class="cl">NFOLDS = 5 # set folds for out-of-fold prediction
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Put in our parameters for said classifiers
+</span></span><span class="line"><span class="cl"># Random Forest parameters
+</span></span><span class="line"><span class="cl">rf_params = {
+</span></span><span class="line"><span class="cl">    &#39;n_jobs&#39;: -1,
+</span></span><span class="line"><span class="cl">    &#39;n_estimators&#39;: 500,
+</span></span><span class="line"><span class="cl">     &#39;warm_start&#39;: True, 
+</span></span><span class="line"><span class="cl">     #&#39;max_features&#39;: 0.2,
+</span></span><span class="line"><span class="cl">    &#39;max_depth&#39;: 6,
+</span></span><span class="line"><span class="cl">    &#39;min_samples_leaf&#39;: 2,
+</span></span><span class="line"><span class="cl">    &#39;max_features&#39; : &#39;sqrt&#39;,
+</span></span><span class="line"><span class="cl">    &#39;verbose&#39;: 0
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Extra Trees Parameters
+</span></span><span class="line"><span class="cl">et_params = {
+</span></span><span class="line"><span class="cl">    &#39;n_jobs&#39;: -1,
+</span></span><span class="line"><span class="cl">    &#39;n_estimators&#39;:500,
+</span></span><span class="line"><span class="cl">    #&#39;max_features&#39;: 0.5,
+</span></span><span class="line"><span class="cl">    &#39;max_depth&#39;: 8,
+</span></span><span class="line"><span class="cl">    &#39;min_samples_leaf&#39;: 2,
+</span></span><span class="line"><span class="cl">    &#39;verbose&#39;: 0
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># AdaBoost parameters
+</span></span><span class="line"><span class="cl">ada_params = {
+</span></span><span class="line"><span class="cl">    &#39;n_estimators&#39;: 400,
+</span></span><span class="line"><span class="cl">    &#39;learning_rate&#39; : 0.75
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Gradient Boosting parameters
+</span></span><span class="line"><span class="cl">gb_regressor_params = {
+</span></span><span class="line"><span class="cl">    &#39;n_estimators&#39;:500, 
+</span></span><span class="line"><span class="cl">    &#39;learning_rate&#39;:0.1,
+</span></span><span class="line"><span class="cl">    &#39;max_depth&#39;:1, 
+</span></span><span class="line"><span class="cl">    &#39;random_state&#39;:0, 
+</span></span><span class="line"><span class="cl">    &#39;loss&#39;:&#39;ls&#39;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>We&rsquo;ll now create our models.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rf = SklearnHelper(clf=RandomForestRegressor, seed=SEED, params=rf_params)
+</span></span><span class="line"><span class="cl">et = SklearnHelper(clf=ExtraTreesRegressor, seed=SEED, params=et_params)
+</span></span><span class="line"><span class="cl">ada = SklearnHelper(clf=AdaBoostRegressor, seed=SEED, params=ada_params)
+</span></span><span class="line"><span class="cl">gb_regressor = SklearnHelper(clf=GradientBoostingRegressor, seed=SEED, params=gb_regressor_params)
+</span></span></code></pre></div><p>And now train the models&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">et_oof_train, et_oof_test_201610, et_oof_test_201611, et_oof_test_201612, et_oof_test_201710, et_oof_test_201711, et_oof_test_201712 = get_oof(et, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Extra Trees
+</span></span><span class="line"><span class="cl">rf_oof_train, rf_oof_test_201610, rf_oof_test_201611, rf_oof_test_201612, rf_oof_test_201710, rf_oof_test_201711, rf_oof_test_201712 = get_oof(rf,x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Random Forest
+</span></span><span class="line"><span class="cl">ada_oof_train, ada_oof_test_201610, ada_oof_test_201611, ada_oof_test_201612, ada_oof_test_201710, ada_oof_test_201711, ada_oof_test_201712 = get_oof(ada, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # AdaBoost
+</span></span><span class="line"><span class="cl">gb_regressor_oof_train, gb_regressor_oof_test_201610, gb_regressor_oof_test_201611, gb_regressor_oof_test_201612, gb_regressor_oof_test_201710, gb_regressor_oof_test_201711, gb_regressor_oof_test_201712 = get_oof(gb_regressor,x_train,y_train,x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712)
+</span></span></code></pre></div><p>Finally, with the models trained, we have now reached the end of the first layer of our ensemble. We can now extract the features for further analysis.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rf_feature = rf.feature_importances(x_train,y_train)
+</span></span><span class="line"><span class="cl">print(&#34;rf_feature&#34;, rf_feature)
+</span></span><span class="line"><span class="cl">et_feature = et.feature_importances(x_train, y_train)
+</span></span><span class="line"><span class="cl">print(&#34;et_feature&#34;, et_feature)
+</span></span><span class="line"><span class="cl">ada_feature = ada.feature_importances(x_train, y_train)
+</span></span><span class="line"><span class="cl">print(&#34;ada_feature&#34;, ada_feature)
+</span></span><span class="line"><span class="cl">gb_regressor_feature = gb_regressor.feature_importances(x_train,y_train)
+</span></span><span class="line"><span class="cl">print(&#34;gb_regressor_feature&#34;, gb_regressor_feature)
+</span></span></code></pre></div><p>The 23 features we obtain for each model are as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rf_feature [ 0.04038533  0.02947441  0.14908661  0.0023588   0.00515421  0.01727217
+</span></span><span class="line"><span class="cl">  0.0020252   0.07555324  0.07418552  0.06010003  0.01318217  0.04547284
+</span></span><span class="line"><span class="cl">  0.11738776  0.09638334  0.07514663  0.11330465  0.00048846  0.00700142
+</span></span><span class="line"><span class="cl">  0.00589092  0.00323037  0.          0.03016362  0.03675231]
+</span></span><span class="line"><span class="cl">et_feature [ 0.06465583  0.0572915   0.12032578  0.00991171  0.01124228  0.00960876
+</span></span><span class="line"><span class="cl">  0.01485536  0.06740794  0.05175181  0.05436677  0.01772004  0.05594463
+</span></span><span class="line"><span class="cl">  0.09801529  0.0533328   0.0450343   0.08253611  0.00201233  0.02357432
+</span></span><span class="line"><span class="cl">  0.03032919  0.00296583  0.          0.061361    0.06575642]
+</span></span><span class="line"><span class="cl">ada_feature [  8.36785346e-03   3.79894667e-03   7.05391914e-02   7.82563418e-05
+</span></span><span class="line"><span class="cl">   3.22502690e-07   1.36595920e-02   0.00000000e+00   6.15640675e-02
+</span></span><span class="line"><span class="cl">   5.32715094e-02   3.73193212e-02   1.70693107e-02   1.18344505e-01
+</span></span><span class="line"><span class="cl">   1.72005440e-01   3.48224492e-02   4.48032666e-02   3.87885107e-02
+</span></span><span class="line"><span class="cl">   0.00000000e+00   7.54103834e-03   0.00000000e+00   1.06703836e-02
+</span></span><span class="line"><span class="cl">   0.00000000e+00   1.25617605e-01   1.81738430e-01]
+</span></span><span class="line"><span class="cl">gb_regressor_feature [ 0.02   0.012  0.246  0.     0.016  0.002  0.004  0.114  0.068  0.02
+</span></span><span class="line"><span class="cl">  0.004  0.012  0.158  0.056  0.06   0.16   0.     0.022  0.     0.     0.
+</span></span><span class="line"><span class="cl">  0.026  0.   ]
+</span></span></code></pre></div><p>Let&rsquo;s have a look at how important these features are for each model.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="newplot_1.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="newplot_2.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="newplot_3.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="newplot_4.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Now, across the four models, the mean feature importances.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img src="newplot_5.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>We can now build a new dataframe to hold these features, and train a regression model using xgboost on these features as our second layer.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#predictions from first layer become data input for second layer
+</span></span><span class="line"><span class="cl">base_predictions_train = pd.DataFrame( 
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">    &#39;RandomForest&#39;: rf_oof_train.ravel(),
+</span></span><span class="line"><span class="cl">    &#39;ExtraTrees&#39;: et_oof_train.ravel(),
+</span></span><span class="line"><span class="cl">    &#39;AdaBoost&#39;: ada_oof_train.ravel(),
+</span></span><span class="line"><span class="cl">    &#39;GradientRegressor&#39;: gb_regressor_oof_train.ravel()
+</span></span><span class="line"><span class="cl">    })
+</span></span><span class="line"><span class="cl">#predictions for all instances in the training set
+</span></span><span class="line"><span class="cl">base_predictions_train.head(3)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">gbm = xgb.XGBRegressor(
+</span></span><span class="line"><span class="cl">    #learning_rate = 0.02,
+</span></span><span class="line"><span class="cl"> n_estimators= 2000,
+</span></span><span class="line"><span class="cl"> max_depth= 4,
+</span></span><span class="line"><span class="cl"> min_child_weight= 2,
+</span></span><span class="line"><span class="cl"> #gamma=1,
+</span></span><span class="line"><span class="cl"> gamma=0.9,                        
+</span></span><span class="line"><span class="cl"> subsample=0.8,
+</span></span><span class="line"><span class="cl"> colsample_bytree=0.8,
+</span></span><span class="line"><span class="cl"> objective= &#39;reg:linear&#39;,
+</span></span><span class="line"><span class="cl"> nthread= -1,
+</span></span><span class="line"><span class="cl"> scale_pos_weight=1
+</span></span><span class="line"><span class="cl"> ).fit(x_train, y_train)
+</span></span></code></pre></div><p>Now to make our final predictions&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">predictions_201610 = gbm.predict(x_test_201610).round(4)
+</span></span><span class="line"><span class="cl">predictions_201611 = gbm.predict(x_test_201611).round(4)
+</span></span><span class="line"><span class="cl">predictions_201612 = gbm.predict(x_test_201612).round(4)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">predictions_201710 = gbm.predict(x_test_201710).round(4)
+</span></span><span class="line"><span class="cl">predictions_201711 = gbm.predict(x_test_201711).round(4)
+</span></span><span class="line"><span class="cl">predictions_201712 = gbm.predict(x_test_201712).round(4)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">StackingSubmission = pd.DataFrame({ &#39;201610&#39;: predictions_201610, 
+</span></span><span class="line"><span class="cl">                                         &#39;201611&#39;: predictions_201611,
+</span></span><span class="line"><span class="cl">                                         &#39;201612&#39;: predictions_201612,
+</span></span><span class="line"><span class="cl">                                         &#39;201710&#39;: predictions_201710,
+</span></span><span class="line"><span class="cl">                                         &#39;201711&#39;: predictions_201711,
+</span></span><span class="line"><span class="cl">                                         &#39;201712&#39;: predictions_201712,
+</span></span><span class="line"><span class="cl">                                         &#39;ParcelId&#39;: ParcelID,
+</span></span><span class="line"><span class="cl">                            })
+</span></span><span class="line"><span class="cl">print(StackingSubmission)
+</span></span></code></pre></div>
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2017-08-17T00:00:00.000Z">
+    <span>Last updated on</span>
+    Aug 17, 2017</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+<div class="flex justify-center">
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/data-science/">Data Science</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/machine-learning/">Machine Learning</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/ensemble/">Ensemble</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/regression/">Regression</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/kaggle/">Kaggle</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/python/">Python</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/gradient-boosting/">Gradient Boosting</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/random-forest/">Random Forest</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/extra-trees/">Extra Trees</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/feature-engineering/">Feature Engineering</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/predictive-modelling/">Predictive Modelling</a>
+  
+</div>
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A55660%2Fpost%2Fzillow-ensemble-regressors%2F2017-08-17-zillow-ensemble%2F&amp;text=Zillow%27s&#43;Zestimate%2C&#43;and&#43;my&#43;ensemble&#43;of&#43;regressors&#43;for&#43;highly&#43;featured&#43;data&#43;prediction"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A55660%2Fpost%2Fzillow-ensemble-regressors%2F2017-08-17-zillow-ensemble%2F&amp;t=Zillow%27s&#43;Zestimate%2C&#43;and&#43;my&#43;ensemble&#43;of&#43;regressors&#43;for&#43;highly&#43;featured&#43;data&#43;prediction"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Zillow%27s%20Zestimate%2C%20and%20my%20ensemble%20of%20regressors%20for%20highly%20featured%20data%20prediction&amp;body=http%3A%2F%2Flocalhost%3A55660%2Fpost%2Fzillow-ensemble-regressors%2F2017-08-17-zillow-ensemble%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A55660%2Fpost%2Fzillow-ensemble-regressors%2F2017-08-17-zillow-ensemble%2F&amp;title=Zillow%27s&#43;Zestimate%2C&#43;and&#43;my&#43;ensemble&#43;of&#43;regressors&#43;for&#43;highly&#43;featured&#43;data&#43;prediction"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Zillow%27s&#43;Zestimate%2C&#43;and&#43;my&#43;ensemble&#43;of&#43;regressors&#43;for&#43;highly&#43;featured&#43;data&#43;prediction%20http%3A%2F%2Flocalhost%3A55660%2Fpost%2Fzillow-ensemble-regressors%2F2017-08-17-zillow-ensemble%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt=""
+  src="/author/avatar_hu5320781756108958539.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="http://localhost:55660/" class="no-underline">
+      
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Senior Architect
+    </div>
+    
+
+
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="mailto:jamesdhope@gmail.com"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/jamesdhope"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/jamesdometthope"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+        <a class="group flex no-underline" href="/post/stable-marriage/2018-04-12-stable-marriage/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Implementation of the Stable Marriage Algorithm.</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Apr 12, 2018
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
