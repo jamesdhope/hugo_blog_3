@@ -500,6 +500,10 @@
       "9-work-from-the-application-resource-requirements-to-determine-the-minimum-viable-infrastructure",
       "about-me",
       "acceptor-class--holds-the-acceptor-preferences",
+      "agent-a",
+      "agent-b",
+      "areas-of-agreement",
+      "areas-of-disagreement",
       "deterministic-dialog-rails-with-semantic-matching",
       "devops-toolchain-orchestrated-tuning--deployment-workflow",
       "example-ibm-spectrum-discover-application",
@@ -518,6 +522,7 @@
       "integrating-watsonxgovernance-with-openshiftai-kubeflow-pipelines",
       "kubernetes-cronjob-to-backup",
       "llm-based-self-moderating-inputoutput-rails",
+      "mapping-predictor-weights",
       "moon",
       "nav-menu",
       "nav-toggle",
@@ -529,6 +534,7 @@
       "profile",
       "proposer-class--holds-the-proposer-preferences",
       "restore",
+      "scenario",
       "search",
       "search_toggle",
       "section-collection",
@@ -554,6 +560,7 @@
       "technology-native-versus-snapshots",
       "top",
       "topic-rails",
+      "training-the-predictor",
       "using-the-watsonxllm-langchain-integration-to-integrate-with-watsonxai"
     ]
   }
