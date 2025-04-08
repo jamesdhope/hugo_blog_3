@@ -20,12 +20,12 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Senior Architect
+role: Architect@IBM
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: IBM
-    url: https://ibm.com/
+  - name: AI/ML | Cloud | Integration | Automation
+    url: ''
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
