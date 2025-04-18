@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects | James Hope</title>
+    <link>https://jamesdhope.com/project/</link>
+      <atom:link href="https://jamesdhope.com/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 19 May 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
+      <title>Projects</title>
+      <link>https://jamesdhope.com/project/</link>
+    </image>
+    
+    <item>
+      <title>Sample Project</title>
+      <link>https://jamesdhope.com/project/sample-project/</link>
+      <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://jamesdhope.com/project/sample-project/</guid>
+      <description>&lt;p&gt;This is a sample project to test the setup.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
