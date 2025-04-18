@@ -1,6 +1,7 @@
 {
   "htmlElements": {
     "tags": [
+      "?xml",
       "a",
       "article",
       "aside",
@@ -14,7 +15,6 @@
       "em",
       "figure",
       "footer",
-      "g",
       "h1",
       "h2",
       "h3",
