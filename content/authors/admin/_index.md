@@ -39,6 +39,8 @@ profiles:
   #  url: https://www.instagram.com/
   - icon: brands/github
     url: https://github.com/jamesdhope
+  - icon: brands/substack
+    url: https://substack.com/@jamesdhope
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/jamesdometthope
   #- icon: academicons/google-scholar
