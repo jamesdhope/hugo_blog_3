@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI | James Hope</title>
-    <link>http://localhost:53239/tags/ai/</link>
-      <atom:link href="http://localhost:53239/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:59146/tags/ai/</link>
+      <atom:link href="http://localhost:59146/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <description>AI</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:53239/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:59146/media/icon_hu_6b956feff6c8d004.png</url>
       <title>AI</title>
-      <link>http://localhost:53239/tags/ai/</link>
+      <link>http://localhost:59146/tags/ai/</link>
     </image>
     
     <item>
       <title>Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI</title>
-      <link>http://localhost:53239/post/porl-llm-guardrail/2025-04-29/</link>
+      <link>http://localhost:59146/post/porl-llm-guardrail/2025-04-29/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/porl-llm-guardrail/2025-04-29/</guid>
+      <guid>http://localhost:59146/post/porl-llm-guardrail/2025-04-29/</guid>
       <description>&lt;p&gt;Enterprise AI adoption is accelerating—but so are the risks. From ethical lapses to irrelevant outputs, traditional LLM pipelines struggle with alignment, especially when static rules or prompt engineering are the only lines of defense. What if your AI could &lt;em&gt;learn to stay on-topic, aligned with enterprise values, and semantically coherent—all while adapting over time&lt;/em&gt;?&lt;/p&gt;
 &lt;p&gt;That’s exactly what &lt;strong&gt;Policy-Oriented Reinforcement Learning (PORL) Guardrails&lt;/strong&gt; aim to solve.&lt;/p&gt;
 &lt;h2 id=&#34;why-a-new-approach&#34;&gt;Why a New Approach?&lt;/h2&gt;

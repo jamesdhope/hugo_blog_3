@@ -3,7 +3,7 @@
 <!-- Last Published: April 30, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="system">
   
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=62896&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=59146&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -44,7 +44,7 @@
   <meta name="description" content="The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website." />
 
   
-  <link rel="alternate" hreflang="en-us" href="http://localhost:62896/post/" />
+  <link rel="alternate" hreflang="en-us" href="http://localhost:59146/post/" />
 
   
   
@@ -163,7 +163,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu_ec6ee84eca6caf55.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_77604263693e4dbf.png" />
 
-  <link rel="canonical" href="http://localhost:62896/post/" />
+  <link rel="canonical" href="http://localhost:59146/post/" />
 
   
   
@@ -189,10 +189,10 @@
     <meta property="twitter:creator" content="@GetResearchDev" />
   
   <meta property="og:site_name" content="James Hope" />
-  <meta property="og:url" content="http://localhost:62896/post/" />
+  <meta property="og:url" content="http://localhost:59146/post/" />
   <meta property="og:title" content="Posts | James Hope" />
-  <meta property="og:description" content="The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website." /><meta property="og:image" content="http://localhost:62896/media/icon_hu_6b956feff6c8d004.png" />
-    <meta property="twitter:image" content="http://localhost:62896/media/icon_hu_6b956feff6c8d004.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:description" content="The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website." /><meta property="og:image" content="http://localhost:59146/media/icon_hu_6b956feff6c8d004.png" />
+    <meta property="twitter:image" content="http://localhost:59146/media/icon_hu_6b956feff6c8d004.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta property="og:updated_time" content="2025-04-29T00:00:00&#43;00:00" />
@@ -328,7 +328,79 @@
   
   
   
-  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
   
   
   
@@ -694,30 +766,6 @@
 
 
 
-<a href="/post/faq-llm/2024-02-20-faq-llm/"  class="mb-5">
-  <div class="md:flex">
-    <div class="md:flex-shrink-0 overflow-hidden">
-      
-    </div>
-    <div class="p-8">
-      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Approaches that mitigate against language models misalignment including when semantic search alone is just good enough</div>
-      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
-        A common use case for conversational assistants is generating conversational responses to questions users ask of some source information. A common pattern is to retrieve relevant context through semantic search and to pass that context to the language model in the prompt, aligning the language model around a contextualised response. This approach often involves injecting the user’s query into the prompt, which, without guardrails, might lead to generated output that is misaligned with policy or is undesirable in other ways.</p>
-      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Feb 20, 2024</p>
-    </div>
-  </div>
-</a>
-
-  
-  
-
-
-
-
-
-
-
-
 <a href="/post/reconstructing-user-context/2024-02-17-language-model-assistants/"  class="mb-5">
   <div class="md:flex">
     <div class="md:flex-shrink-0 overflow-hidden">
@@ -922,6 +970,30 @@ PEFT is a technique for fine-tuning large language models with a small number of
       <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
         Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.</p>
       <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Nov 19, 2021</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Backup and Restore Neo4j in a Casual Cluster</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Nov 11, 2021</p>
     </div>
   </div>
 </a>
