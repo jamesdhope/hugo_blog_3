@@ -11,7 +11,7 @@ tags:
 date: 2025-04-29
 ---
 
-The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications. 
+The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications.
 
 What if your AI could learn not only to stay on-topic but to align its responses with an enterprise-specific semantic graph, all while adapting over time? That’s where **Semantic Graph Policy Oriented Reinforcement Learning** (SGPORL) comes in.
 
@@ -83,4 +83,4 @@ The goal of Semantic Policy Reinforcement Learning is not to build the smartest 
 
 With this approach, enterprises can ensure their AI systems remain on-topic, aligned with company values, and capable of self-improvement over time, all while avoiding the complexity of traditional guardrails.
 
-Check out the codebase here: GitHub Repository
+Check out the codebase here: https://github.com/jamesdhope/PORL-LLM-Guardrail
