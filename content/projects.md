@@ -1,6 +1,6 @@
 ---
 title: 'Projects'
-date: '2024-05-19T00:00:00Z'
+date: 2024-05-19
 type: landing
 
 design:

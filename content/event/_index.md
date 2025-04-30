@@ -1,6 +1,7 @@
 ---
 title: Recent & Upcoming Talks
 cms_exclude: true
+date: 2030-06-01
 #url: talk
 
 # View

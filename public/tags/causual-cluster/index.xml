@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Causual Cluster | James Hope</title>
-    <link>http://localhost:51093/tags/causual-cluster/</link>
-      <atom:link href="http://localhost:51093/tags/causual-cluster/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:52151/tags/causual-cluster/</link>
+      <atom:link href="http://localhost:52151/tags/causual-cluster/index.xml" rel="self" type="application/rss+xml" />
     <description>Causual Cluster</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:51093/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:52151/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Causual Cluster</title>
-      <link>http://localhost:51093/tags/causual-cluster/</link>
+      <link>http://localhost:52151/tags/causual-cluster/</link>
     </image>
     
     <item>
       <title>Backup and Restore Neo4j in a Casual Cluster</title>
-      <link>http://localhost:51093/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
+      <link>http://localhost:52151/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:51093/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
+      <guid>http://localhost:52151/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There&amp;rsquo;s a Medium post by Neo4j&amp;rsquo;s David Allen to explain what that configuration looks like &lt;a target=&#34;_new&#34; href=&#34;https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4&#34;&gt;here&lt;/a&gt;. Unfortunately Neo4j doesn&amp;rsquo;t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.&lt;/p&gt;
 &lt;p&gt;
 
@@ -36,7 +36,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:51093/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:52151/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
