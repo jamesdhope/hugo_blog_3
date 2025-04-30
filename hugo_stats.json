@@ -506,6 +506,7 @@
       "agent-b",
       "areas-of-agreement",
       "areas-of-disagreement",
+      "codebase-overview",
       "deterministic-dialog-rails-with-semantic-matching",
       "devops-toolchain-orchestrated-tuning--deployment-workflow",
       "example-ibm-spectrum-discover-application",
@@ -514,6 +515,7 @@
       "exposing-the-kvs-into-the-main-application-container",
       "fetching-kvs-from-consul-using-envconsul",
       "fetching-kvs-from-vault-using-vault-annotations",
+      "final-thoughts",
       "five-types-of-guardrails",
       "functions-of-an-ai-operations-system",
       "further-reading",
@@ -536,6 +538,7 @@
       "profile",
       "proposer-class--holds-the-proposer-preferences",
       "restore",
+      "sample-use-case-controlled-knowledge-assistant",
       "scenario",
       "search",
       "search_toggle",
@@ -560,10 +563,14 @@
       "support-for-rag-applications-including-retrieval-rails",
       "system-view",
       "technology-native-versus-snapshots",
+      "the-architecture-rl-meets-semantic-policy",
+      "the-real-innovation-reward-is-the-policy",
       "top",
       "topic-rails",
       "training-the-predictor",
-      "using-the-watsonxllm-langchain-integration-to-integrate-with-watsonxai"
+      "using-the-watsonxllm-langchain-integration-to-integrate-with-watsonxai",
+      "why-a-new-approach",
+      "why-it-matters-for-enterprises"
     ]
   }
 }
