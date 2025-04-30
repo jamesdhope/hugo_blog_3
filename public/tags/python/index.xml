@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python | James Hope</title>
-    <link>http://localhost:1313/tags/python/</link>
-      <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:62056/tags/python/</link>
+      <atom:link href="http://localhost:62056/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:62056/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Python</title>
-      <link>http://localhost:1313/tags/python/</link>
+      <link>http://localhost:62056/tags/python/</link>
     </image>
     
     <item>
       <title>Build a Machine Learning Recommender</title>
-      <link>http://localhost:1313/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
+      <link>http://localhost:62056/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
       <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
+      <guid>http://localhost:62056/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-a-machine-learning-recommender-72be2a8f96ed&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Build your own Blockchain Protocol</title>
-      <link>http://localhost:1313/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
+      <link>http://localhost:62056/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
+      <guid>http://localhost:62056/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-your-own-blockchain-protocol-for-a-distributed-ledger-54e0a92e1f10&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm to find &#39;Stable Groups&#39;</title>
-      <link>http://localhost:1313/post/stable-groups/2018-05-18-stablegroups/</link>
+      <link>http://localhost:62056/post/stable-groups/2018-05-18-stablegroups/</link>
       <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/stable-groups/2018-05-18-stablegroups/</guid>
+      <guid>http://localhost:62056/post/stable-groups/2018-05-18-stablegroups/</guid>
       <description>&lt;p&gt;In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.&lt;/p&gt;
 &lt;h1&gt;Basic Software Architecture&lt;/h1&gt;
 &lt;p&gt;We will make use of my implementation of the Stable Marriage Algorithm. As before, we will need class objects for holding the proposer and acceptor preferences, as well as the list of engagements (or pairs). Additionally, we will need a class object to hold the list of pairs for iteration of the algorithm. We will call this the Pools Class and it will hold Pool Class Objects (or the pairs found at each level).&lt;/p&gt;
@@ -705,9 +705,9 @@ length of groups 3&lt;/p&gt;
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm.</title>
-      <link>http://localhost:1313/post/stable-marriage/2018-04-12-stable-marriage/</link>
+      <link>http://localhost:62056/post/stable-marriage/2018-04-12-stable-marriage/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/stable-marriage/2018-04-12-stable-marriage/</guid>
+      <guid>http://localhost:62056/post/stable-marriage/2018-04-12-stable-marriage/</guid>
       <description>&lt;p&gt;Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might arise, for example, in pairing up co-workers for a task or pairing up students for an activity.&lt;/p&gt;
 &lt;p&gt;If each student were to (1) list out their peers they would &amp;lsquo;propose&amp;rsquo; to work with (in order of preference), and (2) list out their peers in order of who they would &amp;lsquo;accept&amp;rsquo; proposals from (also in order of preference) the Stable Marriage Algorithm would allow us to find a solution such that it would not be preferable for any two students to swap partners - in other words that the matching found by the algorithm is said to be &amp;lsquo;stable&amp;rsquo;.&lt;/p&gt;
 &lt;p&gt;Consider that four students list out who they would like to work with as follows. Let&amp;rsquo;s call this the Proposers Table.&lt;/p&gt;
@@ -943,9 +943,9 @@ ENGAGEMENTS: [1. 4. 3. 2.]&lt;/p&gt;
     
     <item>
       <title>Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction</title>
-      <link>http://localhost:1313/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
+      <link>http://localhost:62056/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
       <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
+      <guid>http://localhost:62056/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
       <description>&lt;p&gt;&amp;ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;For a full description of the competition, datasets, evaluation, prizes visit &lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/c/zillow-prize-1&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;My first competition entry, a stacked ensemble of regressors for this competition is available here: &lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&lt;/a&gt;&lt;a/&gt;&lt;/p&gt;
