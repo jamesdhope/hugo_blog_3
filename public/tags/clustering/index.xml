@@ -1,63 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Clustering | James Hope</title>
-    <link>http://localhost:52151/tags/clustering/</link>
-      <atom:link href="http://localhost:52151/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
-    <description>Clustering</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>http://localhost:52151/media/icon_hu_6b956feff6c8d004.png</url>
-      <title>Clustering</title>
-      <link>http://localhost:52151/tags/clustering/</link>
-    </image>
-    
-    <item>
-      <title>SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning</title>
-      <link>http://localhost:52151/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52151/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid>
-      <description>&lt;p&gt;Singular Value Decomposion (SVD) is a well known method for latent semantic analysis. When applied to BERT contextual embeddings SVD produces three components: U, Σ, and V. The eigenvectors in V represent distinct semantic patterns - each one captures a different aspect of meaning in the text. The eigenvalues in Σ tell us how significant each pattern is, effectively showing us what is semantically important and where the semantic &amp;ldquo;holes&amp;rdquo; are - the gaps in meaning that separate different semantic clusters. This elegant mathematical decomposition reveals the fundamental building blocks of meaning in text, creating a natural hierarchy of semantic patterns that can be analyzed through linear algebra and externalised a semantic knowledge graph.&lt;/p&gt;
-&lt;p&gt;The advantage of this approach is that the semantic structure emerges naturally from these mathematical properties. We don&amp;rsquo;t need to artificially construct relationships between semantic components - they&amp;rsquo;re already encoded in the eigenvectors. By computing correlations between these eigenvectors, we can identify which semantic patterns are related and which are distinct, creating a natural semantic graph that represents genuine semantic relationships.&lt;/p&gt;
-&lt;p&gt;Specifically, the graph’s nodes and arcs can be derived from the components of SVD in the following way:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The matrix U represents the terms (or concepts) in the semantic space, and each column corresponds to a vector in the reduced latent space. These vectors can be treated as nodes in the graph, where each node represents a term or concept.&lt;/li&gt;
-&lt;li&gt;The rows of matrix V represent the contextual relationships between the terms, capturing the co-occurrence patterns or semantic similarity between terms. These relationships define the arcs in the graph, where an arc connects two nodes (terms) that are semantically related based on their co-occurrence or shared context.&lt;/li&gt;
-&lt;li&gt;The singular values in Σ indicate the importance of each dimension in the latent space, helping us identify which relationships (arcs) are most significant. Larger singular values highlight the more important semantic patterns, guiding us in constructing a more meaningful graph structure.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This mathematical foundation opens up powerful possibilities for semantic analysis. The graph structure is a linear expression of the semantic relationships, which means we can perform various linear operations on it. We can analyze the spectral properties of the graph to understand its structure, use matrix operations to identify semantic clusters, or apply other linear algebraic techniques to explore the semantic space.&lt;/p&gt;
-&lt;p&gt;The result is a complete semantic analysis that reveals not just what the text means, but how its meanings are structured and related. This mathematical view of semantics - from individual sentences to semantic patterns to pattern relationships - provides a framework for understanding and manipulating semantic relationships through linear algebra.&lt;/p&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;semantic-knowledge-graph&#34; srcset=&#34;
-               /media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp 400w,
-               /media/semantic_knowledge_graph_hu_887095986f836ead.webp 760w,
-               /media/semantic_knowledge_graph_hu_47880e7a14bada31.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp&#34;
-               width=&#34;755&#34;
-               height=&#34;760&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;T&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Clustering | James Hope</title><link>https://jamesdhope.com/tags/clustering/</link><atom:link href="https://jamesdhope.com/tags/clustering/index.xml" rel="self" type="application/rss+xml"/><description>Clustering</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate><image><url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url><title>Clustering</title><link>https://jamesdhope.com/tags/clustering/</link></image><item><title>SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning</title><link>https://jamesdhope.com/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link><pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid><description>&lt;p>Singular Value Decomposion (SVD) is a well known method for latent semantic analysis. When applied to BERT contextual embeddings SVD produces three components: U, Σ, and V. The eigenvectors in V represent distinct semantic patterns - each one captures a different aspect of meaning in the text. The eigenvalues in Σ tell us how significant each pattern is, effectively showing us what is semantically important and where the semantic &amp;ldquo;holes&amp;rdquo; are - the gaps in meaning that separate different semantic clusters. This elegant mathematical decomposition reveals the fundamental building blocks of meaning in text, creating a natural hierarchy of semantic patterns that can be analyzed through linear algebra and externalised a semantic knowledge graph.&lt;/p>
+&lt;p>The advantage of this approach is that the semantic structure emerges naturally from these mathematical properties. We don&amp;rsquo;t need to artificially construct relationships between semantic components - they&amp;rsquo;re already encoded in the eigenvectors. By computing correlations between these eigenvectors, we can identify which semantic patterns are related and which are distinct, creating a natural semantic graph that represents genuine semantic relationships.&lt;/p>
+&lt;p>Specifically, the graph’s nodes and arcs can be derived from the components of SVD in the following way:&lt;/p>
+&lt;ul>
+&lt;li>The matrix U represents the terms (or concepts) in the semantic space, and each column corresponds to a vector in the reduced latent space. These vectors can be treated as nodes in the graph, where each node represents a term or concept.&lt;/li>
+&lt;li>The rows of matrix V represent the contextual relationships between the terms, capturing the co-occurrence patterns or semantic similarity between terms. These relationships define the arcs in the graph, where an arc connects two nodes (terms) that are semantically related based on their co-occurrence or shared context.&lt;/li>
+&lt;li>The singular values in Σ indicate the importance of each dimension in the latent space, helping us identify which relationships (arcs) are most significant. Larger singular values highlight the more important semantic patterns, guiding us in constructing a more meaningful graph structure.&lt;/li>
+&lt;/ul>
+&lt;p>This mathematical foundation opens up powerful possibilities for semantic analysis. The graph structure is a linear expression of the semantic relationships, which means we can perform various linear operations on it. We can analyze the spectral properties of the graph to understand its structure, use matrix operations to identify semantic clusters, or apply other linear algebraic techniques to explore the semantic space.&lt;/p>
+&lt;p>The result is a complete semantic analysis that reveals not just what the text means, but how its meanings are structured and related. This mathematical view of semantics - from individual sentences to semantic patterns to pattern relationships - provides a framework for understanding and manipulating semantic relationships through linear algebra.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="semantic-knowledge-graph" srcset="
+/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp 400w,
+/media/semantic_knowledge_graph_hu_887095986f836ead.webp 760w,
+/media/semantic_knowledge_graph_hu_47880e7a14bada31.webp 1200w"
+src="https://jamesdhope.com/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp"
+width="755"
+height="760"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>T&lt;/p></description></item></channel></rss>

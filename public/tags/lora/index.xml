@@ -1,106 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Lora | James Hope</title>
-    <link>http://localhost:52151/tags/lora/</link>
-      <atom:link href="http://localhost:52151/tags/lora/index.xml" rel="self" type="application/rss+xml" />
-    <description>Lora</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>http://localhost:52151/media/icon_hu_6b956feff6c8d004.png</url>
-      <title>Lora</title>
-      <link>http://localhost:52151/tags/lora/</link>
-    </image>
-    
-    <item>
-      <title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title>
-      <link>http://localhost:52151/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
-      <pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52151/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
-      <description>&lt;p&gt;Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p&gt;
-&lt;h3 id=&#34;functions-of-an-ai-operations-system&#34;&gt;Functions of an AI Operations System&lt;/h3&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Functional View of AI Operations&#34; srcset=&#34;
-               /media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
-               /media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
-               /media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/AIOps_1_hu_c5672f5c18ae659d.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;294&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/p&gt;
-&lt;h3 id=&#34;openshiftai-watsonxdata--watsonxgovernance-enabling-ai-at-scale&#34;&gt;OpenShiftAI, watsonx.data &amp;amp; watsonx.governance enabling AI at Scale&lt;/h3&gt;
-&lt;p&gt;OpenShiftAI combined with watsonx.data and watsonx.governance enables enterprise AI at scale in the following ways:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;separation of concerns between pipeline orchestration and training/serving workload execution, demonstrating workload placement to where it makes sense, for reasons such as data compliance or service level agreements for downstream AI&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;versioning and orchestration of pipelines as a hybrid multicloud platform-first approach, removing the need for and complexity that results from cloud native integrations that proliferate in number when operating AI at scale, and unlocking the potential to operate AI across the enterprise&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;pipelines for super fine tuning an open language model (we show LoRA PEFT fine tuning with IBM hashtag#Granite but this is easily extensible to full SFT or model distillation), because small open models are the future for enterprise AI&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;distributing training and observability of GPU workloads with Ray, because distributed compute is important if not essential for operating AI at scale&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;watsonx.data as a cloud agnostic feature store, because data is disparate and AI builders need that data to derive value for the enterprise&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;publication of model factsheets in watsonx.governance and tracking models as part of an AI Use Case, because enterprise AI needs to be governed.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;integrating-watsonxgovernance-with-openshiftai-kubeflow-pipelines&#34;&gt;Integrating watsonx.governance with OpenShiftAI KubeFlow Pipelines&lt;/h3&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;OpenShiftAI integration with watsonx.governance&#34; srcset=&#34;
-               /media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
-               /media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
-               /media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/AIOps_2_hu_b7c0426947db4dbc.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;453&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;For a more in-depth review of OpenShiftAI and Kubeflow pipelines see: &lt;a href=&#34;https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lora | James Hope</title><link>https://jamesdhope.com/tags/lora/</link><atom:link href="https://jamesdhope.com/tags/lora/index.xml" rel="self" type="application/rss+xml"/><description>Lora</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Nov 2024 00:00:00 +0000</lastBuildDate><image><url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url><title>Lora</title><link>https://jamesdhope.com/tags/lora/</link></image><item><title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title><link>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link><pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid><description>&lt;p>Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p>
+&lt;h3 id="functions-of-an-ai-operations-system">Functions of an AI Operations System&lt;/h3>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="Functional View of AI Operations" srcset="
+/media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
+/media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
+/media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w"
+src="https://jamesdhope.com/media/AIOps_1_hu_c5672f5c18ae659d.webp"
+width="760"
+height="294"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;h3 id="openshiftai-watsonxdata--watsonxgovernance-enabling-ai-at-scale">OpenShiftAI, watsonx.data &amp;amp; watsonx.governance enabling AI at Scale&lt;/h3>
+&lt;p>OpenShiftAI combined with watsonx.data and watsonx.governance enables enterprise AI at scale in the following ways:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>separation of concerns between pipeline orchestration and training/serving workload execution, demonstrating workload placement to where it makes sense, for reasons such as data compliance or service level agreements for downstream AI&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>versioning and orchestration of pipelines as a hybrid multicloud platform-first approach, removing the need for and complexity that results from cloud native integrations that proliferate in number when operating AI at scale, and unlocking the potential to operate AI across the enterprise&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>pipelines for super fine tuning an open language model (we show LoRA PEFT fine tuning with IBM hashtag#Granite but this is easily extensible to full SFT or model distillation), because small open models are the future for enterprise AI&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>distributing training and observability of GPU workloads with Ray, because distributed compute is important if not essential for operating AI at scale&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>watsonx.data as a cloud agnostic feature store, because data is disparate and AI builders need that data to derive value for the enterprise&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>publication of model factsheets in watsonx.governance and tracking models as part of an AI Use Case, because enterprise AI needs to be governed.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="integrating-watsonxgovernance-with-openshiftai-kubeflow-pipelines">Integrating watsonx.governance with OpenShiftAI KubeFlow Pipelines&lt;/h3>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="OpenShiftAI integration with watsonx.governance" srcset="
+/media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
+/media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
+/media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w"
+src="https://jamesdhope.com/media/AIOps_2_hu_b7c0426947db4dbc.webp"
+width="760"
+height="453"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>For a more in-depth review of OpenShiftAI and Kubeflow pipelines see: &lt;a href="https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/" target="_blank" rel="noopener">https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&lt;/a>&lt;/p></description></item></channel></rss>

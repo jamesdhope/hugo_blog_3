@@ -1,290 +1,187 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kubernetes | James Hope</title>
-    <link>http://localhost:52151/tags/kubernetes/</link>
-      <atom:link href="http://localhost:52151/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    <description>Kubernetes</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>http://localhost:52151/media/icon_hu_6b956feff6c8d004.png</url>
-      <title>Kubernetes</title>
-      <link>http://localhost:52151/tags/kubernetes/</link>
-    </image>
-    
-    <item>
-      <title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title>
-      <link>http://localhost:52151/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
-      <pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52151/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
-      <description>&lt;p&gt;Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p&gt;
-&lt;h3 id=&#34;functions-of-an-ai-operations-system&#34;&gt;Functions of an AI Operations System&lt;/h3&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Functional View of AI Operations&#34; srcset=&#34;
-               /media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
-               /media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
-               /media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/AIOps_1_hu_c5672f5c18ae659d.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;294&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/p&gt;
-&lt;h3 id=&#34;openshiftai-watsonxdata--watsonxgovernance-enabling-ai-at-scale&#34;&gt;OpenShiftAI, watsonx.data &amp;amp; watsonx.governance enabling AI at Scale&lt;/h3&gt;
-&lt;p&gt;OpenShiftAI combined with watsonx.data and watsonx.governance enables enterprise AI at scale in the following ways:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;separation of concerns between pipeline orchestration and training/serving workload execution, demonstrating workload placement to where it makes sense, for reasons such as data compliance or service level agreements for downstream AI&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;versioning and orchestration of pipelines as a hybrid multicloud platform-first approach, removing the need for and complexity that results from cloud native integrations that proliferate in number when operating AI at scale, and unlocking the potential to operate AI across the enterprise&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;pipelines for super fine tuning an open language model (we show LoRA PEFT fine tuning with IBM hashtag#Granite but this is easily extensible to full SFT or model distillation), because small open models are the future for enterprise AI&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;distributing training and observability of GPU workloads with Ray, because distributed compute is important if not essential for operating AI at scale&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;watsonx.data as a cloud agnostic feature store, because data is disparate and AI builders need that data to derive value for the enterprise&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;publication of model factsheets in watsonx.governance and tracking models as part of an AI Use Case, because enterprise AI needs to be governed.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;integrating-watsonxgovernance-with-openshiftai-kubeflow-pipelines&#34;&gt;Integrating watsonx.governance with OpenShiftAI KubeFlow Pipelines&lt;/h3&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;OpenShiftAI integration with watsonx.governance&#34; srcset=&#34;
-               /media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
-               /media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
-               /media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/AIOps_2_hu_b7c0426947db4dbc.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;453&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;For a more in-depth review of OpenShiftAI and Kubeflow pipelines see: &lt;a href=&#34;https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Backup and Restore Neo4j in a Casual Cluster</title>
-      <link>http://localhost:52151/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52151/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
-      <description>&lt;p&gt;If you&amp;rsquo;re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There&amp;rsquo;s a Medium post by Neo4j&amp;rsquo;s David Allen to explain what that configuration looks like &lt;a target=&#34;_new&#34; href=&#34;https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4&#34;&gt;here&lt;/a&gt;. Unfortunately Neo4j doesn&amp;rsquo;t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.&lt;/p&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:52151/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-
-Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;technology-native-versus-snapshots&#34;&gt;Technology-native versus Snapshots&lt;/h2&gt;
-&lt;p&gt;The approach of snapshotting persistent volumes for a distributed data engine as a means to backup data can and does lead to situations where a subsequent restore will fail because of an inconsistent state. In this situation a transactional database should run the transactions from the write-ahead logs but I ran into this exact issue when testing this approach with Velero and Neo4j and was unable to complete the restore. Postgres and timescaledb also failed to restore using this approach. Implementing a primary backup and restore mechanism using the officially supported, native database tools (for neo4j the neo4j-backup utility) is my recommended approach.&lt;/p&gt;
-&lt;p&gt;For Neo4j, the community helm chart includes a child helm chart for backing up to AWS, GCP or Azure. The helm chart utilises the neo4j-admin backup image provided by Neo4j which runs as a sidecar to neo4j. That approach works well if you want to backup to these providers but if you are backing up to an alternative provider like Digital Ocean it might make more sense to start over and work towards an implementation that is customised to your environment, has less bloat and is easier to maintain. Here&amp;rsquo;s how I did it.&lt;/p&gt;
-&lt;h2 id=&#34;kubernetes-cronjob-to-backup&#34;&gt;Kubernetes CronJob to Backup&lt;/h2&gt;
-&lt;p&gt;For backup, I created a Kubernetes CronJob. The backup happens in two steps.&lt;/p&gt;
-&lt;h3 id=&#34;step-1&#34;&gt;Step 1:&lt;/h3&gt;
-&lt;p&gt;The neo4j-backup utility is run as an initialisation container. This produces an online backup which is written to a mounted volume. There is no downtime involved here but be aware that this will have performance implications on your running database. The schedule is set to meet the recovery point objective.&lt;/p&gt;
-&lt;h3 id=&#34;step-2&#34;&gt;Step 2:&lt;/h3&gt;
-&lt;p&gt;A custom container runs which copies the backup (from the mounted volume) to Digital Ocean S3 using s3cmd. The reason for the custom container here is that at the time of writing there was no easy way to set the s3cmd configuration values at runtime using the CLI so this is configured at the application layer and baked into the image.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PersistentVolumeClaim&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;metadata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backupdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;labels&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;spec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;accessModes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ReadWriteOnce&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;resources&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;requests&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;storage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Gi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;---&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v1beta1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CronJob&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;metadata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;namespace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;spec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;schedule&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0 * * * *&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;jobTemplate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;spec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;spec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backupdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;persistentVolumeClaim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;claimName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backupdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;initContainers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;4.2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;enterprise&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NEO4J_ACCEPT_LICENSE_AGREEMENT&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;volumeMounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backupdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;mountPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cleaning&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;rm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;admin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dir&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;database&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;svc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6362&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;verbose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completed&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;containers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;spaces&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;registry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gitlab&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;custom&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;latest&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;imagePullPolicy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Always&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;yum&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;python36&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;pip3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;put&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recursive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;volumeMounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;backupdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo4j&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;mountPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;imagePullSecrets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gitlab&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;registry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;credentials&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;restartPolicy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OnFailure&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restore&#34;&gt;Restore&lt;/h2&gt;
-&lt;p&gt;The restore process happens in two parts:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;A initContainer runs in the helm chart to copy the data from S3.&lt;/li&gt;
-&lt;li&gt;A command is run inside the POD to restore the backup&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;step-1-1&#34;&gt;Step 1:&lt;/h3&gt;
-&lt;p&gt;The initContainer is a custom built image with the S3cmd config that copies the backup specified into the plugins mount. Note that the path to the backup in the s3cmd get command needs to be specified.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;custom&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recovery&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;registry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gitlab&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;custom&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;imagePullPolicy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Always&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;volumeMounts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plugins&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;mountPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plugins&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;yum&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;python36&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;pip3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3cfg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;s3cmd&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recursive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;timestamp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plugins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-2-1&#34;&gt;Step 2:&lt;/h3&gt;
-&lt;p&gt;Once the neo core has started to perform the recovery:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. In CYPHER-SHELL OR NEO4j BROWSER run: STOP DATABASE {name}
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. On Pod run: bin/neo4j-admin restore --from /plugins/tmp/neo4j --database neo4j --force;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. In CYPHER-SHELL or NEO4J BROWSER run: START DATABASE {name}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Top 10 architectural highlights for Digital Ocean Kubernetes</title>
-      <link>http://localhost:52151/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link>
-      <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52151/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid>
-      <description>&lt;p&gt;Recently I&amp;rsquo;ve been developing a solution architecture for a boostrapped startup in Digital Ocean&amp;rsquo;s Kubernetes. Developing an understanding of the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning has happened, the solution and its architecture has evolved to enable numerous product iterations, building out only what has been necessary at each stage. The domain driven approach to development led to a server based query gateway and so what unfolded was containerised microservcies architecture orchestrated by Kubernetes. Here are my top 10 highlights from building in Digital Ocean Kubernetes:&lt;/p&gt;
-&lt;p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Container Ship&#34; srcset=&#34;
-               /media/containers_hu_41635e86357e0d1e.webp 400w,
-               /media/containers_hu_ebc5a8f747410369.webp 760w,
-               /media/containers_hu_f1c356d583aefb94.webp 1200w&#34;
-               src=&#34;http://localhost:52151/media/containers_hu_41635e86357e0d1e.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;512&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-
-Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;10-utilise-external-infrastructure-for-completeness-when-necessary&#34;&gt;10. Utilise external infrastructure for completeness when necessary&lt;/h3&gt;
-&lt;p&gt;The absence of key architectural components to deploy in front of the cluster is a limitation to be aware with Digital Ocean. If you are building for production route traffic via services you can route traffic through CloudFlare, for example, for a layer 7 firewall, OWASP compliance and global server load balancing.&lt;/p&gt;
-&lt;h3 id=&#34;9-work-from-the-application-resource-requirements-to-determine-the-minimum-viable-infrastructure&#34;&gt;9. Work from the application resource requirements to determine the minimum viable infrastructure&lt;/h3&gt;
-&lt;p&gt;If like most you have machine specifications to provision into your cluster (AWS Fargate the notable exception) then it makes sense to understand what resources your applications need and then work down the stack. One approach is to group applications into logical planes - Control, User, Data plane - to determine what resources are needed in each plane. Also look to vendors and application specifications for guidance on resource and scaling requirements.&lt;/p&gt;
-&lt;h3 id=&#34;8-consider-the-velocity-of-scaling-in-the-vertical-and-horizonal-directions-and-the-impact-on-services&#34;&gt;8. Consider the velocity of scaling in the vertical and horizonal directions and the impact on services&lt;/h3&gt;
-&lt;p&gt;For horizontal scaling there is speed to think about: kubernetes will replicate pods across nodes in a matter of seconds but if new nodes are required to achieve that replication that it can take minutes. The trade-off here is between performance efficiency and cost optimisation. Set the autoscaling thresholds so there is enough spare capacity in the pods to allow time for the autoscaling to happen or provision larger nodes that enable sideways replication of pods on that same node. Develop event driven microservices with messaging queues to add resiliency. In production, use metrics to determine and refine the right vertical and horizontal thresholds.&lt;/p&gt;
-&lt;h3 id=&#34;7-strive-for-the-rule-of-three-for-high-availability&#34;&gt;7. Strive for the &amp;lsquo;rule of three&amp;rsquo; for high availability&lt;/h3&gt;
-&lt;p&gt;For a production and staging deployment I like to follow the rule of three. Three nodes in three availability zones with three pod replicas in each zone. For stateful applications being deployed into a cluster configuration it is recommended to have three cores or leader-eligible instances to avoid split brain.&lt;/p&gt;
-&lt;h3 id=&#34;6-build-with-open-source-multi-vendor-or-community-developed-applications-for-portability&#34;&gt;6. Build with open-source, multi-vendor or community-developed applications for portability&lt;/h3&gt;
-&lt;p&gt;If you can build with open-source, multi-vendor and community-developed applications you can avoid vendor lock-in and keep the door open to other clouds as needs evolve over time. For example, in my case, building with Hasura GraphQL rather than AWS AppSync as a graph QL gateway, and Neo4J rather than AWS Neptune as a graph data engine.&lt;/p&gt;
-&lt;h3 id=&#34;5-avoid-constraints-and-design-with-soft-intent-for-scheduling-flexibility&#34;&gt;5. Avoid constraints and design with soft intent for scheduling flexibility&lt;/h3&gt;
-&lt;p&gt;Imposing hard constraints such as anti-affinity rules, taints and tolerations could result in a pod being unschedulable. Unless you need to import hard constraints use soft requirements such as topology keys to describe scheduling intent and best effort across nodes.&lt;/p&gt;
-&lt;h3 id=&#34;4-strive-to-understand-the-limitations-of-the-network-backbone&#34;&gt;4. Strive to understand the limitations of the network backbone&lt;/h3&gt;
-&lt;p&gt;Be aware of the limitations of the backbone. Public clouds vary significantly in their network speed. All the autoscaling in the world won&amp;rsquo;t help if the bottleneck is the backbone.&lt;/p&gt;
-&lt;h3 id=&#34;3-use-a-service-mesh-for-resiliency&#34;&gt;3. Use a service mesh for resiliency&lt;/h3&gt;
-&lt;p&gt;Since Digital Ocean doesn&amp;rsquo;t provision Kubernetes with the Kubernetes Networking Plugin a single control plane is limited to orchestrating pods across a single availability zone. That doesn&amp;rsquo;t need to be an impediment to high availibility though, since with a service mesh (e.g., Traefik, Itsio or Consul) high availibilility can be achieved through the service mesh gateways that enable applications to connect to services that route to pods in clusters in other regional data centers. Relying on the service mesh for service availability could be a good trade-off if the only way to achieve control plane replication and orchestration across availablility zones means looking to more mature and costly platforms. Bear in mind that in a mesh, as applications run at the edge, regional data centers start behaving a bit like secondary availability zones.&lt;/p&gt;
-&lt;h3 id=&#34;2-use-managed-services-to-abstract-devops-from-infrastructure-details&#34;&gt;2. Use managed services to abstract devOps from infrastructure details&lt;/h3&gt;
-&lt;p&gt;Understanding the ops environment that the solution is being deployed into is key for a successful operation. If the ops environment is not assessed to be ready to operate the applications being proposed, moving them into a managed service can be a good option. This is where the marketplace shines because self-managing data engines (especially in clustered or fully distributed configurations) would most certainly warrant a dedicated team of site reliability engineers trained on the native technology, its disaster recovery procedures amongst other things. As a managed service however, availability, scaling, and disaster recovery (including point-in-time recovery to the nearest second) are trivial to configure. My view is that money is well spent here to abstract debt-laden DevOps from application infrastructure and to enable the focus firmly on the product and hypothesis-driven development.&lt;/p&gt;
-&lt;h3 id=&#34;1-use-a-favourable-pricing-model-to-get-into-production&#34;&gt;1. Use a favourable pricing model to get into production&lt;/h3&gt;
-&lt;p&gt;For whatever Digital Ocean might lack in edge services and availability zones it makes up for in infrastructure costs. VM pricing per hour is competitive even against the usage discounting applied by the major public cloud providers to the extent that it could extend the of life of a startup and its funding significantly. The virtual private cloud is provided at no cost and data egress is not chargable, which depending on what you are building, could present a significant cost saving (though be way of the limits of the network).  Building with open-source, multi-vendor and community-developed applications on an open platform means porting to another cloud is an option later on when services at the edge and secondary availability zones is probably going to make more sense anyway.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes | James Hope</title><link>https://jamesdhope.com/tags/kubernetes/</link><atom:link href="https://jamesdhope.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml"/><description>Kubernetes</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Nov 2024 00:00:00 +0000</lastBuildDate><image><url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url><title>Kubernetes</title><link>https://jamesdhope.com/tags/kubernetes/</link></image><item><title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title><link>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link><pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid><description>&lt;p>Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p>
+&lt;h3 id="functions-of-an-ai-operations-system">Functions of an AI Operations System&lt;/h3>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="Functional View of AI Operations" srcset="
+/media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
+/media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
+/media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w"
+src="https://jamesdhope.com/media/AIOps_1_hu_c5672f5c18ae659d.webp"
+width="760"
+height="294"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;h3 id="openshiftai-watsonxdata--watsonxgovernance-enabling-ai-at-scale">OpenShiftAI, watsonx.data &amp;amp; watsonx.governance enabling AI at Scale&lt;/h3>
+&lt;p>OpenShiftAI combined with watsonx.data and watsonx.governance enables enterprise AI at scale in the following ways:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>separation of concerns between pipeline orchestration and training/serving workload execution, demonstrating workload placement to where it makes sense, for reasons such as data compliance or service level agreements for downstream AI&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>versioning and orchestration of pipelines as a hybrid multicloud platform-first approach, removing the need for and complexity that results from cloud native integrations that proliferate in number when operating AI at scale, and unlocking the potential to operate AI across the enterprise&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>pipelines for super fine tuning an open language model (we show LoRA PEFT fine tuning with IBM hashtag#Granite but this is easily extensible to full SFT or model distillation), because small open models are the future for enterprise AI&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>distributing training and observability of GPU workloads with Ray, because distributed compute is important if not essential for operating AI at scale&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>watsonx.data as a cloud agnostic feature store, because data is disparate and AI builders need that data to derive value for the enterprise&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>publication of model factsheets in watsonx.governance and tracking models as part of an AI Use Case, because enterprise AI needs to be governed.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="integrating-watsonxgovernance-with-openshiftai-kubeflow-pipelines">Integrating watsonx.governance with OpenShiftAI KubeFlow Pipelines&lt;/h3>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="OpenShiftAI integration with watsonx.governance" srcset="
+/media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
+/media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
+/media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w"
+src="https://jamesdhope.com/media/AIOps_2_hu_b7c0426947db4dbc.webp"
+width="760"
+height="453"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>For a more in-depth review of OpenShiftAI and Kubeflow pipelines see: &lt;a href="https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/" target="_blank" rel="noopener">https://blog.pierswalter.co.uk/posts/openshift-ai-pipeline/&lt;/a>&lt;/p></description></item><item><title>Backup and Restore Neo4j in a Casual Cluster</title><link>https://jamesdhope.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link><pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid><description>&lt;p>If you&amp;rsquo;re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There&amp;rsquo;s a Medium post by Neo4j&amp;rsquo;s David Allen to explain what that configuration looks like &lt;a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here&lt;/a>. Unfortunately Neo4j doesn&amp;rsquo;t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img src="https://jamesdhope.com/assets/images/containers.jpg" alt="GitHub Logo" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+Source: &lt;a href="https://www.pexels.com/" target="_blank" rel="noopener">https://www.pexels.com/&lt;/a>&lt;/p>
+&lt;h2 id="technology-native-versus-snapshots">Technology-native versus Snapshots&lt;/h2>
+&lt;p>The approach of snapshotting persistent volumes for a distributed data engine as a means to backup data can and does lead to situations where a subsequent restore will fail because of an inconsistent state. In this situation a transactional database should run the transactions from the write-ahead logs but I ran into this exact issue when testing this approach with Velero and Neo4j and was unable to complete the restore. Postgres and timescaledb also failed to restore using this approach. Implementing a primary backup and restore mechanism using the officially supported, native database tools (for neo4j the neo4j-backup utility) is my recommended approach.&lt;/p>
+&lt;p>For Neo4j, the community helm chart includes a child helm chart for backing up to AWS, GCP or Azure. The helm chart utilises the neo4j-admin backup image provided by Neo4j which runs as a sidecar to neo4j. That approach works well if you want to backup to these providers but if you are backing up to an alternative provider like Digital Ocean it might make more sense to start over and work towards an implementation that is customised to your environment, has less bloat and is easier to maintain. Here&amp;rsquo;s how I did it.&lt;/p>
+&lt;h2 id="kubernetes-cronjob-to-backup">Kubernetes CronJob to Backup&lt;/h2>
+&lt;p>For backup, I created a Kubernetes CronJob. The backup happens in two steps.&lt;/p>
+&lt;h3 id="step-1">Step 1:&lt;/h3>
+&lt;p>The neo4j-backup utility is run as an initialisation container. This produces an online backup which is written to a mounted volume. There is no downtime involved here but be aware that this will have performance implications on your running database. The schedule is set to meet the recovery point objective.&lt;/p>
+&lt;h3 id="step-2">Step 2:&lt;/h3>
+&lt;p>A custom container runs which copies the backup (from the mounted volume) to Digital Ocean S3 using s3cmd. The reason for the custom container here is that at the time of writing there was no easy way to set the s3cmd configuration values at runtime using the CLI so this is configured at the application layer and baked into the image.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">kind&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">PersistentVolumeClaim&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">apiVersion&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">v1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">metadata&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">backupdir&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">labels&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">app&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">neo4j&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">backup&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">spec&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">accessModes&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">ReadWriteOnce&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">resources&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">requests&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">storage&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="n">Gi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">---&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">apiVersion&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">batch&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">v1beta1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">kind&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">CronJob&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">metadata&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">neo4j&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">backup&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">namespace&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">spec&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">schedule&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;0 * * * *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">jobTemplate&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">spec&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">template&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">spec&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumes&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">backupdir&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">persistentVolumeClaim&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">claimName&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">backupdir&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initContainers&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">neo4j&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">backup&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">image&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">neo4j&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mf">4.2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">enterprise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">env&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">NEO4J_ACCEPT_LICENSE_AGREEMENT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">value&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;yes&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumeMounts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">backupdir&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mountPath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">command&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;/bin/sh&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-c&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">args&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">echo&lt;/span> &lt;span class="n">cleaning&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span> &lt;span class="n">from&lt;/span> &lt;span class="n">PV&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">rm&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">rf&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span>&lt;span class="o">/*&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">bin&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">neo4j&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">admin&lt;/span> &lt;span class="n">backup&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">backup&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">dir&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">database&lt;/span> &lt;span class="n">neo4j&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">from&lt;/span> &lt;span class="n">neo&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">neo4j&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">svc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cluster&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">local&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">6362&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">verbose&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">echo&lt;/span> &lt;span class="n">backup&lt;/span> &lt;span class="n">completed&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">containers&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">copy&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">to&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">spaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">image&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">registry&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">gitlab&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">custom&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">backup&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="k">tool&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">latest&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">imagePullPolicy&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Always&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">command&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;/bin/sh&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-c&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">args&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">yum&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">python36&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">pip3&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">s3cmd&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cp&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">usr&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">s3cfg&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">root&lt;/span>&lt;span class="o">/.&lt;/span>&lt;span class="n">s3cfg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3cmd&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">=/&lt;/span>&lt;span class="n">usr&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">s3cfg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3cmd&lt;/span> &lt;span class="n">put&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span> &lt;span class="n">s3&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">backup&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="err">`&lt;/span>&lt;span class="n">date&lt;/span> &lt;span class="o">+%&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">Y&lt;/span>&lt;span class="o">-%&lt;/span>&lt;span class="n">H&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">M&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">S&lt;/span>&lt;span class="err">`&lt;/span>&lt;span class="o">/&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">recursive&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumeMounts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">backupdir&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mountPath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">tmp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">imagePullSecrets&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">gitlab&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">registry&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">credentials&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">restartPolicy&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">OnFailure&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="restore">Restore&lt;/h2>
+&lt;p>The restore process happens in two parts:&lt;/p>
+&lt;ol>
+&lt;li>A initContainer runs in the helm chart to copy the data from S3.&lt;/li>
+&lt;li>A command is run inside the POD to restore the backup&lt;/li>
+&lt;/ol>
+&lt;h3 id="step-1-1">Step 1:&lt;/h3>
+&lt;p>The initContainer is a custom built image with the S3cmd config that copies the backup specified into the plugins mount. Note that the path to the backup in the s3cmd get command needs to be specified.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">custom&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">recovery&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="k">tool&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">image&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">registry&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">gitlab&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">custom&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">neo&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">backup&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="k">tool&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">imagePullPolicy&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Always&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumeMounts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mountPath&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">command&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;/bin/sh&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-c&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">args&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">yum&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">python36&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">pip3&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">s3cmd&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cp&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">usr&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">s3cfg&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">root&lt;/span>&lt;span class="o">/.&lt;/span>&lt;span class="n">s3cfg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3cmd&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">=/&lt;/span>&lt;span class="n">usr&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">s3cfg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3cmd&lt;/span> &lt;span class="n">get&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">recursive&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">force&lt;/span> &lt;span class="n">s3&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">backup&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">timestamp&lt;/span>&lt;span class="o">/&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">plugins&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="step-2-1">Step 2:&lt;/h3>
+&lt;p>Once the neo core has started to perform the recovery:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">1. In CYPHER-SHELL OR NEO4j BROWSER run: STOP DATABASE {name}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2. On Pod run: bin/neo4j-admin restore --from /plugins/tmp/neo4j --database neo4j --force;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3. In CYPHER-SHELL or NEO4J BROWSER run: START DATABASE {name}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Top 10 architectural highlights for Digital Ocean Kubernetes</title><link>https://jamesdhope.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link><pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid><description>&lt;p>Recently I&amp;rsquo;ve been developing a solution architecture for a boostrapped startup in Digital Ocean&amp;rsquo;s Kubernetes. Developing an understanding of the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning has happened, the solution and its architecture has evolved to enable numerous product iterations, building out only what has been necessary at each stage. The domain driven approach to development led to a server based query gateway and so what unfolded was containerised microservcies architecture orchestrated by Kubernetes. Here are my top 10 highlights from building in Digital Ocean Kubernetes:&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img alt="Container Ship" srcset="
+/media/containers_hu_41635e86357e0d1e.webp 400w,
+/media/containers_hu_ebc5a8f747410369.webp 760w,
+/media/containers_hu_f1c356d583aefb94.webp 1200w"
+src="https://jamesdhope.com/media/containers_hu_41635e86357e0d1e.webp"
+width="760"
+height="512"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+Source: &lt;a href="https://www.pexels.com/" target="_blank" rel="noopener">https://www.pexels.com/&lt;/a>&lt;/p>
+&lt;h3 id="10-utilise-external-infrastructure-for-completeness-when-necessary">10. Utilise external infrastructure for completeness when necessary&lt;/h3>
+&lt;p>The absence of key architectural components to deploy in front of the cluster is a limitation to be aware with Digital Ocean. If you are building for production route traffic via services you can route traffic through CloudFlare, for example, for a layer 7 firewall, OWASP compliance and global server load balancing.&lt;/p>
+&lt;h3 id="9-work-from-the-application-resource-requirements-to-determine-the-minimum-viable-infrastructure">9. Work from the application resource requirements to determine the minimum viable infrastructure&lt;/h3>
+&lt;p>If like most you have machine specifications to provision into your cluster (AWS Fargate the notable exception) then it makes sense to understand what resources your applications need and then work down the stack. One approach is to group applications into logical planes - Control, User, Data plane - to determine what resources are needed in each plane. Also look to vendors and application specifications for guidance on resource and scaling requirements.&lt;/p>
+&lt;h3 id="8-consider-the-velocity-of-scaling-in-the-vertical-and-horizonal-directions-and-the-impact-on-services">8. Consider the velocity of scaling in the vertical and horizonal directions and the impact on services&lt;/h3>
+&lt;p>For horizontal scaling there is speed to think about: kubernetes will replicate pods across nodes in a matter of seconds but if new nodes are required to achieve that replication that it can take minutes. The trade-off here is between performance efficiency and cost optimisation. Set the autoscaling thresholds so there is enough spare capacity in the pods to allow time for the autoscaling to happen or provision larger nodes that enable sideways replication of pods on that same node. Develop event driven microservices with messaging queues to add resiliency. In production, use metrics to determine and refine the right vertical and horizontal thresholds.&lt;/p>
+&lt;h3 id="7-strive-for-the-rule-of-three-for-high-availability">7. Strive for the &amp;lsquo;rule of three&amp;rsquo; for high availability&lt;/h3>
+&lt;p>For a production and staging deployment I like to follow the rule of three. Three nodes in three availability zones with three pod replicas in each zone. For stateful applications being deployed into a cluster configuration it is recommended to have three cores or leader-eligible instances to avoid split brain.&lt;/p>
+&lt;h3 id="6-build-with-open-source-multi-vendor-or-community-developed-applications-for-portability">6. Build with open-source, multi-vendor or community-developed applications for portability&lt;/h3>
+&lt;p>If you can build with open-source, multi-vendor and community-developed applications you can avoid vendor lock-in and keep the door open to other clouds as needs evolve over time. For example, in my case, building with Hasura GraphQL rather than AWS AppSync as a graph QL gateway, and Neo4J rather than AWS Neptune as a graph data engine.&lt;/p>
+&lt;h3 id="5-avoid-constraints-and-design-with-soft-intent-for-scheduling-flexibility">5. Avoid constraints and design with soft intent for scheduling flexibility&lt;/h3>
+&lt;p>Imposing hard constraints such as anti-affinity rules, taints and tolerations could result in a pod being unschedulable. Unless you need to import hard constraints use soft requirements such as topology keys to describe scheduling intent and best effort across nodes.&lt;/p>
+&lt;h3 id="4-strive-to-understand-the-limitations-of-the-network-backbone">4. Strive to understand the limitations of the network backbone&lt;/h3>
+&lt;p>Be aware of the limitations of the backbone. Public clouds vary significantly in their network speed. All the autoscaling in the world won&amp;rsquo;t help if the bottleneck is the backbone.&lt;/p>
+&lt;h3 id="3-use-a-service-mesh-for-resiliency">3. Use a service mesh for resiliency&lt;/h3>
+&lt;p>Since Digital Ocean doesn&amp;rsquo;t provision Kubernetes with the Kubernetes Networking Plugin a single control plane is limited to orchestrating pods across a single availability zone. That doesn&amp;rsquo;t need to be an impediment to high availibility though, since with a service mesh (e.g., Traefik, Itsio or Consul) high availibilility can be achieved through the service mesh gateways that enable applications to connect to services that route to pods in clusters in other regional data centers. Relying on the service mesh for service availability could be a good trade-off if the only way to achieve control plane replication and orchestration across availablility zones means looking to more mature and costly platforms. Bear in mind that in a mesh, as applications run at the edge, regional data centers start behaving a bit like secondary availability zones.&lt;/p>
+&lt;h3 id="2-use-managed-services-to-abstract-devops-from-infrastructure-details">2. Use managed services to abstract devOps from infrastructure details&lt;/h3>
+&lt;p>Understanding the ops environment that the solution is being deployed into is key for a successful operation. If the ops environment is not assessed to be ready to operate the applications being proposed, moving them into a managed service can be a good option. This is where the marketplace shines because self-managing data engines (especially in clustered or fully distributed configurations) would most certainly warrant a dedicated team of site reliability engineers trained on the native technology, its disaster recovery procedures amongst other things. As a managed service however, availability, scaling, and disaster recovery (including point-in-time recovery to the nearest second) are trivial to configure. My view is that money is well spent here to abstract debt-laden DevOps from application infrastructure and to enable the focus firmly on the product and hypothesis-driven development.&lt;/p>
+&lt;h3 id="1-use-a-favourable-pricing-model-to-get-into-production">1. Use a favourable pricing model to get into production&lt;/h3>
+&lt;p>For whatever Digital Ocean might lack in edge services and availability zones it makes up for in infrastructure costs. VM pricing per hour is competitive even against the usage discounting applied by the major public cloud providers to the extent that it could extend the of life of a startup and its funding significantly. The virtual private cloud is provided at no cost and data egress is not chargable, which depending on what you are building, could present a significant cost saving (though be way of the limits of the network). Building with open-source, multi-vendor and community-developed applications on an open platform means porting to another cloud is an option later on when services at the edge and secondary availability zones is probably going to make more sense anyway.&lt;/p></description></item></channel></rss>
