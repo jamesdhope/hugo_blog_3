@@ -8,7 +8,7 @@ design:
   spacing: '5rem'
 
 # Page sections
-sections:
+blocks:
   - block: collection
     content:
       title: Selected Projects
