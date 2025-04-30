@@ -1,0 +1,5 @@
+{{ if .Date }}
+  <time>{{ .Date.Format "2006-01-02" }}</time>
+{{ else }}
+  <time>No date available</time>
+{{ end }}
