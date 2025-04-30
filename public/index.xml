@@ -553,14 +553,6 @@ Approach to Climate Adaptation: Person A argues that climate change adaptation s
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>http://localhost:62896/projects/</link>
-      <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62896/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Sample Project</title>
       <link>http://localhost:62896/project/sample-project/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
@@ -1144,14 +1136,6 @@ Approach to Climate Adaptation: Person A argues that climate change adaptation s
 &lt;/p&gt;
 &lt;p&gt;Here I am using the LLM in an &lt;em&gt;assisted&lt;/em&gt; role, where a &lt;em&gt;code function prescribes logic&lt;/em&gt; that maps the prompt to a particular node. However, by tuning the LLM on interactions for each node type, the LLM may be used to drive the automation without the need for a code function to orchestrate individual interactions along the journey.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Experience</title>
-      <link>http://localhost:62896/experience/</link>
-      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62896/experience/</guid>
-      <description></description>
     </item>
     
     <item>
