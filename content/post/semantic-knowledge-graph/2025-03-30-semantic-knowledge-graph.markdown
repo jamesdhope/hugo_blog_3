@@ -7,7 +7,6 @@ tags:
     - clustering
     - semantics
 date: 2025-03-30
-draft: false
 ---
 
 Singular Value Decomposion (SVD) is a well known method for latent semantic analysis. When applied to BERT contextual embeddings SVD produces three components: U, Σ, and V. The eigenvectors in V represent distinct semantic patterns - each one captures a different aspect of meaning in the text. The eigenvalues in Σ tell us how significant each pattern is, effectively showing us what is semantically important and where the semantic "holes" are - the gaps in meaning that separate different semantic clusters. This elegant mathematical decomposition reveals the fundamental building blocks of meaning in text, creating a natural hierarchy of semantic patterns that can be analyzed through linear algebra and externalised a semantic knowledge graph.

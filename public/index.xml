@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>James Hope</title>
-    <link>http://localhost:53239/</link>
-      <atom:link href="http://localhost:53239/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:62896/</link>
+      <atom:link href="http://localhost:62896/index.xml" rel="self" type="application/rss+xml" />
     <description>James Hope</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 30 Apr 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:53239/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:62896/media/icon_hu_6b956feff6c8d004.png</url>
       <title>James Hope</title>
-      <link>http://localhost:53239/</link>
+      <link>http://localhost:62896/</link>
     </image>
     
     <item>
       <title>Example Talk</title>
-      <link>http://localhost:53239/event/example/</link>
+      <link>http://localhost:62896/event/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/event/example/</guid>
+      <guid>http://localhost:62896/event/example/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
@@ -35,9 +35,9 @@
     
     <item>
       <title>Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI</title>
-      <link>http://localhost:53239/post/porl-llm-guardrail/2025-04-29/</link>
+      <link>http://localhost:62896/post/porl-llm-guardrail/2025-04-29/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/porl-llm-guardrail/2025-04-29/</guid>
+      <guid>http://localhost:62896/post/porl-llm-guardrail/2025-04-29/</guid>
       <description>&lt;p&gt;Enterprise AI adoption is accelerating—but so are the risks. From ethical lapses to irrelevant outputs, traditional LLM pipelines struggle with alignment, especially when static rules or prompt engineering are the only lines of defense. What if your AI could &lt;em&gt;learn to stay on-topic, aligned with enterprise values, and semantically coherent—all while adapting over time&lt;/em&gt;?&lt;/p&gt;
 &lt;p&gt;That’s exactly what &lt;strong&gt;Policy-Oriented Reinforcement Learning (PORL) Guardrails&lt;/strong&gt; aim to solve.&lt;/p&gt;
 &lt;h2 id=&#34;why-a-new-approach&#34;&gt;Why a New Approach?&lt;/h2&gt;
@@ -111,9 +111,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning</title>
-      <link>http://localhost:53239/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link>
+      <link>http://localhost:62896/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid>
+      <guid>http://localhost:62896/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid>
       <description>&lt;p&gt;Singular Value Decomposion (SVD) is a well known method for latent semantic analysis. When applied to BERT contextual embeddings SVD produces three components: U, Σ, and V. The eigenvectors in V represent distinct semantic patterns - each one captures a different aspect of meaning in the text. The eigenvalues in Σ tell us how significant each pattern is, effectively showing us what is semantically important and where the semantic &amp;ldquo;holes&amp;rdquo; are - the gaps in meaning that separate different semantic clusters. This elegant mathematical decomposition reveals the fundamental building blocks of meaning in text, creating a natural hierarchy of semantic patterns that can be analyzed through linear algebra and externalised a semantic knowledge graph.&lt;/p&gt;
 &lt;p&gt;The advantage of this approach is that the semantic structure emerges naturally from these mathematical properties. We don&amp;rsquo;t need to artificially construct relationships between semantic components - they&amp;rsquo;re already encoded in the eigenvectors. By computing correlations between these eigenvectors, we can identify which semantic patterns are related and which are distinct, creating a natural semantic graph that represents genuine semantic relationships.&lt;/p&gt;
 &lt;p&gt;Specifically, the graph’s nodes and arcs can be derived from the components of SVD in the following way:&lt;/p&gt;
@@ -146,7 +146,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp 400w,
                /media/semantic_knowledge_graph_hu_887095986f836ead.webp 760w,
                /media/semantic_knowledge_graph_hu_47880e7a14bada31.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp&#34;
+               src=&#34;http://localhost:62896/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp&#34;
                width=&#34;755&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -158,9 +158,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>AI Generated Metadata Enrichments for Unstructured Data with IBM Spectrum Discover &amp; watsonx.ai</title>
-      <link>http://localhost:53239/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</link>
+      <link>http://localhost:62896/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</link>
       <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</guid>
+      <guid>http://localhost:62896/post/gen-ai-metadata-enrichments/2024-12-4-gen-ai-metadata-enrichments/</guid>
       <description>&lt;p&gt;Generative AI has high utility for generating metadata for both structured and unstructured data and is relevant in the storage domain where data discoverability drives the value of data across the enterprise including for downstream AI projects.&lt;/p&gt;
 &lt;p&gt;In a recent IBM Client Engineering project we extended IBM Fusion with the Spectrum Discover Fusion SDK to create a data pipeline for AI generated metadata. We created a metadata policy in IBM Fusion to filter images with missing metadata tags and published the image reference to a Kafka topic for the Spectrum Discover Application to consume. We used the watson machine learning SDK with a basic prompt to generate metadata tags associated with the image that catalogued in IBM Fusion. We integrated IBM Knowledge Catalog for enterprise wide data cataloging and watsonx.ai for querying and to enable downstream AI building.&lt;/p&gt;
 &lt;p&gt;We deployed the IBM Spectrum Discover Application to OpenShift for a highly scalable, high-throughput data pipeline.&lt;/p&gt;
@@ -187,7 +187,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/gen-ai-metadata-enrichments_hu_cf3ee9a752913dcc.webp 400w,
                /media/gen-ai-metadata-enrichments_hu_11b53461cae0d096.webp 760w,
                /media/gen-ai-metadata-enrichments_hu_bd1ef52e38ee9298.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/gen-ai-metadata-enrichments_hu_cf3ee9a752913dcc.webp&#34;
+               src=&#34;http://localhost:62896/media/gen-ai-metadata-enrichments_hu_cf3ee9a752913dcc.webp&#34;
                width=&#34;760&#34;
                height=&#34;482&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -216,7 +216,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/fusion_hu_93ba5dbaf1b82a42.webp 400w,
                /media/fusion_hu_80a58a801e7b3156.webp 760w,
                /media/fusion_hu_9de62adaf118a14c.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/fusion_hu_93ba5dbaf1b82a42.webp&#34;
+               src=&#34;http://localhost:62896/media/fusion_hu_93ba5dbaf1b82a42.webp&#34;
                width=&#34;760&#34;
                height=&#34;384&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -229,9 +229,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Operating AI at Scale with OpenShiftAI, KubeFlow Pipelines and watsonx</title>
-      <link>http://localhost:53239/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
+      <link>http://localhost:62896/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</link>
       <pubDate>Mon, 25 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
+      <guid>http://localhost:62896/post/operating-ai-at-scale/2024-11-25-operating-ai-at-scale/</guid>
       <description>&lt;p&gt;Operating AI across different clouds and execution engines becomes complex and difficult to maintain with cloud native tools as the number of different integrations between systems proliferates at scale. OpenShiftAI provides a cohesive hybrid, multi-cloud AI platform that enables enterprises to separate concerns between pipeline orchestration and workload execution reducing complexity in the data and governance subdomains and enabling enterprises to operate AI at scale.&lt;/p&gt;
 &lt;h3 id=&#34;functions-of-an-ai-operations-system&#34;&gt;Functions of an AI Operations System&lt;/h3&gt;
 &lt;p&gt;
@@ -256,7 +256,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/AIOps_1_hu_c5672f5c18ae659d.webp 400w,
                /media/AIOps_1_hu_bc1afd2648cb1d4d.webp 760w,
                /media/AIOps_1_hu_f4e5cd19a2b5f03b.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/AIOps_1_hu_c5672f5c18ae659d.webp&#34;
+               src=&#34;http://localhost:62896/media/AIOps_1_hu_c5672f5c18ae659d.webp&#34;
                width=&#34;760&#34;
                height=&#34;294&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -307,7 +307,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/AIOps_2_hu_b7c0426947db4dbc.webp 400w,
                /media/AIOps_2_hu_1cdd30a0962862f9.webp 760w,
                /media/AIOps_2_hu_f60222e1f4f27b5a.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/AIOps_2_hu_b7c0426947db4dbc.webp&#34;
+               src=&#34;http://localhost:62896/media/AIOps_2_hu_b7c0426947db4dbc.webp&#34;
                width=&#34;760&#34;
                height=&#34;453&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -319,9 +319,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Tool-Agents with the watsonx LangChain BaseChatModel</title>
-      <link>http://localhost:53239/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</link>
+      <link>http://localhost:62896/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</link>
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</guid>
+      <guid>http://localhost:62896/post/watsonx-langchain-tool-agent/2024-07-13-watsonx-langchain-tool-agent/</guid>
       <description>&lt;p&gt;The watsonx.ai BaseChatModel supports integration with LangChain for building LangChain Tool-Agents. The following code demonstrates use of the LangChain watsonx BaseChatModel to construct a Tool-Agent. The application logic follows: (1) a call to the language model to determine which tools to invoke; (2) the programmatic invocation of the selected tools (3) a final call to the watsonx language model with the response from the tools.&lt;/p&gt;
 &lt;p&gt;Tools may be any call out to an external API or service such as a database or embeddings store, and LangChain provides additional support for this.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;
@@ -393,9 +393,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Improving Language Models Inductive Bias with Q*</title>
-      <link>http://localhost:53239/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</link>
+      <link>http://localhost:62896/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</link>
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</guid>
+      <guid>http://localhost:62896/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</guid>
       <description>&lt;p&gt;Q*, a hybridisation of Q-learning and the pathfinding algorithm A*, has the potential to enhance the inductive bias of a language model in tasks that demand certain types of reasoning. An implementation of Q* is described here &lt;a href=&#34;https://lnkd.in/giMTvSQR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lnkd.in/giMTvSQR&lt;/a&gt; and implemented with a watsonx language model here &lt;a href=&#34;https://github.com/jamesdhope/q--deliberate-planning-watsonx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/jamesdhope/q--deliberate-planning-watsonx&lt;/a&gt; with the following parameters and adaptions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Trajectories are completed by an expert model with a terminal state that is determined by the expert.&lt;/li&gt;
@@ -423,10 +423,75 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     </item>
     
     <item>
+      <title>Joint Embeddings Predictor Architecture (JEPA) for agent-goal affinity / alignment in agent based ecosystems</title>
+      <link>http://localhost:62896/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</link>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:62896/post/jepa-agent-goal-alignment/2024-06-26-jepa-agent-goal-alignment/</guid>
+      <description>&lt;p&gt;JEPA (Joint Embeddings Predictive Architecture) has potential for aligning language-model based agents in an agent-based ecosystem. Whilst JEPA is primarily applied to image and video understanding tasks, it can be adapted for language tasks.&lt;/p&gt;
+&lt;p&gt;In this example, JEPA is used to learn the feature space of utterance of two personas (or agents) relating to climate change.&lt;/p&gt;
+&lt;h3 id=&#34;training-the-predictor&#34;&gt;Training the Predictor&lt;/h3&gt;
+&lt;p&gt;The JEPA model is trained to establish connections between sentences1 and sentences2. This training process involves optimizing the predictor&amp;rsquo;s weights to effectively capture and differentiate semantic similarities and differences between the two sets of sentences. The predictor, through its training, learns to output embeddings (joint1 and joint2) that encode the relationships between sentences1 and sentences2 based on their BERT embeddings.&lt;/p&gt;
+&lt;h3 id=&#34;mapping-predictor-weights&#34;&gt;Mapping Predictor Weights&lt;/h3&gt;
+&lt;p&gt;After training, the weights of the predictor are mapped back into the original sentence space. This mapping allows for the interpretation of how these learned weights influence the embeddings of sentences1 and sentences2. By examining these mapped weights, one can understand which aspects or dimensions of the original sentences contribute most significantly to the predictor&amp;rsquo;s decision-making process. This step is crucial for interpreting and visualizing the semantic relationships identified by the JEPA model in a meaningful way.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;features&#34; srcset=&#34;
+               /media/result_hu_7a88522d7c22ebbb.webp 400w,
+               /media/result_hu_4fb6003e6c35758d.webp 760w,
+               /media/result_hu_3f4946201ce9d355.webp 1200w&#34;
+               src=&#34;http://localhost:62896/media/result_hu_7a88522d7c22ebbb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;486&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;scenario&#34;&gt;Scenario:&lt;/h3&gt;
+&lt;h4 id=&#34;agent-a&#34;&gt;Agent A:&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;Climate change is significantly altering global weather patterns and ecosystems, causing widespread disruptions.&amp;rdquo; &amp;ldquo;Rising global temperatures are rapidly melting polar ice caps and glaciers, leading to alarming sea-level rise.&amp;rdquo; &amp;ldquo;Extreme weather events like hurricanes and heatwaves are becoming increasingly frequent and severe due to climate change.&amp;rdquo; &amp;ldquo;Governments worldwide are finally implementing robust policies to reduce greenhouse gas emissions, which is essential.&amp;rdquo; &amp;ldquo;Scientists overwhelmingly agree that human activities, especially burning fossil fuels, are the major contributors to climate change.&amp;rdquo; &amp;ldquo;Climate change mitigation efforts are critical and require international cooperation and binding agreements.&amp;rdquo; &amp;ldquo;Sea level rise poses a severe threat to coastal communities due to the impacts of climate change.&amp;rdquo; &amp;ldquo;Climate change adaptation strategies must include building resilient infrastructure to protect vulnerable populations.&amp;rdquo;&lt;/p&gt;
+&lt;h4 id=&#34;agent-b&#34;&gt;Agent B:&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;Climate change is altering global weather patterns and ecosystems, but the extent and causes are often exaggerated.&amp;rdquo; &amp;ldquo;While rising global temperatures are melting polar ice caps and glaciers, this process is not as rapid or catastrophic as some claim.&amp;rdquo; &amp;ldquo;Extreme weather events are becoming more frequent, but attributing them solely to climate change oversimplifies complex natural processes.&amp;rdquo; &amp;ldquo;Governments worldwide are implementing policies to reduce greenhouse gas emissions, but these measures are often economically burdensome.&amp;rdquo; &amp;ldquo;While many scientists agree on human contributions to climate change, the extent of this impact is still debated.&amp;rdquo; &amp;ldquo;Climate change mitigation efforts are necessary but should not compromise national sovereignty and economic growth.&amp;rdquo; &amp;ldquo;Sea level rise threatens coastal communities, but adaptive strategies and technological innovations can mitigate these risks effectively.&amp;rdquo; &amp;ldquo;Climate change adaptation strategies include building resilient infrastructure, but funding and priorities should be carefully managed.&amp;rdquo;&lt;/p&gt;
+&lt;h4 id=&#34;areas-of-agreement&#34;&gt;Areas of Agreement:&lt;/h4&gt;
+&lt;p&gt;Affordability of Renewable Energy Technologies: Both Person A and Person B agree that making renewable energy technologies affordable is crucial for their widespread adoption. They likely support initiatives that aim to reduce costs and increase accessibility to renewable energy sources.
+Impact on Low-Income Communities: They both recognize that low-income communities often suffer disproportionately from the impacts of climate change. This agreement suggests a shared concern for addressing environmental justice issues and ensuring these communities receive adequate support and resources.
+Economic Disparities and Access to Climate-Resilient Infrastructure: Person A and Person B acknowledge that economic disparities can hinder access to climate-resilient infrastructure and resources. They likely support policies and initiatives aimed at reducing these disparities to enhance resilience in vulnerable populations.
+Role of Carbon Pricing Mechanisms: They agree that carbon pricing mechanisms are important tools for incentivizing businesses to reduce emissions. This agreement implies support for market-based approaches to tackling climate change through economic incentives.
+Benefits of Energy-Efficient Housing: Both agree that energy-efficient housing not only reduces utility costs but also lowers carbon footprints. This shared perspective likely supports policies promoting energy efficiency standards in building codes and incentives for retrofitting existing buildings.
+Promotion of Renewable Energy Subsidies: They both see the value in subsidies that promote the adoption of clean energy technologies. This agreement suggests support for government intervention to accelerate the transition towards renewable energy sources.
+Role of Green Bonds: Person A and Person B recognize that green bonds play a role in funding projects that support climate resilience and sustainability. This agreement indicates support for innovative financial instruments that mobilize capital for climate-related initiatives.
+Importance of Public-Private Partnerships: They agree on the crucial role of public-private partnerships in financing climate adaptation projects. This shared perspective likely advocates for collaboration between governments, businesses, and non-profit organizations to address climate challenges effectively.&lt;/p&gt;
+&lt;h4 id=&#34;areas-of-disagreement&#34;&gt;Areas of Disagreement:&lt;/h4&gt;
+&lt;p&gt;Extent of Climate Change Impact: Person A believes climate change is significantly altering global weather patterns and ecosystems, causing widespread disruptions, while Person B thinks the extent and causes are often exaggerated.
+Rate of Polar Ice Melting: Person A states that rising global temperatures are rapidly melting polar ice caps and glaciers, leading to alarming sea-level rise, whereas Person B believes this process is not as rapid or catastrophic as claimed.
+Attribution of Extreme Weather Events: Person A attributes increasing frequency and severity of extreme weather events like hurricanes and heatwaves to climate change, whereas Person B thinks attributing them solely to climate change oversimplifies complex natural processes.
+Effectiveness of Government Policies: Person A asserts that governments worldwide are finally implementing robust policies to reduce greenhouse gas emissions, which is essential, whereas Person B believes these policies are often economically burdensome.
+Consensus on Human Contribution: Person A states that scientists overwhelmingly agree that human activities, especially burning fossil fuels, are major contributors to climate change, while Person B acknowledges human contribution but suggests the extent is still debated among scientists.
+International Cooperation on Mitigation: Person A believes climate change mitigation efforts are critical and require international cooperation and binding agreements, whereas Person B supports mitigation efforts but emphasizes they should not compromise national sovereignty and economic growth.
+Severity of Sea Level Rise: Person A emphasizes that sea level rise poses a severe threat to coastal communities due to climate change, whereas Person B acknowledges the threat but believes adaptive strategies can effectively mitigate risks.
+Approach to Climate Adaptation: Person A argues that climate change adaptation strategies must include building resilient infrastructure to protect vulnerable populations, while Person B agrees but suggests careful management of funding and priorities.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Maintaining Trustworthiness in Drift-Susceptible Agentic Systems and Cascading heterogeneous Agentic Architectures with Automated MLOps</title>
-      <link>http://localhost:53239/post/watson-mlops/2024-06-20-watson-mlops/</link>
+      <link>http://localhost:62896/post/watson-mlops/2024-06-20-watson-mlops/</link>
       <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/watson-mlops/2024-06-20-watson-mlops/</guid>
+      <guid>http://localhost:62896/post/watson-mlops/2024-06-20-watson-mlops/</guid>
       <description>&lt;p&gt;Whilst Monti Carlo Tree Search and Q* are promising approaches for aligning and guiding general purpose language models in a specialised domain, MLOps (or LLMOps) remains essential for maintaining models that are susceptible to drift. This is a particular concern in ecosystems where agents with smaller, specialised models and the environments they are deployed into are continously evolving, as these models are comparatively more susceptible to data drift than larger, general purpose models due to their relatively narrow training distribution. Additionally, in cascading heterogeneous agentic architectures out-of-distribution (OOD) inputs/outputs have the potential to propagate and proliferate from agent to agent.&lt;/p&gt;
 &lt;p&gt;The following diagram provides an approach to automate drift detection, model tuning, evaluation and deployment on the IBM watsonx platform. This approach can be extended across development environments to support many different model tuning and deployment strategies including adapter (LoRA) based models:&lt;/p&gt;
 &lt;p&gt;
@@ -451,7 +516,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/LLMOps_hu_c0c756650ad47328.webp 400w,
                /media/LLMOps_hu_52fb44e969c45807.webp 760w,
                /media/LLMOps_hu_b82af1b1fa5538ad.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/LLMOps_hu_c0c756650ad47328.webp&#34;
+               src=&#34;http://localhost:62896/media/LLMOps_hu_c0c756650ad47328.webp&#34;
                width=&#34;760&#34;
                height=&#34;396&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -489,26 +554,26 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Projects</title>
-      <link>http://localhost:53239/projects/</link>
+      <link>http://localhost:62896/projects/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/projects/</guid>
+      <guid>http://localhost:62896/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sample Project</title>
-      <link>http://localhost:53239/project/sample-project/</link>
+      <link>http://localhost:62896/project/sample-project/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/project/sample-project/</guid>
+      <guid>http://localhost:62896/project/sample-project/</guid>
       <description>&lt;p&gt;This is a sample project to test the setup.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Algorithmically optimising LM prompts with IBM watsonx models and DSPy</title>
-      <link>http://localhost:53239/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</link>
+      <link>http://localhost:62896/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</link>
       <pubDate>Sun, 07 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</guid>
+      <guid>http://localhost:62896/post/prompt-optimisation/2024-04-7-prompt-optimisation-dspy/</guid>
       <description>&lt;p&gt;A key challenge in language model applications is managing the dependency on language model prompts. Changes to the data pipeline, the model or the data requires prompts to be re-optimised. DSPy is a framework for algorithmically optimizing LM prompts and weights that separates the flow of a language model application from the parameters (LM prompts and weights) of each step and provides LM-driven algorithms that can tune the prompts and/or the weights of your LM calls, given a metric you want to maximize. DSPy introduces signatures (to abstract prompts), modules (to abstract prompting techniques), and optimizers that can tune the prompts (or weights) of modules.&lt;/p&gt;
 &lt;p&gt;Three examples provided by DSPy and Stanford NLP adapted for use with IBM watsonx.ai models and applications: &lt;a href=&#34;https://github.com/jamesdhope/dspy-watsonx/tree/main&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/jamesdhope/dspy-watsonx/tree/main&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -586,9 +651,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Programmable, semantically-matched guardrails with NVIDIA/NeMo-Guardrails and watsonx.ai</title>
-      <link>http://localhost:53239/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</link>
+      <link>http://localhost:62896/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</guid>
+      <guid>http://localhost:62896/post/nemo-watsonx-guardrails/2024-02-27-nemo-guardrails-watsonx/</guid>
       <description>&lt;p&gt;NeMo-Guardrails is an open-source toolkit that allows developers to add programmable guardrails semantically matched on utterances to LLM-based conversational applications. NeMo-Guardrails can be easily integrated with watsonx.ai models using LangChain&amp;rsquo;s WatsonxLLM Integration.&lt;/p&gt;
 &lt;h4 id=&#34;five-types-of-guardrails&#34;&gt;Five types of guardrails&lt;/h4&gt;
 &lt;p&gt;Ne-Mo Guardrails supports five types of guardrails:&lt;/p&gt;
@@ -631,7 +696,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/nemo_hu_afaeed8ccf628d94.webp 400w,
                /media/nemo_hu_2ea0780454e4d72a.webp 760w,
                /media/nemo_hu_94d62b103f830e7b.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/nemo_hu_afaeed8ccf628d94.webp&#34;
+               src=&#34;http://localhost:62896/media/nemo_hu_afaeed8ccf628d94.webp&#34;
                width=&#34;760&#34;
                height=&#34;388&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -763,9 +828,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Approaches that mitigate against language models misalignment including when semantic search alone is just good enough</title>
-      <link>http://localhost:53239/post/faq-llm/2024-02-20-faq-llm/</link>
+      <link>http://localhost:62896/post/faq-llm/2024-02-20-faq-llm/</link>
       <pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/faq-llm/2024-02-20-faq-llm/</guid>
+      <guid>http://localhost:62896/post/faq-llm/2024-02-20-faq-llm/</guid>
       <description>&lt;p&gt;A common use case for conversational assistants is generating conversational responses to questions users ask of some source information. A common pattern is to retrieve relevant context through semantic search and to pass that context to the language model in the prompt, aligning the language model around a contextualised response. This approach often involves injecting the user&amp;rsquo;s query into the prompt, which, without guardrails, might lead to generated output that is misaligned with policy or is undesirable in other ways.&lt;/p&gt;
 &lt;p&gt;The diagram below describes three distinctly different watsonx Action sequences to surface source information in response to questions, each achieving a different tradeoff between risk of misalignment and contextualisation of response. API calls via watsonx Assistant extensions are indicated by the octagons; Actions are marked in red; and responses to the user are marked in blue.&lt;/p&gt;
 &lt;p&gt;Pattern A: The user query is used to semantically match against question embeddings; the question is validated by the user and the response to that question is retrieved. This pattern works well if the questions are semantically rich and the source information is already conversational such that the introduction of a language for generation might have diminishing benefits. A variation of this pattern would be to semantically search for responses.&lt;/p&gt;
@@ -793,7 +858,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/faq_llm_hu_7b77d611e82c9e10.webp 400w,
                /media/faq_llm_hu_8a057b10690afe9b.webp 760w,
                /media/faq_llm_hu_db2e5557c9796450.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/faq_llm_hu_7b77d611e82c9e10.webp&#34;
+               src=&#34;http://localhost:62896/media/faq_llm_hu_7b77d611e82c9e10.webp&#34;
                width=&#34;760&#34;
                height=&#34;435&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -804,9 +869,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Reconstructing user context to reduce the risk of policy misaligned generated content in LLM enabled conversational assistants</title>
-      <link>http://localhost:53239/post/reconstructing-user-context/2024-02-17-language-model-assistants/</link>
+      <link>http://localhost:62896/post/reconstructing-user-context/2024-02-17-language-model-assistants/</link>
       <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/reconstructing-user-context/2024-02-17-language-model-assistants/</guid>
+      <guid>http://localhost:62896/post/reconstructing-user-context/2024-02-17-language-model-assistants/</guid>
       <description>&lt;p&gt;For conversatonal assistants, language models offer the potential benefit of being able to generate responses to the widest posisble range of queries that adhere to a policy, without the need for a premediated conversational design, which is inherently hard to design optimally for all queries. However, prompt engineering alone may not reduce the risk of the language model deviating from a policy to an acceptable level, particularly in the absence of comphrensive testing frameworks.&lt;/p&gt;
 &lt;p&gt;To reduce this risk, one approach is to extract known entities from natural language inputs and to use slot filling with explicit options for the user to confirm, in order for the user query and context to be reconstructed in the backend before it is passed to the language model. This approach mitigates the risk of queries and contexts being socially engineered to align the generated output in undesirable ways and reduces the scope of testing to optimise for permutations of determinstic inputs injected into the prompt.&lt;/p&gt;
 &lt;p&gt;The sequence diagram illustrates this approach with watsonx Assistant with these mechanisms for capturing and reconstructing user context labelled A and B:&lt;/p&gt;
@@ -832,7 +897,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/assistant-user-context_hu_69d53330c6e78270.webp 400w,
                /media/assistant-user-context_hu_d50b4b633915c92d.webp 760w,
                /media/assistant-user-context_hu_5f0cbe5364031ef4.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/assistant-user-context_hu_69d53330c6e78270.webp&#34;
+               src=&#34;http://localhost:62896/media/assistant-user-context_hu_69d53330c6e78270.webp&#34;
                width=&#34;760&#34;
                height=&#34;398&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -843,9 +908,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Governance of AI enabled services and applications with AI Guardrails and watsonx</title>
-      <link>http://localhost:53239/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</link>
+      <link>http://localhost:62896/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</link>
       <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</guid>
+      <guid>http://localhost:62896/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/</guid>
       <description>&lt;p&gt;Effective governance of enterprise services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs to and outputs from generative models. These models, which are called synchronously by the application and drive application logic and consumed via an API, abstracted away through an SDK or inferenced directly, must themselves be governed. These models too, must be explainable, monitored for drift (if neural) and for fairness.&lt;/p&gt;
 &lt;p&gt;AI Guardrails can be built and governed with the watsonx platform to provide a cohesive view of risk for applications and services:&lt;/p&gt;
 &lt;ul&gt;
@@ -877,7 +942,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/ai_guardrails1_hu_d50f163a8b7896c9.webp 400w,
                /media/ai_guardrails1_hu_2c23dd9cc61b9547.webp 760w,
                /media/ai_guardrails1_hu_e7ae8dfc618be7c.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/ai_guardrails1_hu_d50f163a8b7896c9.webp&#34;
+               src=&#34;http://localhost:62896/media/ai_guardrails1_hu_d50f163a8b7896c9.webp&#34;
                width=&#34;760&#34;
                height=&#34;555&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -906,7 +971,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/ai_guardrails2_hu_372c17564e7b90f7.webp 400w,
                /media/ai_guardrails2_hu_79b64e5d9cf242f1.webp 760w,
                /media/ai_guardrails2_hu_bf69be6ff2d46b9c.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/ai_guardrails2_hu_372c17564e7b90f7.webp&#34;
+               src=&#34;http://localhost:62896/media/ai_guardrails2_hu_372c17564e7b90f7.webp&#34;
                width=&#34;760&#34;
                height=&#34;295&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -917,9 +982,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Beyond declarative flows in virtual assistants with language models for single-turn and multi-turn reasoning</title>
-      <link>http://localhost:53239/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</link>
+      <link>http://localhost:62896/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</link>
       <pubDate>Wed, 06 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</guid>
+      <guid>http://localhost:62896/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/</guid>
       <description>&lt;p&gt;Building user journeys as declarative trees within a virtual assistant requires assumptions to be made about the user query and the optimal path. If there are many decision points and the tree consists of many forks the number of assumptions increases exponentially down the tree leading to inefficiencies and a suboptimal design. To address this inefficiency, one approach is to use a language model to reason over available tools (or APIs) that can be called to augment the response to the query. This collapses the tree and replaces it with a language model that can be guided through a policy or rules expressed in natural language and supplied to the model in a prompt.&lt;/p&gt;
 &lt;p&gt;The following diagram shows this interaction with IBM Watson Assistant which is used to orchestrate the call to the language model for reasoning, the tools (a statistical propensity model, a vectorstore and a prestoDB engine), and the language model to generate a final response.&lt;/p&gt;
 &lt;p&gt;
@@ -944,7 +1009,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/single-turn-reasoning_hu_b58fb94dca3e45e0.webp 400w,
                /media/single-turn-reasoning_hu_6fdcf579a8a7a0ac.webp 760w,
                /media/single-turn-reasoning_hu_ca51b306040eeffc.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/single-turn-reasoning_hu_b58fb94dca3e45e0.webp&#34;
+               src=&#34;http://localhost:62896/media/single-turn-reasoning_hu_b58fb94dca3e45e0.webp&#34;
                width=&#34;760&#34;
                height=&#34;351&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -956,9 +1021,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Supervised fine tuning of a large language model using quantized low rank adapters</title>
-      <link>http://localhost:53239/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</link>
+      <link>http://localhost:62896/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</link>
       <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</guid>
+      <guid>http://localhost:62896/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/</guid>
       <description>&lt;p&gt;Fine-tuning of a large language model (LLM) can be peformed using QLoRA (Quantized Low Rank Adapters) and PEFT (Parameter-Efficient Fine-Tuning) techniques.&lt;/p&gt;
 &lt;p&gt;PEFT (Parameter-Efficient Fine-Tuning):&lt;/p&gt;
 &lt;ul&gt;
@@ -981,9 +1046,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings</title>
-      <link>http://localhost:53239/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link>
+      <link>http://localhost:62896/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link>
       <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid>
+      <guid>http://localhost:62896/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid>
       <description>&lt;p&gt;Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp;amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more accessible and conveniently queried through an assistant&amp;rsquo;s natural language interface. Here I share an architecture that extends a conversational assistant with RAG, routing searches to collections mapped to a user and intent.&lt;/p&gt;
 &lt;p&gt;The key concept are:&lt;/p&gt;
 &lt;ul&gt;
@@ -1018,7 +1083,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/assistant-rag_hu_85ded7cce4c52d73.webp 400w,
                /media/assistant-rag_hu_4da408b1d0180b19.webp 760w,
                /media/assistant-rag_hu_9235471fa6988057.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/assistant-rag_hu_85ded7cce4c52d73.webp&#34;
+               src=&#34;http://localhost:62896/media/assistant-rag_hu_85ded7cce4c52d73.webp&#34;
                width=&#34;760&#34;
                height=&#34;312&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1039,9 +1104,9 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>An LLM assisted approach to automating testing of a virtual assistant</title>
-      <link>http://localhost:53239/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</link>
+      <link>http://localhost:62896/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</guid>
+      <guid>http://localhost:62896/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/</guid>
       <description>&lt;p&gt;Large Language Models (LLMs) can be used to automate testing of virtual assistants. One approach is to use the LLM to generate the queries and responses of the human user to automate the test of a journey, end to end. Here I share a conceptual data pipeline view of such a system. The key ideas are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;prompts&lt;/em&gt; are created to generate responses that fulfil the different types of interactions (sometimes called nodes) in the virtual assistant journeys&lt;/li&gt;
@@ -1071,7 +1136,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
                /media/assistant-test-pipeline-view_hu_4165004a62486f32.webp 400w,
                /media/assistant-test-pipeline-view_hu_852e1170cbc89b1.webp 760w,
                /media/assistant-test-pipeline-view_hu_20b075526254119b.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/assistant-test-pipeline-view_hu_4165004a62486f32.webp&#34;
+               src=&#34;http://localhost:62896/media/assistant-test-pipeline-view_hu_4165004a62486f32.webp&#34;
                width=&#34;760&#34;
                height=&#34;546&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1083,35 +1148,35 @@ Each episode samples multiple response paths (trajectories), gathering log proba
     
     <item>
       <title>Experience</title>
-      <link>http://localhost:53239/experience/</link>
+      <link>http://localhost:62896/experience/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/experience/</guid>
+      <guid>http://localhost:62896/experience/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Graph-Driven, LLM-Assisted Virtual Assistant Architecture</title>
-      <link>http://localhost:53239/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
+      <link>http://localhost:62896/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
+      <guid>http://localhost:62896/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
       <description>&lt;p&gt;View the post here: &lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34;&gt;&lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Gas System of the Future, Digital Twin</title>
-      <link>http://localhost:53239/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
+      <link>http://localhost:62896/post/gas-system-future/2022-12-02-gas-system-of-the-future/</link>
       <pubDate>Fri, 02 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
+      <guid>http://localhost:62896/post/gas-system-future/2022-12-02-gas-system-of-the-future/</guid>
       <description>&lt;p&gt;This article was published on Medium. Please click &lt;a target=&#34;_new&#34; href=&#34;https://jamesdhope.medium.com/gas-system-of-the-future-digital-twin-9e1622024462&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Injecting Config as Environment Variables from Hasicorp&#39;s Consul &amp; Vault</title>
-      <link>http://localhost:53239/post/vault-template/2021-11-19-vault-template-2/</link>
+      <link>http://localhost:62896/post/vault-template/2021-11-19-vault-template-2/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/vault-template/2021-11-19-vault-template-2/</guid>
+      <guid>http://localhost:62896/post/vault-template/2021-11-19-vault-template-2/</guid>
       <description>&lt;p&gt;Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp&amp;rsquo;s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV&amp;rsquo;s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV&amp;rsquo;s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault&amp;rsquo;s HTTP API. That is another approach which I&amp;rsquo;m not going to talk about here.&lt;/p&gt;
 &lt;p&gt;For the purposes of this explanation I&amp;rsquo;m supplying environment variables to an application called Hasura graphQL API. Config is held in Consul and Vault in their respective KV Engines.&lt;/p&gt;
 &lt;p&gt;
@@ -1132,7 +1197,7 @@ Each episode samples multiple response paths (trajectories), gathering log proba
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:53239/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:62896/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
@@ -1172,9 +1237,9 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
     
     <item>
       <title>Backup and Restore Neo4j in a Casual Cluster</title>
-      <link>http://localhost:53239/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
+      <link>http://localhost:62896/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
+      <guid>http://localhost:62896/post/neo4j-backup-restore/2021-11-11-neo4j-backup-restore/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There&amp;rsquo;s a Medium post by Neo4j&amp;rsquo;s David Allen to explain what that configuration looks like &lt;a target=&#34;_new&#34; href=&#34;https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4&#34;&gt;here&lt;/a&gt;. Unfortunately Neo4j doesn&amp;rsquo;t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.&lt;/p&gt;
 &lt;p&gt;
 
@@ -1194,7 +1259,7 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:53239/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;http://localhost:62896/assets/images/containers.jpg&#34; alt=&#34;GitHub Logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.pexels.com/&lt;/a&gt;&lt;/p&gt;
@@ -1298,9 +1363,9 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
     
     <item>
       <title>Top 10 architectural highlights for Digital Ocean Kubernetes</title>
-      <link>http://localhost:53239/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link>
+      <link>http://localhost:62896/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</link>
       <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid>
+      <guid>http://localhost:62896/post/k8-digital-ocean/2021-10-27-kubernetes-digital-ocean/</guid>
       <description>&lt;p&gt;Recently I&amp;rsquo;ve been developing a solution architecture for a boostrapped startup in Digital Ocean&amp;rsquo;s Kubernetes. Developing an understanding of the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning has happened, the solution and its architecture has evolved to enable numerous product iterations, building out only what has been necessary at each stage. The domain driven approach to development led to a server based query gateway and so what unfolded was containerised microservcies architecture orchestrated by Kubernetes. Here are my top 10 highlights from building in Digital Ocean Kubernetes:&lt;/p&gt;
 &lt;p&gt;
 
@@ -1324,7 +1389,7 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
                /media/containers_hu_41635e86357e0d1e.webp 400w,
                /media/containers_hu_ebc5a8f747410369.webp 760w,
                /media/containers_hu_f1c356d583aefb94.webp 1200w&#34;
-               src=&#34;http://localhost:53239/media/containers_hu_41635e86357e0d1e.webp&#34;
+               src=&#34;http://localhost:62896/media/containers_hu_41635e86357e0d1e.webp&#34;
                width=&#34;760&#34;
                height=&#34;512&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1356,45 +1421,45 @@ Source: &lt;a href=&#34;https://www.pexels.com/&#34; target=&#34;_blank&#34; rel
     
     <item>
       <title>A New Era for People Analytics</title>
-      <link>http://localhost:53239/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
+      <link>http://localhost:62896/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
+      <guid>http://localhost:62896/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/the-dawn-of-a-new-era-for-people-analytics-9a748f7fdc2&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Can your People Analytics do this?</title>
-      <link>http://localhost:53239/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
+      <link>http://localhost:62896/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
+      <guid>http://localhost:62896/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/can-your-people-analytics-do-this-739afa714f1a&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Build a Machine Learning Recommender</title>
-      <link>http://localhost:53239/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
+      <link>http://localhost:62896/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
       <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
+      <guid>http://localhost:62896/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-a-machine-learning-recommender-72be2a8f96ed&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Build your own Blockchain Protocol</title>
-      <link>http://localhost:53239/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
+      <link>http://localhost:62896/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
+      <guid>http://localhost:62896/post/blockchain/2019-07-2-build-your-own-blockchain-protocol/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-your-own-blockchain-protocol-for-a-distributed-ledger-54e0a92e1f10&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm to find &#39;Stable Groups&#39;</title>
-      <link>http://localhost:53239/post/stable-groups/2018-05-18-stablegroups/</link>
+      <link>http://localhost:62896/post/stable-groups/2018-05-18-stablegroups/</link>
       <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/stable-groups/2018-05-18-stablegroups/</guid>
+      <guid>http://localhost:62896/post/stable-groups/2018-05-18-stablegroups/</guid>
       <description>&lt;p&gt;In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.&lt;/p&gt;
 &lt;h1&gt;Basic Software Architecture&lt;/h1&gt;
 &lt;p&gt;We will make use of my implementation of the Stable Marriage Algorithm. As before, we will need class objects for holding the proposer and acceptor preferences, as well as the list of engagements (or pairs). Additionally, we will need a class object to hold the list of pairs for iteration of the algorithm. We will call this the Pools Class and it will hold Pool Class Objects (or the pairs found at each level).&lt;/p&gt;
@@ -2065,9 +2130,9 @@ length of groups 3&lt;/p&gt;
     
     <item>
       <title>Implementation of the Stable Marriage Algorithm.</title>
-      <link>http://localhost:53239/post/stable-marriage/2018-04-12-stable-marriage/</link>
+      <link>http://localhost:62896/post/stable-marriage/2018-04-12-stable-marriage/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/stable-marriage/2018-04-12-stable-marriage/</guid>
+      <guid>http://localhost:62896/post/stable-marriage/2018-04-12-stable-marriage/</guid>
       <description>&lt;p&gt;Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might arise, for example, in pairing up co-workers for a task or pairing up students for an activity.&lt;/p&gt;
 &lt;p&gt;If each student were to (1) list out their peers they would &amp;lsquo;propose&amp;rsquo; to work with (in order of preference), and (2) list out their peers in order of who they would &amp;lsquo;accept&amp;rsquo; proposals from (also in order of preference) the Stable Marriage Algorithm would allow us to find a solution such that it would not be preferable for any two students to swap partners - in other words that the matching found by the algorithm is said to be &amp;lsquo;stable&amp;rsquo;.&lt;/p&gt;
 &lt;p&gt;Consider that four students list out who they would like to work with as follows. Let&amp;rsquo;s call this the Proposers Table.&lt;/p&gt;
@@ -2303,9 +2368,9 @@ ENGAGEMENTS: [1. 4. 3. 2.]&lt;/p&gt;
     
     <item>
       <title>Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction</title>
-      <link>http://localhost:53239/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
+      <link>http://localhost:62896/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
       <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:53239/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
+      <guid>http://localhost:62896/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
       <description>&lt;p&gt;&amp;ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;For a full description of the competition, datasets, evaluation, prizes visit &lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/c/zillow-prize-1&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;My first competition entry, a stacked ensemble of regressors for this competition is available here: &lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&lt;/a&gt;&lt;a/&gt;&lt;/p&gt;
