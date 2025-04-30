@@ -1,5 +1,5 @@
 ---
-title:  "Semantic Graph, Policy-Oriented Reinforcement Learning for Enterprise AI"
+title:  "Graph-Oriented Reinforcement Learning (GORL) for Enterprise AI"
 categories: 
     - AI
     - LLMs
@@ -13,7 +13,7 @@ date: 2025-04-29
 
 The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications.
 
-What if your AI could learn not only to stay on-topic but to align its responses with an enterprise-specific semantic graph, all while adapting over time? That’s where **Semantic Graph Policy Oriented Reinforcement Learning** (SGPORL) comes in.
+What if your AI could learn not only to stay on-topic but to align its responses with an enterprise-specific semantic graph, all while adapting over time? That’s where **Graph Oriented Reinforcement Learning** (SGPORL) comes in.
 
 ## Why a New Approach?
 
@@ -63,7 +63,7 @@ Imagine your enterprise wants to deploy an AI-powered knowledge assistant that:
 - Avoids irrelevant or off-topic content, ensuring it only generates high-quality, domain-specific responses.
 - Generates coherent and logically consistent outputs.
 
-Using **Semantic Policy RL**, the assistant is trained to continuously reinforce responses that align with your company’s values and topics. Over time, it will self-correct and improve, without needing manual tweaks or endless prompt rules.
+Using **Graph Oriented Reinforcement Learning**, the assistant is trained to continuously reinforce responses that align with your company’s values and topics. Over time, it will self-correct and improve, without needing manual tweaks or endless prompt rules.
 
 ## Codebase Overview
 
@@ -79,7 +79,7 @@ reward = 0.7 * topic_relevance + 0.3 * coherence
 
 ## Final Thoughts
 
-The goal of Semantic Policy Reinforcement Learning is not to build the smartest model, but to build the right model for your enterprise context. In regulated or high-stakes environments, the ability to control and interpret AI behavior is just as important as its fluency.
+The goal of Graph Oriented Reinforcement Learning is not to build the smartest model, but to build the right model for your enterprise context. In regulated or high-stakes environments, the ability to control and interpret AI behavior is just as important as its fluency.
 
 With this approach, enterprises can ensure their AI systems remain on-topic, aligned with company values, and capable of self-improvement over time, all while avoiding the complexity of traditional guardrails.
 
