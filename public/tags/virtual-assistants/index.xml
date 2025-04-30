@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Virtual Assistants | James Hope</title>
-    <link>http://localhost:64705/tags/virtual-assistants/</link>
-      <atom:link href="http://localhost:64705/tags/virtual-assistants/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:51093/tags/virtual-assistants/</link>
+      <atom:link href="http://localhost:51093/tags/virtual-assistants/index.xml" rel="self" type="application/rss+xml" />
     <description>Virtual Assistants</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:64705/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:51093/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Virtual Assistants</title>
-      <link>http://localhost:64705/tags/virtual-assistants/</link>
+      <link>http://localhost:51093/tags/virtual-assistants/</link>
     </image>
     
     <item>
       <title>Graph-Driven, LLM-Assisted Virtual Assistant Architecture</title>
-      <link>http://localhost:64705/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
+      <link>http://localhost:51093/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:64705/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
+      <guid>http://localhost:51093/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
       <description>&lt;p&gt;View the post here: &lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34;&gt;&lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

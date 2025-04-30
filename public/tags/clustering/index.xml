@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clustering | James Hope</title>
-    <link>http://localhost:64705/tags/clustering/</link>
-      <atom:link href="http://localhost:64705/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:51093/tags/clustering/</link>
+      <atom:link href="http://localhost:51093/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
     <description>Clustering</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:64705/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:51093/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Clustering</title>
-      <link>http://localhost:64705/tags/clustering/</link>
+      <link>http://localhost:51093/tags/clustering/</link>
     </image>
     
     <item>
       <title>SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning</title>
-      <link>http://localhost:64705/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link>
+      <link>http://localhost:51093/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:64705/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid>
+      <guid>http://localhost:51093/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/</guid>
       <description>&lt;p&gt;Singular Value Decomposion (SVD) is a well known method for latent semantic analysis. When applied to BERT contextual embeddings SVD produces three components: U, Σ, and V. The eigenvectors in V represent distinct semantic patterns - each one captures a different aspect of meaning in the text. The eigenvalues in Σ tell us how significant each pattern is, effectively showing us what is semantically important and where the semantic &amp;ldquo;holes&amp;rdquo; are - the gaps in meaning that separate different semantic clusters. This elegant mathematical decomposition reveals the fundamental building blocks of meaning in text, creating a natural hierarchy of semantic patterns that can be analyzed through linear algebra and externalised a semantic knowledge graph.&lt;/p&gt;
 &lt;p&gt;The advantage of this approach is that the semantic structure emerges naturally from these mathematical properties. We don&amp;rsquo;t need to artificially construct relationships between semantic components - they&amp;rsquo;re already encoded in the eigenvectors. By computing correlations between these eigenvectors, we can identify which semantic patterns are related and which are distinct, creating a natural semantic graph that represents genuine semantic relationships.&lt;/p&gt;
 &lt;p&gt;Specifically, the graph’s nodes and arcs can be derived from the components of SVD in the following way:&lt;/p&gt;
@@ -49,7 +49,7 @@
                /media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp 400w,
                /media/semantic_knowledge_graph_hu_887095986f836ead.webp 760w,
                /media/semantic_knowledge_graph_hu_47880e7a14bada31.webp 1200w&#34;
-               src=&#34;http://localhost:64705/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp&#34;
+               src=&#34;http://localhost:51093/media/semantic_knowledge_graph_hu_7f4fcab0ced35314.webp&#34;
                width=&#34;755&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
