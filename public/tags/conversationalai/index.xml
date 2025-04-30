@@ -1,35 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ConversationalAI | James Hope</title><link>https://jamesdhope.com/tags/conversationalai/</link><atom:link href="https://jamesdhope.com/tags/conversationalai/index.xml" rel="self" type="application/rss+xml"/><description>ConversationalAI</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0000</lastBuildDate><image><url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url><title>ConversationalAI</title><link>https://jamesdhope.com/tags/conversationalai/</link></image><item><title>Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings</title><link>https://jamesdhope.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link><pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid><description>&lt;p>Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp;amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more accessible and conveniently queried through an assistant&amp;rsquo;s natural language interface. Here I share an architecture that extends a conversational assistant with RAG, routing searches to collections mapped to a user and intent.&lt;/p>
-&lt;p>The key concept are:&lt;/p>
-&lt;ul>
-&lt;li>a data pipeline is run that chunks and embeds policies, guidelines, handbooks and other &lt;em>source information&lt;/em> as collections in the vectorstore. Collections may be specific to a user, group of users or all users&lt;/li>
-&lt;li>a map is created for the RAG router to associate &lt;em>user context&lt;/em> and &lt;em>intent&lt;/em> with one or more collections&lt;/li>
-&lt;/ul>
-&lt;p>When RAG is invoked from the assistant:&lt;/p>
-&lt;ul>
-&lt;li>the assistant calls the RAG router passing the &lt;em>user context&lt;/em> and &lt;em>intent&lt;/em>&lt;/li>
-&lt;li>the RAG router maps the &lt;em>user context&lt;/em> and &lt;em>intent&lt;/em> to one or more (vectorised and embedded) collections&lt;/li>
-&lt;li>the RAG router (1) retrieves semantically similar chunks to the user query from the mapped collections (2) injects results into the prompt (3) generates a response to the user query using the prompt (i.e. executes RAG or some variation of)&lt;/li>
-&lt;/ul>
-&lt;p>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img alt="GitHub Logo" srcset="
-/media/assistant-rag_hu_85ded7cce4c52d73.webp 400w,
-/media/assistant-rag_hu_4da408b1d0180b19.webp 760w,
-/media/assistant-rag_hu_9235471fa6988057.webp 1200w"
-src="https://jamesdhope.com/media/assistant-rag_hu_85ded7cce4c52d73.webp"
-width="760"
-height="312"
-loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;p>Variations of and extensions to this architecture:&lt;/p>
-&lt;ul>
-&lt;li>placing RAG execution logic within the assistant for higher coupling, lower cohesion trade-off of components executing RAG logic&lt;/li>
-&lt;li>extending data pipelines to read and embed &lt;em>structured&lt;/em> data (e.g. via the watsonx.ai lakehouse prestoDB engine)&lt;/li>
-&lt;li>introducing a pipeline orchestrator such as Watson Pipelines to maintain embeddings according to data validity requirements&lt;/li>
-&lt;li>variations on RAG such a post retrieval ranking&lt;/li>
-&lt;li>variations on chunking such as overlap&lt;/li>
-&lt;li>indexing to optimise search, see &lt;a href="https://milvus.io/docs/build_index.md" target="_blank" rel="noopener">https://milvus.io/docs/build_index.md&lt;/a>&lt;/li>
-&lt;li>variations on searching, see: &lt;a href="https://milvus.io/docs/search.md" target="_blank" rel="noopener">https://milvus.io/docs/search.md&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ConversationalAI | James Hope</title>
+    <link>http://localhost:53239/tags/conversationalai/</link>
+      <atom:link href="http://localhost:53239/tags/conversationalai/index.xml" rel="self" type="application/rss+xml" />
+    <description>ConversationalAI</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:53239/media/icon_hu_6b956feff6c8d004.png</url>
+      <title>ConversationalAI</title>
+      <link>http://localhost:53239/tags/conversationalai/</link>
+    </image>
+    
+    <item>
+      <title>Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings</title>
+      <link>http://localhost:53239/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link>
+      <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:53239/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid>
+      <description>&lt;p&gt;Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp;amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more accessible and conveniently queried through an assistant&amp;rsquo;s natural language interface. Here I share an architecture that extends a conversational assistant with RAG, routing searches to collections mapped to a user and intent.&lt;/p&gt;
+&lt;p&gt;The key concept are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a data pipeline is run that chunks and embeds policies, guidelines, handbooks and other &lt;em&gt;source information&lt;/em&gt; as collections in the vectorstore. Collections may be specific to a user, group of users or all users&lt;/li&gt;
+&lt;li&gt;a map is created for the RAG router to associate &lt;em&gt;user context&lt;/em&gt; and &lt;em&gt;intent&lt;/em&gt; with one or more collections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When RAG is invoked from the assistant:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the assistant calls the RAG router passing the &lt;em&gt;user context&lt;/em&gt; and &lt;em&gt;intent&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;the RAG router maps the &lt;em&gt;user context&lt;/em&gt; and &lt;em&gt;intent&lt;/em&gt; to one or more (vectorised and embedded) collections&lt;/li&gt;
+&lt;li&gt;the RAG router (1) retrieves semantically similar chunks to the user query from the mapped collections (2) injects results into the prompt (3) generates a response to the user query using the prompt (i.e. executes RAG or some variation of)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;GitHub Logo&#34; srcset=&#34;
+               /media/assistant-rag_hu_85ded7cce4c52d73.webp 400w,
+               /media/assistant-rag_hu_4da408b1d0180b19.webp 760w,
+               /media/assistant-rag_hu_9235471fa6988057.webp 1200w&#34;
+               src=&#34;http://localhost:53239/media/assistant-rag_hu_85ded7cce4c52d73.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;312&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Variations of and extensions to this architecture:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;placing RAG execution logic within the assistant for higher coupling, lower cohesion trade-off of components executing RAG logic&lt;/li&gt;
+&lt;li&gt;extending data pipelines to read and embed &lt;em&gt;structured&lt;/em&gt; data (e.g. via the watsonx.ai lakehouse prestoDB engine)&lt;/li&gt;
+&lt;li&gt;introducing a pipeline orchestrator such as Watson Pipelines to maintain embeddings according to data validity requirements&lt;/li&gt;
+&lt;li&gt;variations on RAG such a post retrieval ranking&lt;/li&gt;
+&lt;li&gt;variations on chunking such as overlap&lt;/li&gt;
+&lt;li&gt;indexing to optimise search, see &lt;a href=&#34;https://milvus.io/docs/build_index.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://milvus.io/docs/build_index.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;variations on searching, see: &lt;a href=&#34;https://milvus.io/docs/search.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://milvus.io/docs/search.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

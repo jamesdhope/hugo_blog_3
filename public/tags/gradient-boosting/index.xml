@@ -1,312 +1,431 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gradient Boosting | James Hope</title><link>https://jamesdhope.com/tags/gradient-boosting/</link><atom:link href="https://jamesdhope.com/tags/gradient-boosting/index.xml" rel="self" type="application/rss+xml"/><description>Gradient Boosting</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2017 00:00:00 +0000</lastBuildDate><image><url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url><title>Gradient Boosting</title><link>https://jamesdhope.com/tags/gradient-boosting/</link></image><item><title>Zillow's Zestimate, and my ensemble of regressors for highly featured data prediction</title><link>https://jamesdhope.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link><pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate><guid>https://jamesdhope.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid><description>&lt;p>&amp;ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&amp;rdquo;&lt;/p>
-&lt;p>For a full description of the competition, datasets, evaluation, prizes visit &lt;a href="https://www.kaggle.com/c/zillow-prize-1" target="_blank">&lt;a href="https://www.kaggle.com/c/zillow-prize-1" target="_blank" rel="noopener">https://www.kaggle.com/c/zillow-prize-1&lt;/a>&lt;/a>&lt;/p>
-&lt;p>My first competition entry, a stacked ensemble of regressors for this competition is available here: &lt;a href="https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065" target="_blank">&lt;a href="https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065" target="_blank" rel="noopener">https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&lt;/a>&lt;a/>&lt;/p>
-&lt;p>&lt;b>Short summary&lt;/b>. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble and is used to make final predictions on a set of circa 3 million houses, each with 23 features, for 6 points in time (that&amp;rsquo;s 12 million predictions!).&lt;/p>
-&lt;p>Whilst there is room for improvement in preprocessing, including optimising strategies for overcoming missing data (for which there is a lot!), and determining the hyperparameters that lead to an optimal model, this machine learning model is easily adapted for making predictions on featured data in any context.&lt;/p>
-&lt;p>&lt;b>Now walking through the code in some more detail&amp;hellip;&lt;/b>. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble. So we start out by importing the libraries we will need.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Load in our libraries&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">pandas&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">pd&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">numpy&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">np&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">sklearn&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">xgboost&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">xgb&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">seaborn&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">sns&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">matplotlib&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pyplot&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">plt&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">matplotlib&lt;/span> &lt;span class="n">inline&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">plotly&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">offline&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">py&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">py&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">init_notebook_mode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">connected&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">True&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">plotly&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">graph_objs&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">go&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span> &lt;span class="n">plotly&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">tools&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">tls&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Going to use these 5 base models for the stacking&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">from&lt;/span> &lt;span class="n">sklearn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ensemble&lt;/span> &lt;span class="n">import&lt;/span> &lt;span class="n">RandomForestRegressor&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">AdaBoostRegressor&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ExtraTreesRegressor&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">GradientBoostingRegressor&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">from&lt;/span> &lt;span class="n">sklearn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">svm&lt;/span> &lt;span class="n">import&lt;/span> &lt;span class="n">LinearSVR&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">from&lt;/span> &lt;span class="n">sklearn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cross_validation&lt;/span> &lt;span class="n">import&lt;/span> &lt;span class="n">KFold&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We also need to load in the training and test datasets that Zillow has provided us.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">train = pd.read_csv(&amp;#39;../input/properties_2016.csv&amp;#39;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train_label = pd.read_csv(&amp;#39;../input/train_2016_v2.csv&amp;#39;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ParcelID = train[&amp;#39;parcelid&amp;#39;]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, we will OneHotEncode some of the features. For some features, it makes sense to assume that missing data means a missing feature, so we can map Nan values to 0.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># OneHotEncoding
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;has_basement&amp;#39;] = train[&amp;#34;basementsqft&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;hashottuborspa&amp;#39;] = train[&amp;#34;hashottuborspa&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;has_pool&amp;#39;] = train[&amp;#34;poolcnt&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;has_airconditioning&amp;#39;] = train[&amp;#34;airconditioningtypeid&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are some columns which appear to need consolidating into a single feature.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># Columns to be consolidated
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;yardbuildingsqft17&amp;#39;] = train[&amp;#39;yardbuildingsqft17&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;yardbuildingsqft26&amp;#39;] = train[&amp;#39;yardbuildingsqft26&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;yard_building_square_feet&amp;#39;] = train[&amp;#39;yardbuildingsqft17&amp;#39;].astype(int) + train[&amp;#39;yardbuildingsqft26&amp;#39;].astype(float)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>And we can also assume some more friendly feature names.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;fireplacecnt&amp;#39;:&amp;#39;fireplace_count&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;bedroomcnt&amp;#39;:&amp;#39;bedroom_count&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;bathroomcnt&amp;#39;:&amp;#39;bathroom_count&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;calculatedfinishedsquarefeet&amp;#39;:&amp;#39;square_feet&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;garagecarcnt&amp;#39;:&amp;#39;garage_car_count&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;garagetotalsqft&amp;#39;:&amp;#39;garage_square_feet&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;hashottuborspa&amp;#39;:&amp;#39;has_hottub_or_spa&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;landtaxvaluedollarcnt&amp;#39;:&amp;#39;land_tax&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;lotsizesquarefeet&amp;#39;:&amp;#39;lot_size_square_feet&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;taxvaluedollarcnt&amp;#39;:&amp;#39;tax_value&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;taxamount&amp;#39;:&amp;#39;tax_amount&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;structuretaxvaluedollarcnt&amp;#39;:&amp;#39;structure_tax_value&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;yearbuilt&amp;#39;:&amp;#39;year_built&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train.rename(columns={&amp;#39;roomcnt&amp;#39;:&amp;#39;room_count&amp;#39;}, inplace=True)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We also need to impute values for missing features. We can impute the median feature value across most features as a starting point.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># Impute zero for NaN for these features
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;fireplace_count&amp;#39;] = train[&amp;#39;fireplace_count&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Impute median value for NaN for these features
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;bathroom_count&amp;#39;] = train[&amp;#39;bathroom_count&amp;#39;].fillna(train[&amp;#39;bathroom_count&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;bedroom_count&amp;#39;] = train[&amp;#39;bedroom_count&amp;#39;].fillna(train[&amp;#39;bedroom_count&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;room_count&amp;#39;] = train[&amp;#39;room_count&amp;#39;].fillna(train[&amp;#39;room_count&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;tax_amount&amp;#39;] = train[&amp;#39;tax_amount&amp;#39;].fillna(train[&amp;#39;tax_amount&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;land_tax&amp;#39;] = train[&amp;#39;land_tax&amp;#39;].fillna(train[&amp;#39;land_tax&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;tax_value&amp;#39;] = train[&amp;#39;tax_value&amp;#39;].fillna(train[&amp;#39;tax_value&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;structure_tax_value&amp;#39;] = train[&amp;#39;structure_tax_value&amp;#39;].fillna(train[&amp;#39;structure_tax_value&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;garage_square_feet&amp;#39;] = train[&amp;#39;garage_square_feet&amp;#39;].fillna(train[&amp;#39;garage_square_feet&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;garage_car_count&amp;#39;] = train[&amp;#39;garage_car_count&amp;#39;].fillna(train[&amp;#39;garage_car_count&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;fireplace_count&amp;#39;] = train[&amp;#39;fireplace_count&amp;#39;].fillna(train[&amp;#39;fireplace_count&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;square_feet&amp;#39;] = train[&amp;#39;square_feet&amp;#39;].fillna(train[&amp;#39;square_feet&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;year_built&amp;#39;] = train[&amp;#39;year_built&amp;#39;].fillna(train[&amp;#39;year_built&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;lot_size_square_feet&amp;#39;] = train[&amp;#39;lot_size_square_feet&amp;#39;].fillna(train[&amp;#39;lot_size_square_feet&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;longitude&amp;#39;] = train[&amp;#39;longitude&amp;#39;].fillna(train[&amp;#39;longitude&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">train[&amp;#39;latitude&amp;#39;] = train[&amp;#39;latitude&amp;#39;].fillna(train[&amp;#39;latitude&amp;#39;].median()).astype(float)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now on to Feature Selection. We will drop features where the volume of missing data exceeds a certain threshold. These features were not considered for imputation above.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Drop indistinct features&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;assessmentyear&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Drop any columns insufficiently described&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">drop_elements&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;airconditioningtypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;basementsqft&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;architecturalstyletypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;buildingclasstypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;buildingqualitytypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;calculatedbathnbr&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;decktypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedfloor1squarefeet&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;fips&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;heatingorsystemtypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;rawcensustractandblock&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;numberofstories&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;storytypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;threequarterbathnbr&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;typeconstructiontypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;unitcnt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;censustractandblock&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;fireplaceflag&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;taxdelinquencyflag&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;taxdelinquencyyear&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Drop any duplicated columns&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">drop_elements&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;fullbathcnt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedsquarefeet6&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedsquarefeet12&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedsquarefeet13&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedsquarefeet15&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;finishedsquarefeet50&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;yardbuildingsqft17&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;yardbuildingsqft26&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Land use data&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">drop_elements&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;propertycountylandusecode&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;propertylandusetypeid&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;propertyzoningdesc&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># We&amp;#39;ll make do with a binary feature here&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">drop_elements&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;pooltypeid10&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;pooltypeid2&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;pooltypeid7&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;poolsizesum&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;poolcnt&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># We&amp;#39;ll use the longitude and latitutde as features &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">drop_elements&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">drop_elements&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;regionidzip&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;regionidneighborhood&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;regionidcity&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;regionidcounty&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">train&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">train&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">drop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">drop_elements&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">axis&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can now correlate the features using the Seaborn library Pearson&amp;rsquo;s Correlation. This is ideal for helping with feature reduction as ideally we want as fewer features as possible for regression. We might consider removing some more features here with a high correlation.&lt;/p>
-&lt;p>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="pearson.jpg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;p>It&amp;rsquo;s also a good idea to scale the data at this point. I&amp;rsquo;ve left this out for brevity but you can refer to the full code if you are unsure how to do this.&lt;/p>
-&lt;p>Now a little preparation before we build our models. We&amp;rsquo;ll create an object called SklearnHelper that will extend the inbuilt methods (such as train, predict and fit) common to all the Sklearn classifiers. This cuts out redundancy as won&amp;rsquo;t need to write the same methods five times if we wanted to invoke five different classifiers.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># Class to extend the Sklearn classifier
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">class SklearnHelper(object):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def __init__(self, clf, seed=0, params=None):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> params[&amp;#39;random_state&amp;#39;] = seed
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> self.clf = clf(**params)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def train(self, x_train, y_train):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> self.clf.fit(x_train, y_train)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def predict(self, x):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return self.clf.predict(x)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def fit(self,x,y):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return self.clf.fit(x,y)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def feature_importances(self,x,y):
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return(self.clf.fit(x,y).feature_importances_)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We&amp;rsquo;ll also define a function for Cross Validation. This deserves a little explanation. The function will be passed the model, the training set and the test set (for all six time periods). It will make kf=5 folds of the training data, train the model on each fold and make predictions for each time period using this model. It will then take an average of the predicted scores across the five folds for each time period.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">get_oof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">clf&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_train&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y_train&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201610&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201611&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201612&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201710&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201711&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x_test_201712&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_train&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntrain&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201610&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201611&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201612&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201710&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201711&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201712&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">zeros&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ntest&lt;/span>&lt;span class="p">,))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201610&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201611&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201612&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201710&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201711&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201712&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">NFOLDS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ntest&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#train_index: indicies of training set&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#test_index: indicies of testing set&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">train_index&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">test_index&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">enumerate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">kf&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#break the dataset down into two sets, train and test&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x_tr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x_train&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">train_index&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y_tr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y_train&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">train_index&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x_te&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x_train&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">test_index&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">train&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_tr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y_tr&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#make a predition on the test data subset&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_train&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">test_index&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_te&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#use the model trained on the first fold to make a prediction on the entire test data &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201610&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201610&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201611&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201611&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201612&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201612&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201710&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201710&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201711&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201711&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_skf_201712&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">clf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">predict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x_test_201712&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#take an average of all of the folds&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201610&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201610&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201611&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201611&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201612&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201612&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201710&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201710&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201711&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201711&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">oof_test_201712&lt;/span>&lt;span class="p">[:]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">oof_test_skf_201712&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">oof_train&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201610&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201611&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201612&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201710&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201711&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">oof_test_201712&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">reshape&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next we&amp;rsquo;ll create a Dict data type to hold all of our model parameters.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">SEED = 0 # for reproducibility
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NFOLDS = 5 # set folds for out-of-fold prediction
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Put in our parameters for said classifiers
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Random Forest parameters
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rf_params = {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_jobs&amp;#39;: -1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_estimators&amp;#39;: 500,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;warm_start&amp;#39;: True,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #&amp;#39;max_features&amp;#39;: 0.2,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;max_depth&amp;#39;: 6,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;min_samples_leaf&amp;#39;: 2,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;max_features&amp;#39; : &amp;#39;sqrt&amp;#39;,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;verbose&amp;#39;: 0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Extra Trees Parameters
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">et_params = {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_jobs&amp;#39;: -1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_estimators&amp;#39;:500,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #&amp;#39;max_features&amp;#39;: 0.5,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;max_depth&amp;#39;: 8,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;min_samples_leaf&amp;#39;: 2,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;verbose&amp;#39;: 0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># AdaBoost parameters
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ada_params = {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_estimators&amp;#39;: 400,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;learning_rate&amp;#39; : 0.75
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Gradient Boosting parameters
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gb_regressor_params = {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;n_estimators&amp;#39;:500,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;learning_rate&amp;#39;:0.1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;max_depth&amp;#39;:1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;random_state&amp;#39;:0,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;loss&amp;#39;:&amp;#39;ls&amp;#39;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We&amp;rsquo;ll now create our models.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">rf = SklearnHelper(clf=RandomForestRegressor, seed=SEED, params=rf_params)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">et = SklearnHelper(clf=ExtraTreesRegressor, seed=SEED, params=et_params)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ada = SklearnHelper(clf=AdaBoostRegressor, seed=SEED, params=ada_params)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gb_regressor = SklearnHelper(clf=GradientBoostingRegressor, seed=SEED, params=gb_regressor_params)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>And now train the models&amp;hellip;&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">et_oof_train, et_oof_test_201610, et_oof_test_201611, et_oof_test_201612, et_oof_test_201710, et_oof_test_201711, et_oof_test_201712 = get_oof(et, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Extra Trees
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rf_oof_train, rf_oof_test_201610, rf_oof_test_201611, rf_oof_test_201612, rf_oof_test_201710, rf_oof_test_201711, rf_oof_test_201712 = get_oof(rf,x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Random Forest
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ada_oof_train, ada_oof_test_201610, ada_oof_test_201611, ada_oof_test_201612, ada_oof_test_201710, ada_oof_test_201711, ada_oof_test_201712 = get_oof(ada, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # AdaBoost
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gb_regressor_oof_train, gb_regressor_oof_test_201610, gb_regressor_oof_test_201611, gb_regressor_oof_test_201612, gb_regressor_oof_test_201710, gb_regressor_oof_test_201711, gb_regressor_oof_test_201712 = get_oof(gb_regressor,x_train,y_train,x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Finally, with the models trained, we have now reached the end of the first layer of our ensemble. We can now extract the features for further analysis.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">rf_feature = rf.feature_importances(x_train,y_train)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;rf_feature&amp;#34;, rf_feature)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">et_feature = et.feature_importances(x_train, y_train)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;et_feature&amp;#34;, et_feature)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ada_feature = ada.feature_importances(x_train, y_train)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;ada_feature&amp;#34;, ada_feature)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gb_regressor_feature = gb_regressor.feature_importances(x_train,y_train)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;gb_regressor_feature&amp;#34;, gb_regressor_feature)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The 23 features we obtain for each model are as follows:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">rf_feature [ 0.04038533 0.02947441 0.14908661 0.0023588 0.00515421 0.01727217
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.0020252 0.07555324 0.07418552 0.06010003 0.01318217 0.04547284
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.11738776 0.09638334 0.07514663 0.11330465 0.00048846 0.00700142
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.00589092 0.00323037 0. 0.03016362 0.03675231]
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">et_feature [ 0.06465583 0.0572915 0.12032578 0.00991171 0.01124228 0.00960876
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.01485536 0.06740794 0.05175181 0.05436677 0.01772004 0.05594463
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.09801529 0.0533328 0.0450343 0.08253611 0.00201233 0.02357432
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.03032919 0.00296583 0. 0.061361 0.06575642]
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ada_feature [ 8.36785346e-03 3.79894667e-03 7.05391914e-02 7.82563418e-05
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 3.22502690e-07 1.36595920e-02 0.00000000e+00 6.15640675e-02
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 5.32715094e-02 3.73193212e-02 1.70693107e-02 1.18344505e-01
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1.72005440e-01 3.48224492e-02 4.48032666e-02 3.87885107e-02
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.00000000e+00 7.54103834e-03 0.00000000e+00 1.06703836e-02
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.00000000e+00 1.25617605e-01 1.81738430e-01]
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gb_regressor_feature [ 0.02 0.012 0.246 0. 0.016 0.002 0.004 0.114 0.068 0.02
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.004 0.012 0.158 0.056 0.06 0.16 0. 0.022 0. 0. 0.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.026 0. ]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s have a look at how important these features are for each model.&lt;/p>
-&lt;p>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="newplot_1.png" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="newplot_2.png" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="newplot_3.png" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="newplot_4.png" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;p>Now, across the four models, the mean feature importances.&lt;/p>
-&lt;p>
-&lt;figure >
-&lt;div class="flex justify-center ">
-&lt;div class="w-100" >&lt;img src="newplot_5.png" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;p>We can now build a new dataframe to hold these features, and train a regression model using xgboost on these features as our second layer.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">#predictions from first layer become data input for second layer
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">base_predictions_train = pd.DataFrame(
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;RandomForest&amp;#39;: rf_oof_train.ravel(),
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;ExtraTrees&amp;#39;: et_oof_train.ravel(),
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;AdaBoost&amp;#39;: ada_oof_train.ravel(),
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;GradientRegressor&amp;#39;: gb_regressor_oof_train.ravel()
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> })
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#predictions for all instances in the training set
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">base_predictions_train.head(3)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">gbm = xgb.XGBRegressor(
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #learning_rate = 0.02,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> n_estimators= 2000,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> max_depth= 4,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> min_child_weight= 2,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #gamma=1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> gamma=0.9,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> subsample=0.8,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> colsample_bytree=0.8,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> objective= &amp;#39;reg:linear&amp;#39;,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> nthread= -1,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> scale_pos_weight=1
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ).fit(x_train, y_train)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now to make our final predictions&amp;hellip;&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">predictions_201610 = gbm.predict(x_test_201610).round(4)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">predictions_201611 = gbm.predict(x_test_201611).round(4)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">predictions_201612 = gbm.predict(x_test_201612).round(4)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">predictions_201710 = gbm.predict(x_test_201710).round(4)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">predictions_201711 = gbm.predict(x_test_201711).round(4)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">predictions_201712 = gbm.predict(x_test_201712).round(4)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">StackingSubmission = pd.DataFrame({ &amp;#39;201610&amp;#39;: predictions_201610,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;201611&amp;#39;: predictions_201611,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;201612&amp;#39;: predictions_201612,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;201710&amp;#39;: predictions_201710,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;201711&amp;#39;: predictions_201711,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;201712&amp;#39;: predictions_201712,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#39;ParcelId&amp;#39;: ParcelID,
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> })
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(StackingSubmission)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gradient Boosting | James Hope</title>
+    <link>http://localhost:53239/tags/gradient-boosting/</link>
+      <atom:link href="http://localhost:53239/tags/gradient-boosting/index.xml" rel="self" type="application/rss+xml" />
+    <description>Gradient Boosting</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:53239/media/icon_hu_6b956feff6c8d004.png</url>
+      <title>Gradient Boosting</title>
+      <link>http://localhost:53239/tags/gradient-boosting/</link>
+    </image>
+    
+    <item>
+      <title>Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction</title>
+      <link>http://localhost:53239/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
+      <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>http://localhost:53239/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
+      <description>&lt;p&gt;&amp;ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;For a full description of the competition, datasets, evaluation, prizes visit &lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/c/zillow-prize-1&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My first competition entry, a stacked ensemble of regressors for this competition is available here: &lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&lt;/a&gt;&lt;a/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Short summary&lt;/b&gt;. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble and is used to make final predictions on a set of circa 3 million houses, each with 23 features, for 6 points in time (that&amp;rsquo;s 12 million predictions!).&lt;/p&gt;
+&lt;p&gt;Whilst there is room for improvement in preprocessing, including optimising strategies for overcoming missing data (for which there is a lot!), and determining the hyperparameters that lead to an optimal model, this machine learning model is easily adapted for making predictions on featured data in any context.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Now walking through the code in some more detail&amp;hellip;&lt;/b&gt;. The stacked ensemble makes use of the SciKit-Learn RandomForestRegressor, ExtraTreesRegressor, GradientBoostRegressor and AdaBoostRegressor, as well as a Support Vector Machine. We also make use of xgboost to perform regression over the features of the first level ensemble. So we start out by importing the libraries we will need.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load in our libraries&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sklearn&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xgboost&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xgb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;seaborn&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sns&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;matplotlib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;matplotlib&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotly&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offline&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;py&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;init_notebook_mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;connected&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotly&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;graph_objs&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;go&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotly&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tools&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tls&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Going to use these 5 base models for the stacking&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sklearn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ensemble&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RandomForestRegressor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AdaBoostRegressor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ExtraTreesRegressor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GradientBoostingRegressor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sklearn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;svm&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;LinearSVR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sklearn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cross_validation&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;KFold&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We also need to load in the training and test datasets that Zillow has provided us.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train = pd.read_csv(&amp;#39;../input/properties_2016.csv&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train_label = pd.read_csv(&amp;#39;../input/train_2016_v2.csv&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ParcelID = train[&amp;#39;parcelid&amp;#39;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, we will OneHotEncode some of the features. For some features, it makes sense to assume that missing data means a missing feature, so we can map Nan values to 0.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# OneHotEncoding
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;has_basement&amp;#39;] = train[&amp;#34;basementsqft&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;hashottuborspa&amp;#39;] = train[&amp;#34;hashottuborspa&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;has_pool&amp;#39;] = train[&amp;#34;poolcnt&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;has_airconditioning&amp;#39;] = train[&amp;#34;airconditioningtypeid&amp;#34;].apply(lambda x: 0 if np.isnan(x) else 1).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are some columns which appear to need consolidating into a single feature.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Columns to be consolidated
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;yardbuildingsqft17&amp;#39;] = train[&amp;#39;yardbuildingsqft17&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;yardbuildingsqft26&amp;#39;] = train[&amp;#39;yardbuildingsqft26&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;yard_building_square_feet&amp;#39;] = train[&amp;#39;yardbuildingsqft17&amp;#39;].astype(int) + train[&amp;#39;yardbuildingsqft26&amp;#39;].astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And we can also assume some more friendly feature names.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;fireplacecnt&amp;#39;:&amp;#39;fireplace_count&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;bedroomcnt&amp;#39;:&amp;#39;bedroom_count&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;bathroomcnt&amp;#39;:&amp;#39;bathroom_count&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;calculatedfinishedsquarefeet&amp;#39;:&amp;#39;square_feet&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;garagecarcnt&amp;#39;:&amp;#39;garage_car_count&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;garagetotalsqft&amp;#39;:&amp;#39;garage_square_feet&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;hashottuborspa&amp;#39;:&amp;#39;has_hottub_or_spa&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;landtaxvaluedollarcnt&amp;#39;:&amp;#39;land_tax&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;lotsizesquarefeet&amp;#39;:&amp;#39;lot_size_square_feet&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;taxvaluedollarcnt&amp;#39;:&amp;#39;tax_value&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;taxamount&amp;#39;:&amp;#39;tax_amount&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;structuretaxvaluedollarcnt&amp;#39;:&amp;#39;structure_tax_value&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;yearbuilt&amp;#39;:&amp;#39;year_built&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train.rename(columns={&amp;#39;roomcnt&amp;#39;:&amp;#39;room_count&amp;#39;}, inplace=True)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We also need to impute values for missing features. We can impute the median feature value across most features as a starting point.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Impute zero for NaN for these features
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;fireplace_count&amp;#39;] = train[&amp;#39;fireplace_count&amp;#39;].apply(lambda x: 0 if np.isnan(x) else x).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Impute median value for NaN for these features
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;bathroom_count&amp;#39;] = train[&amp;#39;bathroom_count&amp;#39;].fillna(train[&amp;#39;bathroom_count&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;bedroom_count&amp;#39;] = train[&amp;#39;bedroom_count&amp;#39;].fillna(train[&amp;#39;bedroom_count&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;room_count&amp;#39;] = train[&amp;#39;room_count&amp;#39;].fillna(train[&amp;#39;room_count&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;tax_amount&amp;#39;] = train[&amp;#39;tax_amount&amp;#39;].fillna(train[&amp;#39;tax_amount&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;land_tax&amp;#39;] = train[&amp;#39;land_tax&amp;#39;].fillna(train[&amp;#39;land_tax&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;tax_value&amp;#39;] = train[&amp;#39;tax_value&amp;#39;].fillna(train[&amp;#39;tax_value&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;structure_tax_value&amp;#39;] = train[&amp;#39;structure_tax_value&amp;#39;].fillna(train[&amp;#39;structure_tax_value&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;garage_square_feet&amp;#39;] = train[&amp;#39;garage_square_feet&amp;#39;].fillna(train[&amp;#39;garage_square_feet&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;garage_car_count&amp;#39;] = train[&amp;#39;garage_car_count&amp;#39;].fillna(train[&amp;#39;garage_car_count&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;fireplace_count&amp;#39;] = train[&amp;#39;fireplace_count&amp;#39;].fillna(train[&amp;#39;fireplace_count&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;square_feet&amp;#39;] = train[&amp;#39;square_feet&amp;#39;].fillna(train[&amp;#39;square_feet&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;year_built&amp;#39;] = train[&amp;#39;year_built&amp;#39;].fillna(train[&amp;#39;year_built&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;lot_size_square_feet&amp;#39;] = train[&amp;#39;lot_size_square_feet&amp;#39;].fillna(train[&amp;#39;lot_size_square_feet&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;longitude&amp;#39;] = train[&amp;#39;longitude&amp;#39;].fillna(train[&amp;#39;longitude&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;train[&amp;#39;latitude&amp;#39;] = train[&amp;#39;latitude&amp;#39;].fillna(train[&amp;#39;latitude&amp;#39;].median()).astype(float)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now on to Feature Selection. We will drop features where the volume of missing data exceeds a certain threshold. These features were not considered for imputation above.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Drop indistinct features&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;assessmentyear&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Drop any columns insufficiently described&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;airconditioningtypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;basementsqft&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;architecturalstyletypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;buildingclasstypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;buildingqualitytypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;calculatedbathnbr&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;decktypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedfloor1squarefeet&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;s1&#34;&gt;&amp;#39;fips&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;heatingorsystemtypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;rawcensustractandblock&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;s1&#34;&gt;&amp;#39;numberofstories&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;storytypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;threequarterbathnbr&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;typeconstructiontypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;unitcnt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;censustractandblock&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;fireplaceflag&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;taxdelinquencyflag&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;taxdelinquencyyear&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Drop any duplicated columns&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;fullbathcnt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedsquarefeet6&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedsquarefeet12&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedsquarefeet13&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedsquarefeet15&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;finishedsquarefeet50&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;yardbuildingsqft17&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;yardbuildingsqft26&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Land use data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;propertycountylandusecode&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;propertylandusetypeid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;propertyzoningdesc&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# We&amp;#39;ll make do with a binary feature here&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;pooltypeid10&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;pooltypeid2&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;pooltypeid7&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;poolsizesum&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;poolcnt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# We&amp;#39;ll use the longitude and latitutde as features &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;regionidzip&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;regionidneighborhood&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;regionidcity&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;regionidcounty&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;train&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;train&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;drop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;drop_elements&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can now correlate the features using the Seaborn library Pearson&amp;rsquo;s Correlation. This is ideal for helping with feature reduction as ideally we want as fewer features as possible for regression. We might consider removing some more features here with a high correlation.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;pearson.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s also a good idea to scale the data at this point. I&amp;rsquo;ve left this out for brevity but you can refer to the full code if you are unsure how to do this.&lt;/p&gt;
+&lt;p&gt;Now a little preparation before we build our models. We&amp;rsquo;ll create an object called SklearnHelper that will extend the inbuilt methods (such as train, predict and fit) common to all the Sklearn classifiers. This cuts out redundancy as won&amp;rsquo;t need to write the same methods five times if we wanted to invoke five different classifiers.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Class to extend the Sklearn classifier
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;class SklearnHelper(object):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    def __init__(self, clf, seed=0, params=None):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        params[&amp;#39;random_state&amp;#39;] = seed
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        self.clf = clf(**params)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    def train(self, x_train, y_train):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        self.clf.fit(x_train, y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    def predict(self, x):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return self.clf.predict(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    def fit(self,x,y):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return self.clf.fit(x,y)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    def feature_importances(self,x,y):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return(self.clf.fit(x,y).feature_importances_)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We&amp;rsquo;ll also define a function for Cross Validation. This deserves a little explanation. The function will be passed the model, the training set and the test set (for all six time periods). It will make kf=5 folds of the training data, train the model on each fold and make predictions for each time period using this model. It will then take an average of the predicted scores across the five folds for each time period.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_oof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201610&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201611&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201612&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201710&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201711&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_test_201712&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_train&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntrain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201610&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201611&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201612&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201710&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201711&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201712&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201610&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201611&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201612&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201710&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201711&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_skf_201712&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NFOLDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;#train_index: indicies of training set&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;#test_index: indicies of testing set&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enumerate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;kf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#break the dataset down into two sets, train and test&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;x_tr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;y_tr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;x_te&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;test_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#make a predition on the test data subset&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;test_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_te&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#use the model trained on the first fold to make a prediction on the entire test data &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201610&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201610&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201611&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201611&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201612&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201612&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201710&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201710&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201711&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201711&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;oof_test_skf_201712&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;predict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_test_201712&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;#take an average of all of the folds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201610&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201610&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201611&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201611&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201612&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201612&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201710&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201710&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201711&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201711&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;oof_test_201712&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_skf_201712&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_train&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201610&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201611&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201612&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201710&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201711&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oof_test_201712&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next we&amp;rsquo;ll create a Dict data type to hold all of our model parameters.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SEED = 0 # for reproducibility
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NFOLDS = 5 # set folds for out-of-fold prediction
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Put in our parameters for said classifiers
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Random Forest parameters
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rf_params = {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_jobs&amp;#39;: -1,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_estimators&amp;#39;: 500,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &amp;#39;warm_start&amp;#39;: True, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     #&amp;#39;max_features&amp;#39;: 0.2,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;max_depth&amp;#39;: 6,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;min_samples_leaf&amp;#39;: 2,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;max_features&amp;#39; : &amp;#39;sqrt&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;verbose&amp;#39;: 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Extra Trees Parameters
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;et_params = {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_jobs&amp;#39;: -1,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_estimators&amp;#39;:500,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    #&amp;#39;max_features&amp;#39;: 0.5,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;max_depth&amp;#39;: 8,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;min_samples_leaf&amp;#39;: 2,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;verbose&amp;#39;: 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# AdaBoost parameters
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ada_params = {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_estimators&amp;#39;: 400,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;learning_rate&amp;#39; : 0.75
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# Gradient Boosting parameters
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gb_regressor_params = {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;n_estimators&amp;#39;:500, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;learning_rate&amp;#39;:0.1,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;max_depth&amp;#39;:1, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;random_state&amp;#39;:0, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;loss&amp;#39;:&amp;#39;ls&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We&amp;rsquo;ll now create our models.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rf = SklearnHelper(clf=RandomForestRegressor, seed=SEED, params=rf_params)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;et = SklearnHelper(clf=ExtraTreesRegressor, seed=SEED, params=et_params)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ada = SklearnHelper(clf=AdaBoostRegressor, seed=SEED, params=ada_params)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gb_regressor = SklearnHelper(clf=GradientBoostingRegressor, seed=SEED, params=gb_regressor_params)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And now train the models&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;et_oof_train, et_oof_test_201610, et_oof_test_201611, et_oof_test_201612, et_oof_test_201710, et_oof_test_201711, et_oof_test_201712 = get_oof(et, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Extra Trees
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rf_oof_train, rf_oof_test_201610, rf_oof_test_201611, rf_oof_test_201612, rf_oof_test_201710, rf_oof_test_201711, rf_oof_test_201712 = get_oof(rf,x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # Random Forest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ada_oof_train, ada_oof_test_201610, ada_oof_test_201611, ada_oof_test_201612, ada_oof_test_201710, ada_oof_test_201711, ada_oof_test_201712 = get_oof(ada, x_train, y_train, x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712) # AdaBoost
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gb_regressor_oof_train, gb_regressor_oof_test_201610, gb_regressor_oof_test_201611, gb_regressor_oof_test_201612, gb_regressor_oof_test_201710, gb_regressor_oof_test_201711, gb_regressor_oof_test_201712 = get_oof(gb_regressor,x_train,y_train,x_test_201610, x_test_201611, x_test_201612, x_test_201710, x_test_201711, x_test_201712)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, with the models trained, we have now reached the end of the first layer of our ensemble. We can now extract the features for further analysis.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rf_feature = rf.feature_importances(x_train,y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;print(&amp;#34;rf_feature&amp;#34;, rf_feature)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;et_feature = et.feature_importances(x_train, y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;print(&amp;#34;et_feature&amp;#34;, et_feature)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ada_feature = ada.feature_importances(x_train, y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;print(&amp;#34;ada_feature&amp;#34;, ada_feature)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gb_regressor_feature = gb_regressor.feature_importances(x_train,y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;print(&amp;#34;gb_regressor_feature&amp;#34;, gb_regressor_feature)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The 23 features we obtain for each model are as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rf_feature [ 0.04038533  0.02947441  0.14908661  0.0023588   0.00515421  0.01727217
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.0020252   0.07555324  0.07418552  0.06010003  0.01318217  0.04547284
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.11738776  0.09638334  0.07514663  0.11330465  0.00048846  0.00700142
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.00589092  0.00323037  0.          0.03016362  0.03675231]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;et_feature [ 0.06465583  0.0572915   0.12032578  0.00991171  0.01124228  0.00960876
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.01485536  0.06740794  0.05175181  0.05436677  0.01772004  0.05594463
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.09801529  0.0533328   0.0450343   0.08253611  0.00201233  0.02357432
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.03032919  0.00296583  0.          0.061361    0.06575642]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ada_feature [  8.36785346e-03   3.79894667e-03   7.05391914e-02   7.82563418e-05
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   3.22502690e-07   1.36595920e-02   0.00000000e+00   6.15640675e-02
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   5.32715094e-02   3.73193212e-02   1.70693107e-02   1.18344505e-01
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   1.72005440e-01   3.48224492e-02   4.48032666e-02   3.87885107e-02
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   0.00000000e+00   7.54103834e-03   0.00000000e+00   1.06703836e-02
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   0.00000000e+00   1.25617605e-01   1.81738430e-01]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gb_regressor_feature [ 0.02   0.012  0.246  0.     0.016  0.002  0.004  0.114  0.068  0.02
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.004  0.012  0.158  0.056  0.06   0.16   0.     0.022  0.     0.     0.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  0.026  0.   ]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s have a look at how important these features are for each model.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;newplot_1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;newplot_2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;newplot_3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;newplot_4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Now, across the four models, the mean feature importances.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;newplot_5.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We can now build a new dataframe to hold these features, and train a regression model using xgboost on these features as our second layer.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#predictions from first layer become data input for second layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;base_predictions_train = pd.DataFrame( 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;RandomForest&amp;#39;: rf_oof_train.ravel(),
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;ExtraTrees&amp;#39;: et_oof_train.ravel(),
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;AdaBoost&amp;#39;: ada_oof_train.ravel(),
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;GradientRegressor&amp;#39;: gb_regressor_oof_train.ravel()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    })
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#predictions for all instances in the training set
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;base_predictions_train.head(3)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gbm = xgb.XGBRegressor(
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    #learning_rate = 0.02,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; n_estimators= 2000,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; max_depth= 4,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; min_child_weight= 2,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; #gamma=1,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; gamma=0.9,                        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; subsample=0.8,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; colsample_bytree=0.8,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; objective= &amp;#39;reg:linear&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; nthread= -1,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; scale_pos_weight=1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ).fit(x_train, y_train)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now to make our final predictions&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201610 = gbm.predict(x_test_201610).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201611 = gbm.predict(x_test_201611).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201612 = gbm.predict(x_test_201612).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201710 = gbm.predict(x_test_201710).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201711 = gbm.predict(x_test_201711).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;predictions_201712 = gbm.predict(x_test_201712).round(4)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;StackingSubmission = pd.DataFrame({ &amp;#39;201610&amp;#39;: predictions_201610, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;201611&amp;#39;: predictions_201611,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;201612&amp;#39;: predictions_201612,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;201710&amp;#39;: predictions_201710,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;201711&amp;#39;: predictions_201711,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;201712&amp;#39;: predictions_201712,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                         &amp;#39;ParcelId&amp;#39;: ParcelID,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                            })
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;print(StackingSubmission)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
