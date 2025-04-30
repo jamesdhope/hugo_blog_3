@@ -30,7 +30,7 @@ jobs:
       - name: Install Hugo Modules
         run: hugo mod get -u
       - name: Build with Hugo (Debug)
-        run: hugo --minify --debug
+        run: hugo --minify --logLevel debug
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
