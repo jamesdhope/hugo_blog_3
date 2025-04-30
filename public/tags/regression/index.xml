@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Regression | James Hope</title>
-    <link>http://localhost:1313/tags/regression/</link>
-      <atom:link href="http://localhost:1313/tags/regression/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jamesdhope.com/tags/regression/</link>
+      <atom:link href="https://jamesdhope.com/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     <description>Regression</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Regression</title>
-      <link>http://localhost:1313/tags/regression/</link>
+      <link>https://jamesdhope.com/tags/regression/</link>
     </image>
     
     <item>
       <title>Zillow&#39;s Zestimate, and my ensemble of regressors for highly featured data prediction</title>
-      <link>http://localhost:1313/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
+      <link>https://jamesdhope.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</link>
       <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
+      <guid>https://jamesdhope.com/post/zillow-ensemble-regressors/2017-08-17-zillow-ensemble/</guid>
       <description>&lt;p&gt;&amp;ldquo;The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competition will contain two rounds, one public and one private.. Each round will have separate datasets, submission deadlines and instructions on how to participate. The instructions on how to participate in each round are listed below. Capitalized terms used but not defined herein have the meanings assigned to them in the Zillow Prize competition Official Rules.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;For a full description of the competition, datasets, evaluation, prizes visit &lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/c/zillow-prize-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/c/zillow-prize-1&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;My first competition entry, a stacked ensemble of regressors for this competition is available here: &lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.kaggle.com/jamesdhope/zillow-ensemble-of-regressors-0-065&lt;/a&gt;&lt;a/&gt;&lt;/p&gt;

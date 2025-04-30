@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reasoning | James Hope</title>
-    <link>http://localhost:1313/tags/reasoning/</link>
-      <atom:link href="http://localhost:1313/tags/reasoning/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jamesdhope.com/tags/reasoning/</link>
+      <atom:link href="https://jamesdhope.com/tags/reasoning/index.xml" rel="self" type="application/rss+xml" />
     <description>Reasoning</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 10 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Reasoning</title>
-      <link>http://localhost:1313/tags/reasoning/</link>
+      <link>https://jamesdhope.com/tags/reasoning/</link>
     </image>
     
     <item>
       <title>Improving Language Models Inductive Bias with Q*</title>
-      <link>http://localhost:1313/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</link>
+      <link>https://jamesdhope.com/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</link>
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</guid>
+      <guid>https://jamesdhope.com/post/q-star-inductive-bias/2024-07-10-q-star-watsonx/</guid>
       <description>&lt;p&gt;Q*, a hybridisation of Q-learning and the pathfinding algorithm A*, has the potential to enhance the inductive bias of a language model in tasks that demand certain types of reasoning. An implementation of Q* is described here &lt;a href=&#34;https://lnkd.in/giMTvSQR&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lnkd.in/giMTvSQR&lt;/a&gt; and implemented with a watsonx language model here &lt;a href=&#34;https://github.com/jamesdhope/q--deliberate-planning-watsonx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/jamesdhope/q--deliberate-planning-watsonx&lt;/a&gt; with the following parameters and adaptions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Trajectories are completed by an expert model with a terminal state that is determined by the expert.&lt;/li&gt;

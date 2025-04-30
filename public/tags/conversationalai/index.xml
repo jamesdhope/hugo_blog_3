@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ConversationalAI | James Hope</title>
-    <link>http://localhost:1313/tags/conversationalai/</link>
-      <atom:link href="http://localhost:1313/tags/conversationalai/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jamesdhope.com/tags/conversationalai/</link>
+      <atom:link href="https://jamesdhope.com/tags/conversationalai/index.xml" rel="self" type="application/rss+xml" />
     <description>ConversationalAI</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png</url>
       <title>ConversationalAI</title>
-      <link>http://localhost:1313/tags/conversationalai/</link>
+      <link>https://jamesdhope.com/tags/conversationalai/</link>
     </image>
     
     <item>
       <title>Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings</title>
-      <link>http://localhost:1313/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link>
+      <link>https://jamesdhope.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</link>
       <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid>
+      <guid>https://jamesdhope.com/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/</guid>
       <description>&lt;p&gt;Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp;amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more accessible and conveniently queried through an assistant&amp;rsquo;s natural language interface. Here I share an architecture that extends a conversational assistant with RAG, routing searches to collections mapped to a user and intent.&lt;/p&gt;
 &lt;p&gt;The key concept are:&lt;/p&gt;
 &lt;ul&gt;
@@ -51,7 +51,7 @@
                /media/assistant-rag_hu_85ded7cce4c52d73.webp 400w,
                /media/assistant-rag_hu_4da408b1d0180b19.webp 760w,
                /media/assistant-rag_hu_9235471fa6988057.webp 1200w&#34;
-               src=&#34;http://localhost:1313/media/assistant-rag_hu_85ded7cce4c52d73.webp&#34;
+               src=&#34;https://jamesdhope.com/media/assistant-rag_hu_85ded7cce4c52d73.webp&#34;
                width=&#34;760&#34;
                height=&#34;312&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
