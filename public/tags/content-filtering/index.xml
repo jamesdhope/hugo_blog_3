@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Content Filtering | James Hope</title>
-    <link>http://localhost:62056/tags/content-filtering/</link>
-      <atom:link href="http://localhost:62056/tags/content-filtering/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:64705/tags/content-filtering/</link>
+      <atom:link href="http://localhost:64705/tags/content-filtering/index.xml" rel="self" type="application/rss+xml" />
     <description>Content Filtering</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:62056/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:64705/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Content Filtering</title>
-      <link>http://localhost:62056/tags/content-filtering/</link>
+      <link>http://localhost:64705/tags/content-filtering/</link>
     </image>
     
     <item>
       <title>Build a Machine Learning Recommender</title>
-      <link>http://localhost:62056/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
+      <link>http://localhost:64705/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</link>
       <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62056/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
+      <guid>http://localhost:64705/post/machine-learning-recommender/2019-07-29-build-a-machine-learning-recommender/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/build-a-machine-learning-recommender-72be2a8f96ed&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>

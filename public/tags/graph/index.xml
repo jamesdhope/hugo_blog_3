@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Graph | James Hope</title>
-    <link>http://localhost:62056/tags/graph/</link>
-      <atom:link href="http://localhost:62056/tags/graph/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:64705/tags/graph/</link>
+      <atom:link href="http://localhost:64705/tags/graph/index.xml" rel="self" type="application/rss+xml" />
     <description>Graph</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:62056/media/icon_hu_6b956feff6c8d004.png</url>
+      <url>http://localhost:64705/media/icon_hu_6b956feff6c8d004.png</url>
       <title>Graph</title>
-      <link>http://localhost:62056/tags/graph/</link>
+      <link>http://localhost:64705/tags/graph/</link>
     </image>
     
     <item>
       <title>Graph-Driven, LLM-Assisted Virtual Assistant Architecture</title>
-      <link>http://localhost:62056/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
+      <link>http://localhost:64705/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62056/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
+      <guid>http://localhost:64705/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/</guid>
       <description>&lt;p&gt;View the post here: &lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34;&gt;&lt;a href=&#34;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>A New Era for People Analytics</title>
-      <link>http://localhost:62056/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
+      <link>http://localhost:64705/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62056/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
+      <guid>http://localhost:64705/post/people-analytics/2019-08-2-a-new-era-for-people-analytics/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/the-dawn-of-a-new-era-for-people-analytics-9a748f7fdc2&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Can your People Analytics do this?</title>
-      <link>http://localhost:62056/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
+      <link>http://localhost:64705/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:62056/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
+      <guid>http://localhost:64705/post/people-analytics2/2019-08-2-can-your-people-analytics-do-this/</guid>
       <description>&lt;p&gt;This article was published in the journal Towards Data Science. Please click &lt;a target=&#34;_new&#34; href=&#34;https://towardsdatascience.com/can-your-people-analytics-do-this-739afa714f1a&#34;&gt;here&lt;/a&gt; to access the article.&lt;/p&gt;
 </description>
     </item>
