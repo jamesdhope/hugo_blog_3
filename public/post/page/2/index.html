@@ -756,67 +756,255 @@
 
 <div class="flex flex-col items-center">
 
-  
-    <time>Unknown Date</time>
-
+  <div class="container max-w-[65ch] mx-auto bg-white dark:bg-zinc-900 rounded-xl border-gray-100 dark:border-gray-700 border shadow-md overflow-hidden my-5">
 
 
   
   
   
-    <time>Unknown Date</time>
 
 
-  
-  
-    <time>Unknown Date</time>
 
 
-  
-  
-    <time>Unknown Date</time>
 
 
-  
-  
-    <time>Unknown Date</time>
 
 
-  
-  
-    <time>Unknown Date</time>
-
-
-  
-  
-    <time>Unknown Date</time>
-
+<a href="/post/faq-llm/2024-02-20-faq-llm/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Approaches that mitigate against language models misalignment including when semantic search alone is just good enough</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        A common use case for conversational assistants is generating conversational responses to questions users ask of some source information. A common pattern is to retrieve relevant context through semantic search and to pass that context to the language model in the prompt, aligning the language model around a contextualised response. This approach often involves injecting the user’s query into the prompt, which, without guardrails, might lead to generated output that is misaligned with policy or is undesirable in other ways.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Feb 20, 2024</p>
+    </div>
+  </div>
+</a>
 
   
   
-    <time>Unknown Date</time>
 
+
+
+
+
+
+
+
+<a href="/post/reconstructing-user-context/2024-02-17-language-model-assistants/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Reconstructing user context to reduce the risk of policy misaligned generated content in LLM enabled conversational assistants</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        For conversatonal assistants, language models offer the potential benefit of being able to generate responses to the widest posisble range of queries that adhere to a policy, without the need for a premediated conversational design, which is inherently hard to design optimally for all queries. However, prompt engineering alone may not reduce the risk of the language model deviating from a policy to an acceptable level, particularly in the absence of comphrensive testing frameworks.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Feb 17, 2024</p>
+    </div>
+  </div>
+</a>
 
   
   
-    <time>Unknown Date</time>
 
+
+
+
+
+
+
+
+<a href="/post/ai-gov-for-guardrails/2024-02-10-ai-gov-for-guardrails/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Governance of AI enabled services and applications with AI Guardrails and watsonx</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Effective governance of enterprise services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs to and outputs from generative models. These models, which are called synchronously by the application and drive application logic and consumed via an API, abstracted away through an SDK or inferenced directly, must themselves be governed. These models too, must be explainable, monitored for drift (if neural) and for fairness.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Feb 10, 2024</p>
+    </div>
+  </div>
+</a>
 
   
   
-    <time>Unknown Date</time>
 
+
+
+
+
+
+
+
+<a href="/post/beyond-declarative-flows/2023-12-06-beyond-declarative-flows-in-virtual-assistants/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Beyond declarative flows in virtual assistants with language models for single-turn and multi-turn reasoning</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Building user journeys as declarative trees within a virtual assistant requires assumptions to be made about the user query and the optimal path. If there are many decision points and the tree consists of many forks the number of assumptions increases exponentially down the tree leading to inefficiencies and a suboptimal design. To address this inefficiency, one approach is to use a language model to reason over available tools (or APIs) that can be called to augment the response to the query. This collapses the tree and replaces it with a language model that can be guided through a policy or rules expressed in natural language and supplied to the model in a prompt.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Dec 6, 2023</p>
+    </div>
+  </div>
+</a>
 
   
   
-    <time>Unknown Date</time>
 
+
+
+
+
+
+
+
+<a href="/post/fine-tuning-lora/2023-12-01-lora-fine-tuning/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Supervised fine tuning of a large language model using quantized low rank adapters</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Fine-tuning of a large language model (LLM) can be peformed using QLoRA (Quantized Low Rank Adapters) and PEFT (Parameter-Efficient Fine-Tuning) techniques.
+PEFT (Parameter-Efficient Fine-Tuning):
+PEFT is a technique for fine-tuning large language models with a small number of additional parameters, known as adapters, while freezing the original model parameters. It allows for efficient fine-tuning of language models, reducing the memory footprint and computational requirements. PEFT enables the injection of niche expertise into a foundation model without catastrophic forgetting, preserving the original model’s performance. LoRA (Low Rank Adapters):</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Dec 1, 2023</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/rag-with-user-embeddings/2023-11-04-virtual-assistant-conversational-search/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more accessible and conveniently queried through an assistant’s natural language interface. Here I share an architecture that extends a conversational assistant with RAG, routing searches to collections mapped to a user and intent.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Nov 4, 2023</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/testing-assistant-llm/2023-11-01-llm-assisted-virtual-assistant-automated-testing/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">An LLM assisted approach to automating testing of a virtual assistant</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Large Language Models (LLMs) can be used to automate testing of virtual assistants. One approach is to use the LLM to generate the queries and responses of the human user to automate the test of a journey, end to end. Here I share a conceptual data pipeline view of such a system. The key ideas are:</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Nov 1, 2023</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/graph-driven-llm-assisted/2023-10-2-graph-driven-llm-assistant-virtual-assistant/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Graph-Driven, LLM-Assisted Virtual Assistant Architecture</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        View the post here: https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Oct 2, 2023</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/gas-system-future/2022-12-02-gas-system-of-the-future/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Gas System of the Future, Digital Twin</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        This article was published on Medium. Please click here to access the article.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Dec 2, 2022</p>
+    </div>
+  </div>
+</a>
+
+  
+  
+
+
+
+
+
+
+
+
+<a href="/post/vault-template/2021-11-19-vault-template-2/"  class="mb-5">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0 overflow-hidden">
+      
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">Injecting Config as Environment Variables from Hasicorp&#39;s Consul &amp; Vault</div>
+      <p class="block mt-1 text-sm leading-tight font-medium text-black dark:text-white">
+        Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.</p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Nov 19, 2021</p>
+    </div>
+  </div>
+</a>
 
   
 
-  
-    <time>Unknown Date</time>
-
+  </div>
 
 
   
