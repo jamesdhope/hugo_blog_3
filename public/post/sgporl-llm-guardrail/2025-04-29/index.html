@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: April 30, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: May 6, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="system">
   
 <head>
@@ -41,7 +41,7 @@
   
     
   
-  <meta name="description" content="The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications.
+  <meta name="description" content="Why a New Approach? Enterprises deploying language models often face the same challenge: how to ensure responses stay on topic, coherent, and aligned with business goals—without drowning in prompt engineering or moderation scripts.
 " />
 
   
@@ -189,8 +189,9 @@
   
   <meta property="og:site_name" content="James Hope" />
   <meta property="og:url" content="https://jamesdhope.com/post/sgporl-llm-guardrail/2025-04-29/" />
-  <meta property="og:title" content="Semantic Graph, Policy-Oriented Reinforcement Learning for Enterprise AI | James Hope" />
-  <meta property="og:description" content="The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications." /><meta property="og:image" content="https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png" />
+  <meta property="og:title" content="Graph-Oriented Reinforcement Learning (GORL) for Enterprise AI | James Hope" />
+  <meta property="og:description" content="Why a New Approach?
+Enterprises deploying language models often face the same challenge: how to ensure responses stay on topic, coherent, and aligned with business goals—without drowning in prompt engineering or moderation scripts." /><meta property="og:image" content="https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png" />
     <meta property="twitter:image" content="https://jamesdhope.com/media/icon_hu_6b956feff6c8d004.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -209,7 +210,7 @@
   
 
 
-  <title>Semantic Graph, Policy-Oriented Reinforcement Learning for Enterprise AI | James Hope</title>
+  <title>Graph-Oriented Reinforcement Learning (GORL) for Enterprise AI | James Hope</title>
 
   
   
@@ -777,20 +778,12 @@
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
         </span>
     </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/porl-llm-guardrail/2025-04-29/"
-    
-  >Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI
-    </a>
-              
-            </li><li class="flex flex-col open"><a
+        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
     class="hb-sidebar-custom-link
       sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
     href="/post/sgporl-llm-guardrail/2025-04-29/"
     
-  >Semantic Graph, Policy-Oriented Reinforcement Learning for Enterprise AI
+  >Graph-Oriented Reinforcement Learning (GORL) for Enterprise AI
     </a>
   
     <ul class="hb-sidebar-mobile-toc"><li>
@@ -801,15 +794,15 @@
             </li>
           <li>
               <a
-                href="#the-architecture-semantic-policy-meets-reinforcement-learning"
+                href="#the-architecture-language-as-graph-traversal"
                 class="hb-docs-link"
-              >The Architecture: Semantic Policy Meets Reinforcement Learning</a>
+              >The Architecture: Language as Graph Traversal</a>
             </li>
           <li>
               <a
-                href="#the-real-innovation-trajectories-as-reinforcements"
+                href="#how-the-graph-guides-rewards"
                 class="hb-docs-link"
-              >The Real Innovation: Trajectories as Reinforcements</a>
+              >How the Graph Guides Rewards</a>
             </li>
           <li>
               <a
@@ -819,9 +812,9 @@
             </li>
           <li>
               <a
-                href="#sample-use-case-controlled-knowledge-assistant"
+                href="#sample-use-case-ai-compliance-chatbot"
                 class="hb-docs-link"
-              >Sample Use Case: Controlled Knowledge Assistant</a>
+              >Sample Use Case: AI Compliance Chatbot</a>
             </li>
           <li>
               <a
@@ -837,6 +830,14 @@
             </li>
           </ul>
   
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/porl-llm-guardrail/2025-04-29/"
+    
+  >Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI
+    </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -1116,16 +1117,19 @@
         <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#why-a-new-approach">Why a New Approach?</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-architecture-semantic-policy-meets-reinforcement-learning">The Architecture: Semantic Policy Meets Reinforcement Learning</a>
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-architecture-language-as-graph-traversal">The Architecture: Language as Graph Traversal</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-real-innovation-trajectories-as-reinforcements">The Real Innovation: Trajectories as Reinforcements</a>
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#what-is-the-semantic-graph">What is the Semantic Graph?</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#how-the-graph-guides-rewards">How the Graph Guides Rewards</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
         <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#why-it-matters-for-enterprises">Why It Matters for Enterprises</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#sample-use-case-controlled-knowledge-assistant">Sample Use Case: Controlled Knowledge Assistant</a>
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#sample-use-case-ai-compliance-chatbot">Sample Use Case: AI Compliance Chatbot</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
         <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#codebase-overview">Codebase Overview</a>
@@ -1164,7 +1168,7 @@
 
       
 
-      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Semantic Graph, Policy-Oriented Reinforcement Learning for Enterprise AI</h1>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Graph-Oriented Reinforcement Learning (GORL) for Enterprise AI</h1>
 
       <div class="mt-4 mb-16">
       <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Apr 29, 2025</span>
@@ -1198,72 +1202,72 @@
       
 
       <div class="prose prose-slate lg:prose-xl dark:prose-invert">
-        <p>The adoption of AI in enterprises is accelerating, but so are the risks. From generating irrelevant content to unintended ethical violations, the limitations of traditional language models are becoming increasingly apparent. While prompt engineering and hard-coded rules offer some control, they’re not always scalable or sufficient for high-stakes applications.</p>
-<p>What if your AI could learn not only to stay on-topic but to align its responses with an enterprise-specific semantic graph, all while adapting over time? That’s where <strong>Semantic Graph Policy Oriented Reinforcement Learning</strong> (SGPORL) comes in.</p>
-<h2 id="why-a-new-approach">Why a New Approach?</h2>
-<p>Most existing techniques for steering language models have their drawbacks:</p>
+        <h2 id="why-a-new-approach">Why a New Approach?</h2>
+<p>Enterprises deploying language models often face the same challenge: how to ensure responses stay <em>on topic</em>, <em>coherent</em>, and <em>aligned with business goals</em>—without drowning in prompt engineering or moderation scripts.</p>
+<p>Traditional alignment tools like hardcoded filters or post-hoc similarity scoring aren’t enough. And RLHF, while powerful, is resource-heavy and opaque.</p>
+<p>What if your model could <em>learn</em> to stay aligned—by following a <strong>semantic roadmap</strong> of your domain?</p>
+<p>That’s exactly what this project enables: training LLMs to <strong>follow paths through a semantic graph</strong>, where <em>trajectories of language</em> are reinforced when they reflect valid, meaningful transitions between enterprise-relevant concepts.</p>
+<h2 id="the-architecture-language-as-graph-traversal">The Architecture: Language as Graph Traversal</h2>
+<p>At the heart of the system is a <strong>frozen base LLM</strong> (e.g. Qwen-7B), with a <strong>small policy head</strong> trained via reinforcement learning. The novelty isn’t just the model—but how it learns:</p>
 <ul>
-<li><strong>Hard-coded constraints</strong> (e.g., regex filters or blocklists): Often bypassed and inflexible.</li>
-<li><strong>Embedding similarity checks</strong>: They detect issues, but they don’t proactively guide behavior.</li>
-<li><strong>Reinforcement Learning with Human Feedback (RLHF)</strong>: Powerful, but expensive and opaque.</li>
+<li><strong>State</strong>: The prompt and its evolving semantic context.</li>
+<li><strong>Action</strong>: A generated sentence or chunk from the LLM.</li>
+<li><strong>Reward</strong>: A scalar signal based on how well the response <em>traverses</em> a semantic knowledge graph.</li>
 </ul>
-<p>SGPORL offers a balanced solution by integrating reinforcement learning into the decision-making process, using the trajectories of actions within a semantic graph to guide and reinforce model behavior.</p>
-<h2 id="the-architecture-semantic-policy-meets-reinforcement-learning">The Architecture: Semantic Policy Meets Reinforcement Learning</h2>
-<p>At the core of this system is a lightweight reinforcement learning layer that operates alongside a pre-trained language model. Here’s how it works:</p>
+<h3 id="what-is-the-semantic-graph">What is the Semantic Graph?</h3>
+<p>The graph consists of curated domain topics as nodes (e.g. &ldquo;AI Ethics&rdquo;, &ldquo;Bias&rdquo;, &ldquo;Regulation&rdquo;) and meaningful topic transitions as edges. This structure defines what “on-topic” and “coherent” look like for your enterprise.</p>
+<p>For example: &ldquo;AI Ethics&rdquo; → &ldquo;Bias&rdquo; → &ldquo;Auditability&rdquo; is a valid, rewardable trajectory. But: &ldquo;AI Ethics&rdquo; → &ldquo;Super Bowl halftime show&rdquo; is not.</p>
+<h2 id="how-the-graph-guides-rewards">How the Graph Guides Rewards</h2>
+<p>Each response is broken into sentences or chunks and embedded via a sentence transformer. These embeddings are mapped to the closest nodes in the semantic graph. We then observe the <strong>trajectory</strong> the response takes across nodes.</p>
+<p>The <strong>reward function</strong> evaluates:</p>
 <ul>
-<li>
-<p><strong>Trajectory-based Learning</strong>: The system generates responses based on a predefined semantic graph. Each possible response is treated as an action in a reinforcement learning environment, where the model is trained over multiple episodes to learn which actions (responses) best align with the desired outcome.</p>
-</li>
-<li>
-<p><strong>Semantic Policy Head</strong>: A small, modular policy head is added to the language model. It refines the output based on rewards derived from the semantic graph, ensuring the model aligns with both the intended topic and semantic coherence.</p>
-</li>
-<li>
-<p><strong>Reward Function</strong>: The reward is calculated based on two main components:</p>
+<li><strong>Transition Validity</strong>: Each node-to-node step is checked against the graph. Valid transitions get a positive reward (+1), while incoherent or off-graph transitions receive 0 or negative reward.</li>
+<li><strong>Trajectory Score</strong>: The sum of rewards across the full path defines the episode&rsquo;s reward.</li>
+<li><strong>Prompt Coherence</strong>: An additional term measuring how semantically close the response is to the original prompt.</li>
+</ul>
+<p>Together:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">reward</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">trajectory_score</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">coherence_score</span>
+</span></span></code></pre></div><p>This encourages not just individual good responses—but flows of thought that walk a meaningful path through your knowledge domain.</p>
+<p>Reinforcement Learning Loop</p>
+<p>We treat generation as an RL problem:</p>
 <ul>
-<li><strong>Topic Relevance</strong>: How well the response matches the predefined semantic topics (e.g., business ethics, technology trends).</li>
-<li><strong>Semantic Coherence</strong>: How logically consistent the response is with the input and the previous conversation context.</li>
+<li>Policy: A small head on top of a frozen LLM.</li>
+<li>Environment: Prompts sampled from enterprise data.</li>
+<li>Trajectory: The response path through the semantic graph.</li>
+<li>Gradient Updates: Log probabilities and rewards from sampled episodes are used to update the policy.</li>
 </ul>
-</li>
-</ul>
-<p>These factors work together to form a scalar reward that drives the reinforcement learning process.</p>
-<h2 id="the-real-innovation-trajectories-as-reinforcements">The Real Innovation: Trajectories as Reinforcements</h2>
-<p>The real breakthrough here is in the reinforcement signal. Instead of relying on human-labeled data, we use <strong>trajectories</strong>—the paths the model takes in its action space (the semantic graph) to learn which responses lead to high rewards.</p>
-<ul>
-<li>
-<p><strong>Trajectory Sampling</strong>: During each training episode, the system samples different response paths (trajectories) and computes their respective rewards based on the predefined semantic policy.</p>
-</li>
-<li>
-<p><strong>Policy Gradient Updates</strong>: These trajectories guide the policy head, which in turn refines the model’s responses. Over time, the model learns to consistently generate responses that align with the desired semantic graph.</p>
-</li>
-</ul>
+<p>Over time, the LLM learns to produce responses that not only answer well—but navigate your knowledge graph coherently.</p>
 <h2 id="why-it-matters-for-enterprises">Why It Matters for Enterprises</h2>
-<p>This approach isn’t just theoretical—it’s highly practical for enterprise environments:</p>
+<p>This approach is built for practical alignment:</p>
 <ul>
-<li><strong>Domain-specific Alignments</strong>: The language model can be fine-tuned to focus on the specific knowledge and values that matter most to the enterprise.</li>
-<li><strong>Adaptation over Time</strong>: As the system continues to interact with data, it automatically adapts its behavior, improving its relevance and coherence without needing manual intervention.</li>
-<li><strong>Scalable Guardrails</strong>: This method offers a more scalable solution to controlling AI behavior than traditional hard-coded rules.</li>
+<li>Transparent: You define the graph—your domain, your policies.</li>
+<li>Composable: Update the graph as your knowledge evolves.</li>
+<li>Modular: Integrates with existing LLMs; no need to retrain the base model.</li>
+<li>Low Overhead: The policy head is lightweight and efficient to train.</li>
 </ul>
-<h2 id="sample-use-case-controlled-knowledge-assistant">Sample Use Case: Controlled Knowledge Assistant</h2>
-<p>Imagine your enterprise wants to deploy an AI-powered knowledge assistant that:</p>
+<p>This is more than a chatbot fix—it’s a scalable framework for enterprise AI that speaks your language, literally and structurally.</p>
+<h2 id="sample-use-case-ai-compliance-chatbot">Sample Use Case: AI Compliance Chatbot</h2>
+<p>Imagine a compliance assistant that:</p>
 <ul>
-<li>Stays focused solely on specific topics (e.g., corporate ethics, compliance, and industry trends).</li>
-<li>Avoids irrelevant or off-topic content, ensuring it only generates high-quality, domain-specific responses.</li>
-<li>Generates coherent and logically consistent outputs.</li>
+<li>Must stay within risk, ethics, and regulatory domains.</li>
+<li>Must reason across topics without hallucination.</li>
+<li>Must avoid wandering into irrelevant or sensitive territory.</li>
 </ul>
-<p>Using <strong>Semantic Policy RL</strong>, the assistant is trained to continuously reinforce responses that align with your company’s values and topics. Over time, it will self-correct and improve, without needing manual tweaks or endless prompt rules.</p>
+<p>Using a semantic graph of these compliance concepts, the model learns to reward paths that flow through valid policy chains—and penalize digressions—all through reinforcement on response trajectories.</p>
 <h2 id="codebase-overview">Codebase Overview</h2>
 <ul>
-<li><strong>SemanticGraphModel</strong>: A model that represents the semantic graph and evaluates topic relevance.</li>
-<li><strong>RewardModel</strong>: Combines topic relevance and coherence into a scalar reward used for reinforcement learning.</li>
-<li><strong>RLAgent</strong>: Samples responses (actions), collects probabilities, and updates the policy based on rewards.</li>
-<li><strong>SemanticEnvironment</strong>: A simulation environment that generates prompts and evaluates responses in the context of the semantic graph.</li>
-<li><strong>train()</strong>: The function that runs the policy gradient loop, ensuring the model continuously improves based on semantic feedback.</li>
+<li>SemanticGraph: Defines the nodes (topics) and valid edges (transitions).</li>
+<li>TopicMapper: Maps LLM outputs to graph nodes via embeddings.</li>
+<li>RewardEngine: Scores transitions and coherence to produce scalar rewards.</li>
+<li>TrajectorySampler: Tracks node paths during generation.</li>
+<li>RLTrainer: Runs policy gradient updates using logged trajectories and rewards.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">reward</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">topic_relevance</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">coherence</span>
-</span></span></code></pre></div><h2 id="final-thoughts">Final Thoughts</h2>
-<p>The goal of Semantic Policy Reinforcement Learning is not to build the smartest model, but to build the right model for your enterprise context. In regulated or high-stakes environments, the ability to control and interpret AI behavior is just as important as its fluency.</p>
-<p>With this approach, enterprises can ensure their AI systems remain on-topic, aligned with company values, and capable of self-improvement over time, all while avoiding the complexity of traditional guardrails.</p>
-<p>Check out the codebase here: GitHub Repository</p>
+<p>It’s alignment through structure. And structure through language.</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>This isn&rsquo;t about smarter LLMs—it’s about better-aligned ones.</p>
+<p>By treating semantic navigation as a reinforcement learning task, we gain controllability, interpretability, and adaptivity—without needing armies of annotators or endless prompt tuning.</p>
+<p>Want your AI to think like your enterprise? Teach it the map—and reward it for walking the right path.</p>
+<p>Check out the codebase here: <a href="https://github.com/jamesdhope/PORL-LLM-Guardrail" target="_blank" rel="noopener">https://github.com/jamesdhope/PORL-LLM-Guardrail</a></p>
 
       </div>
 
@@ -1302,7 +1306,7 @@
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;text=Semantic&#43;Graph%2C&#43;Policy-Oriented&#43;Reinforcement&#43;Learning&#43;for&#43;Enterprise&#43;AI"
+    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;text=Graph-Oriented&#43;Reinforcement&#43;Learning&#43;%28GORL%29&#43;for&#43;Enterprise&#43;AI"
     title="X"
     aria-label="X"
     id="share-link-x"
@@ -1320,7 +1324,7 @@
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;t=Semantic&#43;Graph%2C&#43;Policy-Oriented&#43;Reinforcement&#43;Learning&#43;for&#43;Enterprise&#43;AI"
+    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;t=Graph-Oriented&#43;Reinforcement&#43;Learning&#43;%28GORL%29&#43;for&#43;Enterprise&#43;AI"
     title="Facebook"
     aria-label="Facebook"
     id="share-link-facebook"
@@ -1340,7 +1344,7 @@
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="mailto:?subject=Semantic%20Graph%2C%20Policy-Oriented%20Reinforcement%20Learning%20for%20Enterprise%20AI&amp;body=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F"
+    href="mailto:?subject=Graph-Oriented%20Reinforcement%20Learning%20%28GORL%29%20for%20Enterprise%20AI&amp;body=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F"
     title="Email"
     aria-label="Email"
     id="share-link-email"
@@ -1358,7 +1362,7 @@
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;title=Semantic&#43;Graph%2C&#43;Policy-Oriented&#43;Reinforcement&#43;Learning&#43;for&#43;Enterprise&#43;AI"
+    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F&amp;title=Graph-Oriented&#43;Reinforcement&#43;Learning&#43;%28GORL%29&#43;for&#43;Enterprise&#43;AI"
     title="LinkedIn"
     aria-label="LinkedIn"
     id="share-link-linkedin"
@@ -1376,7 +1380,7 @@
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="whatsapp://send?text=Semantic&#43;Graph%2C&#43;Policy-Oriented&#43;Reinforcement&#43;Learning&#43;for&#43;Enterprise&#43;AI%20https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F"
+    href="whatsapp://send?text=Graph-Oriented&#43;Reinforcement&#43;Learning&#43;%28GORL%29&#43;for&#43;Enterprise&#43;AI%20https%3A%2F%2Fjamesdhope.com%2Fpost%2Fsgporl-llm-guardrail%2F2025-04-29%2F"
     title="WhatsApp"
     aria-label="WhatsApp"
     id="share-link-whatsapp"
@@ -1529,34 +1533,18 @@
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-        <a class="group flex no-underline" href="/post/porl-llm-guardrail/2025-04-29/">
-          <span
-            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
-          <span class="flex flex-col">
-            <span
-              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI</span>
-            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-              
-                Apr 29, 2025
-              
-            </span>
-          </span>
-        </a>
-      
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/post/semantic-knowledge-graph/2025-03-30-semantic-knowledge-graph/">
+        <a class="group flex text-right no-underline" href="/post/porl-llm-guardrail/2025-04-29/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >SVD for constructing semantic knowledge graphs, semantic retrieval and reasoning</span
+            >Policy-Oriented Reinforcement Learning Language Model Guardrails for Enterprise AI</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Mar 30, 2025
+                Apr 29, 2025
               
             </span>
           </span>
