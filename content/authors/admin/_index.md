@@ -20,12 +20,12 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Architect@IBM
+role: Principle AI Architect @ IFS.ai
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: AI/ML | Cloud | Integration | Automation
-    url: ''
+  - name: IFS.ai
+    url: 'Principle AI Architect | AI/ML Engineer | Ex-IBM | Former BSI ART/1 National Committee Member'
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
@@ -185,4 +185,8 @@ work:
 
 ## Hello there
 
-I am an experienced, certified architect and AI engineer with a background in applied mathematics and the computational sciences. I lead multidisciplinary engineering teams and work with research scientists, engineers, designers and end users to design, build and deploy next generation AI, ML, automation, integration and hybrid cloud technologies that deliver business value in a wide range of highly specialised domains. I sit on the British Standards Institute (BSI) ART1 Artificial Intelligence Committee as a National Expert contributing to standards on AI. I sit on committee at The Open Group contributing to professional standards in Ecosystems Architecture and AI. I have been a member of the University of London Data Science MSc academic tutor team teaching AI and Machine Learning. I am an IBM Certified Architect, IBM Certified AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer and certified in Data Science and Machine Learning (HarvardX). I am a Certified Information Systems Security Practitioner (CISSP, ISC2) and certified in Red Hat Openshift. I have engineering and technical expertise in a wide range of technologies including training / GPU stacks (NVIDIA / Slurm / Ray / PyTorch amongst others) for HPC, HCI, databases, DevOps, building on self managed infrastructure and in the cloud. I graduated with First Class honours in Computer Science and hold a Masters degree from Cambridge University.
+I am a Principal Architect and experienced AI / ML engineer with a background in applied mathematics and the computational sciences. I lead multidisciplinary engineering teams and work with research scientists, engineers, designers and end users to design, build and deploy next generation AI that deliver business value across a wide range of specialised domains including EAM, ERP, ITSM, ITFM, NPM, FSM, AIOps, ITOps, Business Ops, and others.
+
+I have been a member of the British Standards Institute (BSI) ART1 Artificial Intelligence Committee and Ecosystems Architecture and AI working groups at The Open Group contributing to the development of national standards and professional practice for AI. I have previously held roles at the University of London teaching AI and Machine Learning at Masters level. I am certified as an architect and engineer in multiple clouds and have expertise in a wide range of technologies including training / GPU stacks (NVIDIA / Slurm / Ray / PyTorch amongst others) for HPC, HCI, databases, MLOps, DevOps, AI software paradigms, building on self managed infrastructure, cloud-native and hybrid cloud. 
+
+My research interests are in novel AI architectures for advanced machine intelligence and quantum mechanics. I graduated with First Class honours in Computer Science and hold a Masters degree from Cambridge University.
